@@ -1,0 +1,17 @@
+= PyPI =
+pip install pyinstaller
+python -m pip install --upgrade pip
+webbrowser splinter pamie selenium
+= related dir =
+~/python/
+qq_web.py webbrowser 
+open_a_cvf.py open a .cvf file of phone connector
+= coding =
+a python module should be easy to run with config and to debug, so a config window and a log window are good choices.
+the first is a config window,
+the secend is a log info window
+= demo =
+[[cs_c_p_selenium]]
+
+next:
+write python, add new parts

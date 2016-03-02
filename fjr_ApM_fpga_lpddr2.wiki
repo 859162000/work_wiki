@@ -1,0 +1,72 @@
+
+= job record =
+2016-3-2 11:22:57 wd3 # finished
+next : up frequency; random write and read; long time run; test 512M memory.
+2015/12/22 11:38:06 wd2 # mr read
+addr : data
+0 : 0
+1 : DEAD BEEF
+2 : 008D 0002
+3 : 0
+4 : 0500 0
+8 : 0000 0002
+1f 0
+2015/12/2 17:39:17 wd3 # check error....
+2015/12/1 11:56:05 wd2 # 200,204,208,bank1 read 32'hff error.
+2015/11/25 10:13:16 wd3 # 
+parameter5:
+tCK = 2.500ns, f=400Mhz
+tRRD = 6T = 15 ns
+tRCD = 8T = 20 ns
+tFAW = 40 ns
+parameter4:
+tCK = 2.500ns, f=400Mhz
+tRRD = 6T = 15 ns
+tRCD = 8T = 20 ns
+tFAW = 40 ns
+parameter3:
+tCK = 2.500ns, f=400Mhz
+tRRD = 6T = 15 ns
+tRCD = 8T = 20 ns
+tFAW = 50 ns
+parameter2:
+F = 400Mhz
+tRRD = 10 ns
+tRCD = 15 ns
+tFAW = 40 ns
+parameter1:pass
+F = 400Mhz
+tRRD = 10 ns
+tRCD = 15 ns
+tFAW = 50 ns
+2015/11/18 9:54:43 wd3 # random test parameter: 
+tRRD = 10 ns
+tRCD = 18 ns
+tFAW = 50 ns
+2015/11/11 17:22:32 wd3 # error state stop in 01000 ... to simu continue! continue!
+2015/11/3 11:12:04 wd2 # memory config error: 4G config run 1G memory. config right then run right.
+2015/10/23 11:39:47 wd5 # change a board and chip, the same condition.
+2015/10/19 9:38:11 wd1 # 4 types : addr0 w 0000, read addr0, compare, addr0200 w 1111, read addr0, compare:: result : addr0 read 1111, expect 0000. addr09 fail.
+2015/10/16 9:15:04 wd5 # dq9, addr 0000, expdata = 1, read = 0; test: write 1 and 0 seperately to dq, addr = 0. 单向addr = 0 写1和0都正确。在地址0处，读出的数据是xxxx0200,预期的数据是xxxx0000。怀疑是地址00000200的数据，写入地址0中。
+2015/10/12 11:10:05 wd1 # change rtl test code, show error info in hex[3:0].
+2015/10/10 11:27:39 wd6 # weld done, but test failed. check what happened.
+2015/10/9 9:26:55 wd5 # weld the connector, but not firm. weld again.
+2015/9/23 8:38:57 wd3 # PCB arrived yestoday. contect with sealing foundary.
+2015/9/16 14:32:22 wd3 # make sure the PCB is on builde
+2015/9/15 11:09:09 wd2 # pay for the bill.
+2015/9/7 9:51:05 wd1 # check pcb, DQS1 impedance is 60% larger than DQS1#. accept the design files.
+2015/9/1 10:13:58 wd2 # PCB 调整引出信号引脚。DQ0、3、4、23、19，DQS0/#，CA0、2，CK、CK#，不要用顶层走线。
+2015/8/31 10:58:24 wd1 # PCB 仿真。
+2015/8/28 10:11:16 wd5 # PCB continue, send simu result
+2015/8/27 9:38:11 wd4 # PCB pad distribution
+2015/8/26 9:37:21 wd3 # PCB comunication
+2015/8/24 14:17:16 wd1 # PCB start to design
+2015/8/19 10:26:34 wd3 # AHDL simulator dont support Keyword 'task', Diamond dont found a define 'ddr_*'
+2015/8/17 15:11:15 wd1 # read IPexpress(cavidity) user guide and diomond user guide. Try to simu ip_mem in simulator with testbench from the Cavidity.
+2015/8/13 15:20:36 wd4 with lattice, generate a mem controller with cality menager.
+2015/8/11 20:17:48 wd2 board信号完整性分析
+2015/8/5 17:56:06 wd3 lattice查找lpddr3 IP controller
+换成EPCU5 **85F的芯片，生成了一个lpddr3 IP控制器。
+07-24       学习建立工程
+2015-07-23  示例应用是安装在PCIE板卡上的，如果要用于测试，需要自己调试。
+爱镨电子（北京）有限公司

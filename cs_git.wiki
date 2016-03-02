@@ -1,0 +1,34 @@
+git config --global user.name "Your Name Here"
+# Sets the default name for git to use when you commit
+git config --global user.email "your_email@example.com"
+# Sets the default email for git to use when you commit
+git config --global credential.helper cache
+# Set git to use the credential memory cache
+git config --global credential.helper 'cache --timeout=3600'
+# Set the cache to timeout after 1 hour (setting is in seconds), default is 15 minute.
+
+# first fork in the GitHub.com
+git clone https://github.com/username/Spoon-Knife.git
+# Clones your fork of the repository into the current directory in terminal
+cd Spoon-Knife
+# Changes the active directory in the prompt to the newly cloned "Spoon-Knife" directory
+git remote add upstream https://github.com/octocat/Spoon-Knife.git
+# Assigns the original repository to a remote called "upstream"
+git fetch upstream
+# Pulls in changes not present in your local repository, without modifying your files
+git push origin master
+# Pushes commits to your remote repository stored on GitHub
+git fetch upstream
+# Fetches any new changes from the original repository
+git merge upstream/master
+# Merges any changes fetched into your working files
+
+git branch work
+git checkout work
+git commit -a -m ""
+git checkout master
+git pull
+git checkout work
+git rebase master
+git checkout master
+git push origin master/ git format-patch origin

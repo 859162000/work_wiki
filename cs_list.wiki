@@ -1,0 +1,56 @@
+= windows tools =
+== office ==
+wps, libreoffice, 福昕阅读器，CNK E-Study
+office2007: key: KGFVY-7733B-8WCK9-KTG64-BC7D8
+JabRef : bibliograth
+== eda ==
+quarter II, 
+Candance SPB166 + Segrity
+NetEditionLite :芯片解剖看图软件
+CAM350 : gerber reader
+AutoCAD 2014
+== picture ==
+ps CS6
+CoreDraw X4 : DR14UB9C5BBM6U5ZNYTVUWEUQJVU
+GIMP 2
+== video & audio ==
+Audacity
+看看影音
+== game ==
+wor3
+11平台
+Hero3
+VirtuaNes
+underground2
+== daily tools ==
+365日历
+同花顺
+傲游
+Mozilla
+迅雷
+搜狗输入法
+== programme ==
+Vim
+Emacs
+python
+
+= linux =
+audacity : deal with audio
+Calligra Flow : flowchart & diagram editing
+diagram editor : dia is an editor for diagrams, graphs, charts etc.
+Freeplane : a free tool to structure and organise your information with mind mapping
+gimp : image editor
+git : 
+gramps : genealogy systom
+gtkwave : lxt wave viewer
+iverilog : Icarus verilog compiler
+inkscape : Inkscape Vector Graphics Editor
+pdfsam : split and merge pdf documents
+testdisk-> photorec : recover file
+texmaker : latex document editor
+totem : totem movie player
+
+
+########### apt-get remove
+keepassx : pass word store
+ data base return to order one, then some new passwords miss

@@ -1,0 +1,28 @@
+= todo list =
+* 经济日报
+* 归还图书
+* anual summary [2015]
+* moth thesis bakup [1,2]
+= general info : gi =
+* [[gi_diary]]
+* [[gi_travel]]
+* [[gi_my_life]]
+* [[gi_info]]
+= job record : jr =
+* [[jr_zhongjianjian]]
+* [[jr_potevio_info]]
+= finished job record : fjr =
+* [[fjr_ApM_fpga_lpddr2]]
+= person job : pj =
+* [[pj_thesis]]
+* [[pj_tuopan]]
+* [[pj_maque]]
+* [[pj_book]]
+= computer software : cs =
+* [[cs_list]]
+* [[cs_vim]]
+* [[cs_python]]
+* [[cs_git]]
+* [[cs_linux_config]]
+
+temp

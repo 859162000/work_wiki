@@ -1,0 +1,44 @@
+= time =
+2016-3-1 9:39:31 wd2 # compare two products in excel.
+2016-2-25 14:48:32 wd4 # get 中创 白皮书
+2016-2-23 9:53:07 wd2 # start read dongfangtong 白皮书
+= record =
+中创 
+loong智慧平台: Loong ESB、Loong Application Server、Loong BPM、Loong Xportal、Loong MQ、InforGuard
+  基于Eclipse
+Loong ESB （Enterprise Service Bus）企业服务总线
+InforSuite Flow 业务流程开发、运行和管理
+InforSuite 应用服务器（ISA, Application Service） 企业级应用服务器。web服务器，JEE5
+InforGuard UTMP 统一威胁监管平台 统一适配接口（未说明）
+webshield 网页防篡改
+InforBus分布对象中间件 InforBroker消息中间件 IRS报表服务器
+
+TongIntegrator（TI）
+TI_DXP 数据共享交换系统。采用集中监控管理方式。问，A B是平行级，如果A先部署，B要部署，AB之间要通信，那监管怎么处理？可以分布监管？
+Tong ESB Enterprise Service Bus 企业服务总线， (Service Oriented Architecture SOA)面向服务的结构
+TI ETL （Extract、Transform、Load）数据集成工具。。数据抽取即从源系统抽取目的系统需要的数据；数据转换即将从源系统获取的数据按照业务需求，转换成目的系统要求的形式，并对错误、不一致的数据进行清洗和加工；数据加载即将转换后的数据装载到目的系统中。
+TongGTP 数据传输协议。升级FTP。GTP节点+监控管理中心。集中监管。自动传输。
+TongLINK/Q 消息中间件
+TongWeb Java Web应用服务器
+
+
+         |       东方通            |     中创
+----------------------------------------------------
+集成平台 | TI_DXP 数据共享交换系统 | Loong智慧平台
+----------------------------------------------------
+== 相同的部分 ==
+开发平台 | JAVA                    | Eclipse
+管理方式 | 集中监管
+平台结构 | 管理中心+总线+消息+数据集成
+服务器   | Web服务器
+----------------------------------------------------
+== 共有的部件 ==
+流程管理 | Tong ESB                | Loong ESB + InforSuit Flow
+消息交换 | LINK/Q8                 | Loong MQ
+服务器   | TongWeb                 | InforSuite
+安全监管 | DXP中集成               | UTMP
+数据交互 | TongIntegrator ETL      | ETL
+----------------------------------------------------
+== 独立的部件 ==
+数据传输 | TongGTP                 | **
+安全部件 | **                      | 网页防篡改

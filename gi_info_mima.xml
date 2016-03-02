@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="cp936"?>
+<!--<!- - Edited with XML Notepad 2007 (http://msdn.microsoft.com/xml) - ->-->
+<contact xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="contact.xsd" spcification="pass_record">
+<top>
+  <iterm num="0"> <name>common</name> <addr></addr> <count>lhuaye@163.com</count> <word>m123456 Lidn9378</word> <nick_name></nick_name> <info>l/78/ll/M78</info>
+  <iterm num="1"> <name>百度</name> <addr></addr> <count>meiyues</count> <word>Lidn9378</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="2"> <name>小客车</name> <addr>http://www.bjhjyd.gov.cn/</addr> <count>15011472363</count> <word>lsw83740</word> <nick_name></nick_name> <info>5971103165894</info> </iterm>
+  <iterm num="3"> <name>招行一网通网上登录</name> <addr></addr> <count>手机</count> <word>135790</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="4"> <name>中国银行</name> <addr></addr> <count>lianghy386</count> <word>lhy386043</word> <nick_name></nick_name> <info>01478523</info> </iterm>
+  <iterm num="5"> <name>京东支付</name> <addr></addr> <count></count> <word>jdzfmm123</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="6"> <name>支付宝支付</name> <addr></addr> <count></count> <word>zhi8871</word> <nick_name>步测两极</nick_name> <info>风卷残云</info> </iterm>
+  <iterm num="7"> <name>亚马逊</name> <addr></addr> <count>lianghy@mail.ustc.edu.cn</count> <word></word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="8"> <name>淘宝</name> <addr></addr> <count>tb_1841270</count> <word>pa</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="9"> <name>国家电网</name> <addr></addr> <count></count> <word>gjdw3982</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="10"> <name>一览英才：电气英才</name> <addr></addr> <count>electronicfire</count> <word>fire7821</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="11"> <name>豆瓣</name> <addr></addr> <count>lhuaye@163.com</count> <word></word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="12"> <name>美橙互联</name> <addr></addr> <count>lhuaye</count> <word>l</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="13"> <name>office</name> <addr></addr> <count>lhuaye@163.com</count> <word>ksoa2193</word> <nick_name>梁化山</nick_name> <info></info> </iterm>
+  <iterm num="14"> <name>凡科建站</name> <addr>http://www.faisco.com</addr> <count></count> <word>Lidn9378</word> <nick_name>lidn0478</nick_name> <info>sign in once a month</info> </iterm>
+  <iterm num="15"> <name>zhujiwu</name> <addr>www.zhujiwu.com</addr> <count>lhuaye</count> <word>Mm123456</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="16"> <name>携程</name> <addr></addr> <count>common</count> <word>m135790</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="17"> <name>microsoft</name> <addr></addr> <count>lhuaye</count> <word>Mm135790</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="18"> <name>eetop</name> <addr>bbs.eetop.cn</addr> <count>fsea</count> <word></word> <nick_name>fsea</nick_name> <info></info> </iterm>
+  <iterm num="19"> <name>lenovo</name> <addr></addr> <count>lhuaye</count> <word>m12345678</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="20"> <name>JEDEC</name> <addr>www.jedec.org</addr> <count>fsea</count> <word></word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="21"> <name>csdn</name> <addr>bbs.csdn.net</addr> <count>qianyue3</count> <word></word> <nick_name></nick_name> <info>lhuaye</info> </iterm>
+  <iterm num="22"> <name>中科院</name> <addr>http://sep.ucas.ac.cn/</addr> <count>lianghuayue08@mails.ucas.ac.cn</count> <word>l</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="23"> <name>ict</name> <addr>mail.cstnet.cn</addr> <count>lianghuayue@ict.ac.cn</count> <word>l135790</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="24"> <name>qt</name> <addr></addr> <count>lhuaye</count> <word>8 upper lower case</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="25"> <name>YY</name> <addr></addr> <count>lhuaye</count> <word>l</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="26"> <name>altera</name> <addr>www.altera.com</addr> <count>meiyues</count> <word></word> <nick_name></nick_name> <info>lhuaye</info> </iterm>
+  <iterm num="27"> <name>dota2/完美通行证</name> <addr>www.dota2.com.cn</addr> <count>common</count> <word>mm123456</word> <nick_name>meiyues</nick_name> <info></info> </iterm>
+  <iterm num="28"> <name>firefox</name> <addr></addr> <count>common</count> <word>+78</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="29"> <name>avast</name> <addr></addr> <count>feiying</count> <word>M</word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="30"> <name>github</name> <addr>github.com</addr> <count>belang</count> <word>yueqian3521</word> <nick_name>belang</nick_name> <info>feiying</info> </iterm>
+  <iterm num="31"> <name>bank</name> <addr></addr> <count></count> <word>074847</word> <nick_name>belang</nick_name> <info>feiying</info> </iterm>
+  <iterm num="32"> <name>国航</name> <addr>airchina.com.cn</addr> <count>CA448921535</count> <word>ll123456</word> <nick_name>lianghy3</nick_name> <info>mail</info> </iterm>
+  <iterm num="33"> <name>ireader</name> <addr></addr> <count>i172950921</count> <word></word> <nick_name></nick_name> <info></info> </iterm>
+  <iterm num="10000"> <name></name> <addr></addr> <count></count> <word></word> <nick_name></nick_name> <info></info> </iterm>
+</top>
+
+

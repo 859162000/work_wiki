@@ -1,0 +1,40 @@
+网上查资料无意中看见这个东西，觉得挺好玩，原来是用来做web测试的。于是安装了个玩玩python的官网中居然有这个介绍：http://pypi.python.org/pypi/selenium
+
+下载python版本的python包，放入到python的lib下面，然后下载selenium的jar。
+
+启动使用java -jar selenium-server-standalone-2.0b3.jar
+
+ 测试例子：
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.keys import Keys
+import time
+
+browser = webdriver.Firefox() # Get local session of firefox
+browser.get("http://www.yahoo.com") # Load page
+assert "Yahoo!" in browser.title
+elem = browser.find_element_by_name("p") # Find the query box
+elem.send_keys("seleniumhq" + Keys.RETURN)
+time.sleep(0.2) # Let the page load, will be added to the API
+try:
+    browser.find_element_by_xpath("//a[contains(@href,'http://seleniumhq.org')]")
+except NoSuchElementException:
+    assert 0, "can't find seleniumhq"
+browser.close()
+运行的结果是打开雅虎浏览器搜素seleniuhq，然后查找http://seleniumhq.org
+
+http://www.ltesting.net/ceshi/open/kygncsgj/selenium/
+
+再补充下介绍，要下班了，明天慢慢看
+
+Selenium (SeleniumHQ) 是 thoughtworks公司的一个集成测试的强大工具。
+
+一、Selenium 的版本
+
+Selenium 现在存在2个版本，一个叫 selenium-core, 一个叫selenium-rc 。
+
+selenium-core 是使用HTML的方式来编写测试脚本，你也可以使用 Selenium-IDE来录制脚本，但是目前Selenium-IDE只有 FireFox 版本。
+
+Selenium-RC 是 selenium-remote control 缩写，是使用具体的语言来编写测试类。
+
+selenium-rc 支持的语言非常多，这里我们着重关注java的方式。这里讲的也主要是 selenium-rc，因为个人还是喜欢这种方式.
