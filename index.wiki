@@ -1,13 +1,9 @@
 = todo list =
-* 经济日报
+* 
+* thesis 结构。
 * 归还图书
 * anual summary [2015]
 * moth thesis bakup [1,2]
-= general info : gi =
-* [[gi_diary]]
-* [[gi_travel]]
-* [[gi_my_life]]
-* [[gi_info]]
 = job record : jr =
 * [[jr_zhongjianjian]]
 * [[jr_potevio_info]]
@@ -18,6 +14,11 @@
 * [[pj_tuopan]]
 * [[pj_maque]]
 * [[pj_book]]
+= general info : gi =
+* [[gi_diary]]
+* [[gi_travel]]
+* [[gi_my_life]]
+* [[gi_info]]
 = computer software : cs =
 * [[cs_list]]
 * [[cs_vim]]

@@ -10,7 +10,7 @@ NetEditionLite :芯片解剖看图软件
 CAM350 : gerber reader
 AutoCAD 2014
 == picture ==
-ps CS6
+ps CS6 [[csl_ps]]
 CoreDraw X4 : DR14UB9C5BBM6U5ZNYTVUWEUQJVU
 GIMP 2
 == video & audio ==
