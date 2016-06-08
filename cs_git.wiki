@@ -32,3 +32,5 @@ git checkout work
 git rebase master
 git checkout master
 git push origin master/ git format-patch origin
+
+git submodule: get ref lib and update automaticly

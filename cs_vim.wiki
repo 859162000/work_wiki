@@ -1,17 +1,75 @@
-= vim set =
+= vim plugin =
+manage
+""git submodule add https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+in Vundle
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'majutstushi/tagbar'
+Plugin 'vim-scripts/DrawIt'
+Plugin 'scrooloose/nerdtree'
+Plugin 'godlygeek/tabular'    mark-down
+Plugin 'plasticboy/vim-markdown'    mark-down
+
+PluginInstall
+
+xmledit : let g:html_* = 1
+
 vimball
 vimwiki
 ctags58
 TagExplore
 automatic for Verilog
-DrawIt
 taglist
+= vim useage =
+<F2> number
+寄存器 "* 剪切板，""缓存区
+== indent ==
+插入模式
+    Ctrl-T增加缩进，Ctrl-D减小缩进。 
+命令模式
+    >> 右缩进， << 左缩进，注意n<< 或 n>>是缩进多行，如4>> 
+可视模式
+    < 、 > 用于左右缩进， n< 、 n> 可做多节缩进，如 2> 。 
+
+另外，= 可对选中的部分进行自动缩进；]p可以实现p的粘贴功能，并自动缩进。 
+== jump ==
+跳转到定义
+    gd到局部变量的定义，gD到全局变量的定义 
+搜索
+    *, # 可对光标处的词向前/向后做全词搜索，g*, g# 做相对应的非全词匹配搜索 
+代码块首尾
+    [[, ]] 可跳到当前代码块起始或结束的大括号处。 
+括号首尾
+    % 可在配对的括号、块首尾之前跳转。 
+位置历史
+    Ctrl-O 在历史记录中后台，Ctrl-I 则为前进。
+= vim set =
+"开启语法高亮
+syntax on
+"依文件类型设置自动缩进
+filetype indent plugin on
+"显示当前的行号列号：
+set ruler
+"在状态栏显示正在输入的命令
+set showcmd
+"关闭/打开配对括号高亮
+"NoMatchParen
+DoMatchParen
+"显示行号：
+set number
+"为方便复制，用<F2>开启/关闭行号显示:
+nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+"为深色背景调整配色
+set background=dark
 == :digraph ==
  special string input: ctrl-k 
   * vr ├
-  * udvlr/hdlr
+  * vh,ud,lr
   * FD/BD /\
   * !2 ‖
+  * ├├
 == vim pic ==
 整行补全                        CTRL-X CTRL-L
 根据当前文件里关键字补全        CTRL-X CTRL-N
@@ -26,11 +84,11 @@ taglist
 拼写建议                        CTRL-X CTRL-S 
 == digital circuit ==
 
-    ┌┴┐     O    --┴--   ┌--┴--┐   ___  
-    |   |    / \   \   /   | din |  |   \ 
-     \ /    /   \   \ /    |w    |  |    O
-      O     --┬--    O     | dou |  |___/ 
-                           └--┬--┘                      
+    ┌┴┐     O    --+--   +--+--+  +---  
+    │  │    / \   \   /   | din |  |   \ 
+     ╲╱    /   \   \ /    |w    |  |    O
+    οΟ     --+--    O     | dou |  |   / 
+                            +--+--+  +---                
 
 let i=1|g/playOrder=""/exe "s//playOrder=\"".i."\"/"|let i=i+1
 let i=1|g/1/s//\=i/|let i=i+1
@@ -39,6 +97,7 @@ let i=1|g/1/s//\=i/|let i=i+1
 :%s/\n/ /gc    :::   让字母横排
 let i=1|g/^/s//\=i/|let i=i+1
 
+== 自动添加行号 ==
 :g/^/exe “s/^/”.line(‘.’).’ /’
 :let i=1|g/playOrder=""/exe "s//playOrder=\"".i."\"/"|let i=i+1
 
@@ -48,3 +107,5 @@ fileencoding (fenc)：文件實際的編碼
 == wiki ==
 %title 文章标题-VimWiki插件
 %toc 文章目录
+== 编码 ==
+chinese 是个别名，在 Unix 里表示 gb2312，在 Windows 里表示cp936，也就是 GBK 的代码页

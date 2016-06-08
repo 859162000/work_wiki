@@ -1,3 +1,12 @@
+= pyQt =
+== Qt ==
+*  QtCore模块包含核心的非GUI功能。该模块用于时间、文件和目录、各种数据类型、流、网址、MIME类型、线程或进程。
+*  QtGui模块包含图形组件和相关的类，例如按钮、窗体、状态栏、工具栏、滚动条、位图、颜色、字体等。
+*  QtNetwork模块包含了网络编程的类，这些类允许编写TCP/IP和UDP的客户端和服务器，他们使网络编程更简单，更轻便。
+*  QtXml包含使用XML文件的类，这个模块提供了SAX和DOM API的实现。
+*  QtSvg模块提供显示的SVG文件的类。可缩放矢量图形（SVG）是一种用于描述二维图形和图形应用程序的XML语言。
+*  QtOpenGL模块使用OpenGL库渲染3D和2D图形，该模块能够无缝集成Qt的GUI库和OpenGL库。
+*  QtSql模块提供用于数据库的类
 = PyPI =
 pip install pyinstaller
 python -m pip install --upgrade pip
@@ -7,11 +16,40 @@ webbrowser splinter pamie selenium
 qq_web.py webbrowser 
 open_a_cvf.py open a .cvf file of phone connector
 = coding =
-a python module should be easy to run with config and to debug, so a config window and a log window are good choices.
+defination: variables use noun, functions use verb.
+- C*	: class
+- verb	: fuction
+- noun  : variable
+- p*	: globel variable
+- l*	: class variable
+- t*	: fuction variable
+- d*	: parameter
+- _*	: self used
+- __*	: dont touch or changed by direct
+
+requirement <--> test <--> design
+
 the first is a config window,
 the secend is a log info window
+
+面向过程：
+主程序中定义过程、流程 process
+
+process_1:
+ action_A
+ action_B
+ action_C
+ 
+process_2:
+ action_e
+ action_f
+ action_g
+ 
+package(process_1.action_B.port_out, process_2.action_g.port_in, dir='single')
 = demo =
 [[cs_c_p_selenium]]
 
+= lib =
+math : log
 next:
 write python, add new parts

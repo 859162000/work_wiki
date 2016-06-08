@@ -1,62 +1,95 @@
-32bit support lib
+
+------------------------------------------------------------
+= ubuntu =
+press Super key for a while, a fast key menu will appears.
+==network==
+use system config->newtwork to restart work and check detail info
+- source : /etc/apt/source.list
+- dpkg -l 	check sutup softlist
+- wget  ：从网络下载
+== close X window ==
+- sudo etc/init.d/lightdm stop
+------------------------------------------------------------
+= bash =
+``cmd`` :run a command in other command
+export : get the chars that var insteads
+'' : quote only chars. set a=abc, '$a' = \'doller'a
+"" : quote the envirments var and chars. "$a" = abc
+= tcsh =
+tcshrc project from sourceforge
+= ssh =
+
+------------------------------------------------------------
+= sys cofigue =
+== network ==
+=== files ===
+/etc/network/interfaces  ip地址、子网掩码、以及网关 
+DNS /etc/resolv.conf
+sudo /etc/init.d/networking restart 使你之前修改的生效，然后重启就OK了。
+proxy /etc/profile
+=== command ===
+nm-tool,  NetworkManager Tool, reprot NetworkManager state and devices.
+NetworkManager, network management daemon,
+gunzip zabbix-1.6.tar.gz && tar -xvf zabbix-1.6.tar
+
+------------------------------------------------------------
+= software config =
+== eclim ==
+eclimd
+eclim -command shutdowm
+:ShutdownEclim ; in  VIM
+== 32bit support lib ==
  sudo apt-get install libgtk2.0-0:i386
  sudo apt-get install libx32stdc++6
  sudo apt-get install lib64stdc++6
  sudo apt-get install ttf-mscorefonts-installer
-
-MySQL:
- mysql -u root -p
- SET PASSWORD FOR 'root'@'localhost' = PASSWORD('<yourpassword>');
- Query OK, 0 rows affected (0.00 sec)
-apach:
- cp /etc/apache2/sites-avialable/*.conf mysit.conf
- sudo a2dissite default && sudo a2ensite mysite
- sudo /etc/init.d/apache2 reload
-
-
-install rpm file
- rpm -Uvh <rpm_package_file>
-install deb file
- dpkg -i file.deb
-
-git update:
- git clone https://github.com/git/git
-
-sys_info:
- dmidecode | grep -A16 "Memory Device"
-
-libreoffice:
- front: Simsun--宋体/ 仿宋_GB2312;仿宋
- fn <F3>: input formula and number
-
 32bit:
  sudo apt-get install libc6-i386
  sudo apt-get install ia32-libs
  apt-get autoremove
 
-untar:
+== install rpm file ==
+ rpm -Uvh <rpm_package_file>
+install deb file
+ dpkg -i file.deb
+
+== git update: ==
+ git clone https://github.com/git/git
+
+== sys_info: ==
+ dmidecode | grep -A16 "Memory Device"
+
+== libreoffice: ==
+ front: Simsun--宋体/ 仿宋_GB2312;仿宋
+ fn <F3>: input formula and number
+
+== untar: ==
  tar -xjvf *.tar.bz2
  unrar e *.rar
  iconv -f gbk -t utf8 source_file > target_file 
-unzip:
+
+== unzip: ==
  LANG=C 7z x zip_file
  #convmv -f gbk -t utf8 -r --notest *
 
-stardict:
+== stardict: ==
  http://abloz.com/huzheng/stardict-dic/zh_CN/
  mv *.file /usr/share/stardict/dic/
 
-change mp3 tip format:
+== change mp3 tip format: ==
  sudo apt-get install python-mutagen
  mid3iconv -e GBK *.mp3
 
-ibus:
+== ibus: ==
  ibus-setup
  * set in language support and text entry
 
 ------------------------------------------------------------
-在超级终端下输入如下命令行：
-1. #xrandr (查看当前屏幕分辨率)
+= problems =
+------------------------------------------------------------
+
+= sys command =
+== xrandr (查看当前屏幕分辨率) ==
 回车后如下：
 Screen 0: minimum 320 x 200, current 1368 x 768, maximum 8192 x8192
 VGA1 connected 1368x768+0+0 (normal left inverted right x axis yaxis) 410mm x 230mm
@@ -66,52 +99,18 @@ VGA1 connected 1368x768+0+0 (normal left inverted right x axis yaxis) 410mm x 23
   848x480       60.0 
   640x480       59.9 
 
-2. #cvt 1366 768 (将屏幕分辨率设置为1366*768大小)
+== cvt 1366 768 (将屏幕分辨率设置为1366*768大小) ==
 回车后屏幕显示：
 # 1368x768 59.88 Hz (CVT) hsync: 47.79 kHz; pclk: 85.25 MHz
 # Modeline "1368x768_60.00"  85.25  1368 1440 1576 1784  768771 781 798 -hsync +vsync
-#
-# 3. #xrandr --newmode "1368x768_60.00"  85.25  1368 1440 1576 1784  768771 781 798 -hsync +vsync (继续设置并回车)
-#
-# 4. #xrandr --addmode VGA1 "1368x768_60.00"(添加屏幕显示并回车）
-#
-# 5. #xrandr --output VGA1 --mode "1368x768_60.00"(设置完成并回车)
-#
-# 6. #xrandr(查看)
-#
-# 7.#gksu nvidia-settings(保存设置并回车)
-# when use some python
-sudo apt-get install gtk-3.0
- /etc/apt/sources.list
- Error Message
+# xrandr --newmode "1368x768_60.00"  85.25  1368 1440 1576 1784  768771 781 798 -hsync +vsync (继续设置并回车)
+# xrandr --addmode VGA1 "1368x768_60.00"(添加屏幕显示并回车）
+# xrandr --output VGA1 --mode "1368x768_60.00"(设置完成并回车)
+# xrandr(查看)
+# gksu nvidia-settings(保存设置并回车)
 
-#// *
- W: GPG error: http://archive.canonical.com intrepid Release: The following signatures were invalid: BADSIG 40976EAF437D05B5 Ubuntu Archive Automatic Signing Key
-
- Method 1
-
- Try to run the following comamnds from terminal
-
- $ sudo -i
-
- # apt-get clean
- #
- # # cd /var/lib/apt
- #
- # # mv lists lists.old
- #
- # # mkdir -p lists/partial
- #
- # # apt-get clean
- #
- # # apt-get update
- #
- # Method 2
- #
- # Try to run the following comamnds from terminal
- #
- # sudo aptitude -o Acquire::http::No-Cache=True -o Acquire::BrokenProxy=true update
- # sudo apt-get update
+== initramfs ==
+a filesystem
 
 # *//
 Linux查看系统配置常用命令
@@ -119,42 +118,46 @@ sudo lshw
 
  系统
 
- # uname -a # 查看内核/操作系统/CPU信息
- # head -n 1 /etc/issue # 查看操作系统版本
- # cat /proc/cpuinfo # 查看CPU信息
- # hostname # 查看计算机名
- # lspci -tv # 列出所有PCI设备
- # lsusb -tv # 列出所有USB设备
- # lsmod # 列出加载的内核模块
- # env # 查看环境变量 资源
- # free -m # 查看内存使用量和交换区使用量
- # df -h # 查看各分区使用情况
- # du -sh # 查看指定目录的大小
- # grep MemTotal /proc/meminfo # 查看内存总量
- # grep MemFree /proc/meminfo # 查看空闲内存量
- # uptime # 查看系统运行时间、用户数、负载
- # cat /proc/loadavg # 查看系统负载 磁盘和分区
- # mount | column -t # 查看挂接的分区状态
- # fdisk -l # 查看所有分区
- # swapon -s # 查看所有交换分区
- # hdparm -i /dev/hda # 查看磁盘参数(仅适用于IDE设备)
- # dmesg | grep IDE # 查看启动时IDE设备检测状况 网络
- # ifconfig # 查看所有网络接口的属性
- # iptables -L # 查看防火墙设置
- # route -n # 查看路由表
- # netstat -lntp # 查看所有监听端口
- # netstat -antp # 查看所有已经建立的连接
- # netstat -s # 查看网络统计信息 进程
- # ps -ef # 查看所有进程
- # top # 实时显示进程状态 用户
- # w # 查看活动用户
- # id # 查看指定用户信息
- # last # 查看用户登录日志
- # cut -d: -f1 /etc/passwd # 查看系统所有用户
- 
- # cut -d: -f1 /etc/group # 查看系统所有组
- # crontab -l # 查看当前用户的计划任务 服务
- # chkconfig –list # 列出所有系统服务
- # chkconfig –list | grep on # 列出所有启动的系统服务 程序
- # rpm -qa # 查看所有安装的软件包
- 
+ * uname -a 			查看内核/操作系统/CPU信息
+ * head -n 1 /etc/issue 	查看操作系统版本
+ * cat /proc/cpuinfo 		查看CPU信息
+ * hostname 			查看计算机名
+ * lspci -tv 			列出所有PCI设备
+ * lsusb -tv 			列出所有USB设备
+ * lsmod 			列出加载的内核模块
+ * env 				查看环境变量 资源
+ * free -m 			查看内存使用量和交换区使用量
+ * df -h 			查看各分区使用情况
+ * du -sh 			查看指定目录的大小
+ * grep MemTotal /proc/meminfo 	查看内存总量
+ * grep MemFree /proc/meminfo 	查看空闲内存量
+ * uptime 			查看系统运行时间、用户数、负载
+ * cat /proc/loadavg 		查看系统负载 磁盘和分区
+ * mount | column -t 		查看挂接的分区状态
+ * fdisk -l 			查看所有分区
+ * swapon -s 			查看所有交换分区
+ * hdparm -i /dev/hda 		查看磁盘参数(仅适用于IDE设备)
+ * dmesg | grep IDE 		查看启动时IDE设备检测状况 网络
+ * ifconfig 			查看所有网络接口的属性
+ * iptables -L 			查看防火墙设置
+ * route -n 			查看路由表
+ * netstat -lntp 		查看所有监听端口
+ * netstat -antp 		查看所有已经建立的连接
+ * netstat -s 			查看网络统计信息 进程
+ * ps -ef 			查看所有进程
+ * top 				实时显示进程状态 用户
+ * w 				查看活动用户
+ * id 				查看指定用户信息
+ * last 			查看用户登录日志
+ * cut -d: -f1 /etc/passwd 	查看系统所有用户
+ * cut -d: -f1 /etc/group 	查看系统所有组
+ * crontab -l 			查看当前用户的计划任务 服务
+ * chkconfig –list 		列出所有系统服务
+ * chkconfig –list | grep on 	列出所有启动的系统服务 程序
+ * rpm -qa 			查看所有安装的软件包
+ * xclip -out 			查看缓存区
+ * xclip -out -sel clipboard 	查看剪切板
+ * nm-tool		reprot NetworkManager state and devices.
+ * NetworkManager	network management daemon
+ * dpkg -i 		set up deb software
+ * rpm -ivh 		set up redhat software
