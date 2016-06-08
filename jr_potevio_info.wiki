@@ -1,10 +1,15 @@
 域：pt12345
 邮箱：cpitsx_lianghuayue Ppt123456
 IMIS：pt123456
-ip:10.3.19.145 gateway:10.3.19.254 DNS 10.3.1.20/16
+ip:10.3.19.238 gateway:10.3.19.254 DNS 10.3.1.20/16
 云通信：邮箱
 web: sx_lianghuayue@putian.com pt12345
 
-显示器-》闫瑞洪 2016-3-23 8:48:49 wd3 # 
+linux password:123
 
+2016-4-1 9:22:34 wd5 # eID monitor learning.
+中际赛威
+Xilinx－FPGA接口设计与实现研修班（送SP6开发板） 2016.11.24-26 ￥4,800 
+
+娟姐电话：13601252590
 

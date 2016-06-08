@@ -1,0 +1,37 @@
+= 硬件描述语言 =
+系统
+# 方块 -> module
+
+下一步：
+多个文件（工程模式）
+== tools ==
+功能：
+* 
+指定本地图片位置，有默认位置。单个文件。
+=== floorplan of page ===
+workspace | tools | tools class
+
+== work flow ==
+# 指定设计文件
+# 
+= synopsys =
+installer2.8
+tools setup tar files
+SCL			liscences manager
+Crack_synopsys
+
+potovie set
+Site ID Number :	000137
+Site Administrator :	msea
+Contact Information :	msea@163.com
+
+uname -a 		host name
+ifconfig HWaddr		host id: mac
+
+生成license
+hostid		001e907faa8d
+hostname	ubuntu
+
+
+ldd lmgrd		检查基本库
+lsb-core		是ld-lsb的支持库

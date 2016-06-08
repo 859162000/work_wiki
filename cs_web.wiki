@@ -1,0 +1,56 @@
+= Java web structure =
+* client tier
+* middle tier -- Java EE 
+  - web tier
+  - business tier
+* data tier -- enterprise infomation
+
+structure:
+- components
+- container : Web EJB Application_client
+- Java EE platform
+
+== first cup project ==
+NetBeans IDE + Glassfish + Maven + dukesage archetype
+= Tools =
+== java web ==
+java JDK
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0/bin/java" 1
+sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk1.8.0/bin/javac" 1
+sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/lib/jvm/jdk1.8.0/bin/javaws" 1
+
+Correct the file ownership and the permissions of the executables:
+sudo chmod a+x /usr/bin/java
+sudo chmod a+x /usr/bin/javac
+sudo chmod a+x /usr/bin/javaws
+sudo chown -R root:root /usr/lib/jvm/jdk1.8.0
+
+sudo update-alternatives --config java
+== apache2, php5, mysql ==
+* 安装包：
+apache2, php5, libapache2-mod-php5, php5-mysql, mysql
+=== mysql ===
+mysqladmin start
+mysqladmin -uroot -ppassword shutdown
+mysqladmin restart
+
+安装develop
+libmyslclient-dev
+ mysql -u root -p
+ SET PASSWORD FOR 'root'@'localhost' = PASSWORD('<yourpassword>');
+ Query OK, 0 rows affected (0.00 sec)
+
+=== apache2 ===
+/usr/local/apache2/bin/apachectl start apaceh启动
+/usr/local/apache2/bin/apachectl stop   停止
+/usr/local/apache2/bin/apachectl restart 重启
+
+ cp /etc/apache2/sites-avialable/*.conf mysit.conf
+ sudo a2dissite default && sudo a2ensite mysite
+ sudo /etc/init.d/apache2 reload
+要在重启 Apache 服务器时不中断当前的连接，则应运行：
+/usr/local/sbin/apachectl graceful
+如果apache安装成为linux的服务的话，可以用以下命令操作：
+service httpd start 启动
+service httpd restart 重新启动
+

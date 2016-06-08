@@ -1,0 +1,22 @@
+computer input methord based on position and strokes
+three types strokes: horizontal stroke, vertical stroke, turning stroke
+nine position: [left middle right] X [up middle down]
+total keys are 9*3=27 > 26
+
+Distrubution in the keyboards:
+h v t h v t h v t
+h v t h v t h v t
+h v t h v t h v t
+
+code methord:
+对称原则： 四 -- "slghv" 左中竖、右中折、中中竖、中中折、中下横
+encoding: combined by alphabet?
+If it is encoded by combining alphabet, then the lenght of a Chinese Words is not sure, and may be longer than that in utf-8.
+For example, 二 is coded as "rv", and 四 is coded as "slghv".
+Each alphabet is coded as 8 bits, and 四 is 40 bits.
+To identify a complete works, each work should have both start and end string.
+There is many langues in world, and each needs a indentifier.
+So we can combine the start string and indentifier as a word starter.
+Because each word has a starter, the file will be large.
+In a file, set the main language coding in the head.
+If there is another coding in the file, add a special starter and ender for the words which may be continuous.

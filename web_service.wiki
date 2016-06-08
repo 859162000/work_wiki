@@ -1,0 +1,47 @@
+= 网络技术 =
+xml + html + javascript + SVG
+
+== html ==
+div 用来划分区域
+== css ==
+bordor-style(solid), width, color
+float: 位置
+
+== SVG ==
+* SVG 指可伸缩矢量图形 (Scalable Vector Graphics)
+* SVG 用来定义用于网络的基于矢量的图形
+* SVG 使用 XML 格式定义图形
+* SVG 图像在放大或改变尺寸的情况下其图形质量不会有所损失
+* SVG 是万维网联盟的标准
+* SVG 与诸如 DOM 和 XSL 之类的 W3C 标准是一个整体
+= 网络服务 =
+基本的 Web services 平台是 XML + HTTP。
+三大要素：SOAP、WSDL、UDDI
+== SOAP ==
+* SOAP 指 *简易对象访问协议*
+* SOAP 是一种 *通信协议*
+* SOAP 用于 *应用程序之间* 的通信
+* SOAP 是一种用于 *发送消息* 的格式
+* SOAP 被设计用来 *通过因特网* 进行通信
+* SOAP *独立于平台*
+* SOAP *独立于语言*
+* SOAP *基于 XML*
+* SOAP *很简单并可扩展*
+* SOAP *允许您绕过防火墙*
+* SOAP 将作为 *W3C 标准* 来发展
+== WSDL ==
+WSDL 是基于 XML 的用于描述 Web Services 以及如何访问 Web Services 的语言。
+* WSDL 指网络服务描述语言
+* WSDL 使用 XML 编写
+* WSDL 是一种 XML 文档
+* WSDL 用于描述网络服务
+* WSDL 也可用于定位网络服务
+* WSDL 还不是 W3C 标准
+== UDDI ==
+UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services。
+* UDDI 指通用的描述、发现以及整合（Universal Description, Discovery and Integration）。
+* UDDI 是一种用于存储有关 web services 的信息的目录。
+* UDDI 是一种由 WSDL 描述的网络服务接口目录。
+* UDDI 经由 SOAP 进行通迅。
+* UDDI 被构建于 Microsoft .NET 平台之中。
+* 

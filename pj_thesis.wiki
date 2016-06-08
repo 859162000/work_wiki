@@ -1,12 +1,11 @@
 date-count
 修改：
-* [ ] 图5-20，LIA电平不正确
-* [ ] 图6-2，图标识统一
-* [ ] 网上填报毕业环节
+* [ ] sep.ucas.ac.cn 网上填报毕业环节
 * [ ] 毕业答辩
 * [ ] 离校手续
 
-progamme: before 04-01 finish full thesis. everyday is 15 pages.
+2016-4-18 15:12:55 wd1 # send diseration to other professor.
+2016-3-31 14:28:31 wd4 # sent to director in 0328
 2016-3-24 20:14:12 wd4 # 80/101/d15-m55
 2016-3-23 16:41:10 wd3 # 65/103/d8-m55
 2016-3-22 8:43:01 wd2 # 57/103/d11-m48
