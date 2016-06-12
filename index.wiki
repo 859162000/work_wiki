@@ -6,7 +6,6 @@
 = finished job record : fjr =
 * [[fjr_ApM_fpga_lpddr2]]
 = person job : pj =
-* [[pj_thesis]]
 * [[pj_tuopan]]
 * [[pj_maque|sparrow]]
 * [[pj_book]]
@@ -19,11 +18,11 @@
 * [[gi_info]]
 * [[gi_music]]
 = computer software : cs =
+* [[cs_linux_config]]
 * [[cs_list]]
 * [[cs_vim]]
 * [[cs_python]]
 * [[cs_git]]
-* [[cs_linux_config]]
 * [[cs_language]]
 * [[cs_EDA]]
 * [[cs_web]]

@@ -6,4 +6,5 @@ gi_info_connector.html
 gi_info_business_card.html
 gi_info_mima.xml
 骆冬儿 623000196104133306
+母亲姓氏：姓洛
 

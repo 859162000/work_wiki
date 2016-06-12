@@ -1,0 +1,61 @@
+= /etc/xinetd.d/tftp =
+service tftp
+{
+    socket_type     = dgram
+    protocol        = udp
+    wait            = yes
+    user            = root
+    server          = /usr/sbin/in.tftpd
+    server_args     = -s /tftpboot
+    disable         = no
+}
+
+= /etc/dhcp/dhcpd.conf : normal =
+option domain-name "example.com";
+option domain-name-servers ns1.example.com;
+option subnet-mask 255.255.255.0;
+default-lease-time 600;
+max-lease-time 7200;
+server-name "servername";
+
+subnet 192.168.1.0 netmask 255.255.255.0 {
+  range 192.168.1.200 192.168.1.253;
+  option routers 192.168.1.1;
+}
+
+host clientname {
+  filename "/tftpboot.img";
+  server-name "servername";
+  next-server servername;
+  hardware ethernet 01:23:45:67:89:AB;
+  fixed-address 192.168.1.90;
+}
+
+= /etc/dhcp/dhcpd.conf : pxe booting =
+option domain-name "example.com";
+
+default-lease-time 600;
+max-lease-time 7200;
+
+allow booting;
+allow bootp;
+
+# The next paragraph needs to be modified to fit your case
+subnet 192.168.1.0 netmask 255.255.255.0 {
+  range 192.168.1.200 192.168.1.253;
+  option broadcast-address 192.168.1.255;
+# the gateway address which can be different
+# (access to the internet for instance)
+  option routers 192.168.1.1;
+# indicate the dns you want to use
+  option domain-name-servers 192.168.1.3;
+}
+
+group {
+  next-server 192.168.1.3;
+  host tftpclient {
+# tftp client hardware address
+  hardware ethernet  00:10:DC:27:6C:15;
+  filename "pxelinux.0";
+ }
+}

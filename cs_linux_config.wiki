@@ -2,11 +2,31 @@
 ------------------------------------------------------------
 = ubuntu =
 press Super key for a while, a fast key menu will appears.
-==network==
-use system config->newtwork to restart work and check detail info
-- source : /etc/apt/source.list
-- dpkg -l 	check sutup softlist
-- wget  ：从网络下载
+[[cs_ubuntu_config_files]]
+[[cs_ubuntu_server_setup_files]]
+== setup flow==
+cs_ubuntu_server_setup.sh
+=== setup from net ===
+域名服务: 配置文件 /etc/dhcp/dhcpd.conf 服务 /etc/init.d/isc-dhcp-server
+
+TFTP: 软件：tftpd-hda 使用xinetd后台启动。 /etc/xinetd.d/tftp
+/etc/services 文件中，指出使用xinetd启动的服务
+=== setup from CD===
+从CD安装系统，没有配置网络或手动配置。
+=== network ===
+/etc/network/interfaces  ip地址、子网掩码、以及网关 
+/etc/resolv.conf
+sudo /etc/init.d/networking restart 使你之前修改的生效，然后重启就OK了。
+=== change source ===
+/etc/apt/source.list
+=== openssh ===
+* /etc/ssh/sshd_config - OpenSSH 服务器配置文件
+* /etc/ssh/ssh_config - OpenSSH 客户端配置文件
+* ~/.ssh/ - 用户独立的 ssh 配置目录
+* ~/.ssh/authorized_keys or ~/.ssh/authorized_keys - 公钥 (RSA or DSA) 
+* /etc/nologin - 如果该文件存在，则只允许 root 帐号登录
+* /etc/hosts.allow and /etc/hosts.deny : 访问控制定义
+* SSH 默认端口 : TCP 22
 == close X window ==
 - sudo etc/init.d/lightdm stop
 ------------------------------------------------------------
@@ -21,12 +41,6 @@ tcshrc project from sourceforge
 
 ------------------------------------------------------------
 = sys cofigue =
-== network ==
-=== files ===
-/etc/network/interfaces  ip地址、子网掩码、以及网关 
-DNS /etc/resolv.conf
-sudo /etc/init.d/networking restart 使你之前修改的生效，然后重启就OK了。
-proxy /etc/profile
 === command ===
 nm-tool,  NetworkManager Tool, reprot NetworkManager state and devices.
 NetworkManager, network management daemon,
@@ -89,6 +103,11 @@ install deb file
 ------------------------------------------------------------
 
 = sys command =
+== 源 ==
+use system config->newtwork to restart work and check detail info
+- source : /etc/apt/source.list
+- dpkg -l 	check sutup softlist
+- wget  ：从网络下载
 == xrandr (查看当前屏幕分辨率) ==
 回车后如下：
 Screen 0: minimum 320 x 200, current 1368 x 768, maximum 8192 x8192
@@ -161,3 +180,7 @@ sudo lshw
  * NetworkManager	network management daemon
  * dpkg -i 		set up deb software
  * rpm -ivh 		set up redhat software
+------------------------------------------------------------
+= modules =
+PAM : Pluggable authentication modules
+------------------------------------------------------------

@@ -1,9 +1,13 @@
+= 目录 =
+pj_tuopan
+  pj_tp_version1
 = 功能 =
 # 将固定物体推出一定距离。
 # 接住自由下落的物体
 # 将物体上抛到一定的高度，然后接住。
 # 
 = 版本1设计 =
+[[pj_tuopan/pj_tp_version1/readme|readme]]
 == 结构实现 ==
 yuan[receptor, answer,]
 == 状态 ==
@@ -13,14 +17,15 @@ yuan[receptor, answer,]
 
 = 仿真器设计方法 =
 每个动作都是逻辑+触发器结构。
+O>---A--->O O>---B--->O
+  延时   更新   延时
+  
 仿真步骤：
 # 每个动作初始化
-# 每个动作仿真
- * 读取输入（前一级触发器的上一状态），
- * 进行逻辑计算，
- * 存入触发器当前状态。
-# 每个动作状态更新
- * 将触发器当前状态存入上一状态。
+# 每个动作运算
+ * 根据入口值进行逻辑计算，
+ * 根据延时，存入出口，
+# 所有动作运算结束后，更新接口（将相连的pin设成相同的值）
   
 仿真选项：
  # 仿真精度：决定一个模块划分成多少动作。
@@ -32,16 +37,12 @@ yuan[receptor, answer,]
 逻辑 VS 物理
 逻辑分层次，物理也分层次。多个逻辑实体可以对应一个物理实体，反之也成立。
 
-
 结构层次：Instance[system[organ[tissue[cell]]]]。
 
 实体：
 端口 Instance.ports = systems.pins
 
-系统：
+== 系统 ==
 === 引脚 === 
-逻辑 Cpin：
- * direction = 'input, output, inout'
- * connection = 'pin name'
-物理 CTerminal：
- * 
+pin_group[pin,pin]
+
