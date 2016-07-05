@@ -5,7 +5,7 @@ ip:10.3.19.238 gateway:10.3.19.254 DNS 10.3.1.20/16
 云通信：邮箱
 web: sx_lianghuayue@putian.com pt12345
 
-linux password:123
+[[centos]] desktop password: lenovo123*()
 
 2016-4-1 9:22:34 wd5 # eID monitor learning.
 中际赛威

@@ -12,6 +12,62 @@ structure:
 
 == first cup project ==
 NetBeans IDE + Glassfish + Maven + dukesage archetype
+{{{
+        JAVA EE Server                       
++------------+------------------------+
+|dukes-age   |    first cup           |
++------------|------------------------|
+|jax-rs      |  JavaServer Faces      |
+|    ^       |   Application          |
+|    |       |         v              |
+|    +-------|---Enterprise Bean      |
+|            |         v              |
+|            |   Java Persistance API-|->Java DB
++------------+------------------------+
+}}}
+
+# Creating Web Service, dukesAgeResource
+  # prepare the jax-rs file
+  # start glassfish, DB is started at the same time.
+  # build and deploy the web service endpoint
+# Java Persistance API, API to database, FirstCupUser
+# Enterprise Bean, DukesBirthdayBean
+# Web client, DukesBDay class, Facelets pages
+  # call dukeages web service to get duke age
+  # call dukesBirthdayBean to get age difference
+  # create Facelets Client: a resource library, a composite component, two
+    XHTML files.
+
+= JAVA Security Mechanisms =
+== SE Security Mechanisms ==
+* Java Authentication and Authorization Service (JAAS)
+* Java Generic Security Service (Java GSS-API)
+* Java Cryptography Extension (JCE)
+* Java Secure Sockets Extension (JSSE)
+* Simple Authentication and Security Laye (SASL)
+* http://docs.oracle.com/javase/7/docs/technotes/guides/security/
+== EE Security Mechanisms ==
+Java EE security services are provided by the component container and can be
+implemented by using declarative or programmatic techniques.
+=== Application Layer Security ===
+Scuring Containers
+=== Transport Layer Security ===
+Point-to-Point not End-to-End
+=== Message Layer Security ===
+Security information is contained with the SOAP message.
+GlassFish Server supports message security using Metro, a web services stack
+that uses Web Services Security (WSS) to secure messages. Because this message
+security is specific to Metro and is not a part of the Java EE platform, this
+tutorial does not discuss using WSS to secure messages. See the Metro User's
+Guide at :
+https://metro.java.net/guide/
+== Security Containers ==
+Application security. Two types: declarative and programmatic
+=== Using Annotations to Specify Security Infomation ===
+=== Using Deployment Descriptors for Declarative Security ===
+=== Using Programmatic Security ===
+
+
 = Tools =
 == java web ==
 java JDK
@@ -26,6 +82,7 @@ sudo chmod a+x /usr/bin/javaws
 sudo chown -R root:root /usr/lib/jvm/jdk1.8.0
 
 sudo update-alternatives --config java
+
 == apache2, php5, mysql ==
 * 安装包：
 apache2, php5, libapache2-mod-php5, php5-mysql, mysql

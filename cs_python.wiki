@@ -1,3 +1,5 @@
+语言：
+定义强制类型。在参数传递时，强制类型可以检查传递参数是否正确。
 = pyQt =
 == Qt ==
 *  QtCore模块包含核心的非GUI功能。该模块用于时间、文件和目录、各种数据类型、流、网址、MIME类型、线程或进程。
@@ -20,7 +22,8 @@ defination: variables use noun, functions use verb.
 - C*	: class
 - verb	: fuction
 - noun  : variable
-- p*	: globel variable
+- g*	: globel variable
+- p*	: ports variable
 - l*	: class variable
 - t*	: fuction variable
 - d*	: parameter

@@ -1,6 +1,14 @@
 = 网络技术 =
 xml + html + javascript + SVG
-
+ 
+== xml ==
+用 XML Schema 定义 XML 的结构和数据类型
+用 XSLT 来转换 XML 数据
+用 SOAP 来交换应用程序之间的 XML 数据
+用 WSDL 来描述网络服务
+用 RDF 来描述网络资源
+用 XPath 和 XQuery 来访问 XML 数据
+用 SMIL 来定义图形
 == html ==
 div 用来划分区域
 == css ==

@@ -1,4 +1,11 @@
-work dir: ~/maque
+work dir: ~/work_wiki/maque/sparrow
+~/work_wiki/maque/sparrow/sparrow.py
+[[/maque/sparrow/readme]]
+
+xml 程序设计工具
+标签 ： 关键字+标识（如内容、等）
+通过解析工具生成对应的语言
+
 = function =
 一种算法和实现结构。
 该算法能够改变计算方式。

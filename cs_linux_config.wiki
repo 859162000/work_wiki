@@ -81,6 +81,7 @@ install deb file
  tar -xjvf *.tar.bz2
  unrar e *.rar
  iconv -f gbk -t utf8 source_file > target_file 
+ gunzip zabbix-1.6.tar.gz && tar -xvf zabbix-1.6.tar
 
 == unzip: ==
  LANG=C 7z x zip_file
