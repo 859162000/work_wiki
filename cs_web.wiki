@@ -1,3 +1,8 @@
+
+
+= Rails =
+一种高效Web开发框架，基于Ruby。
+
 = Java web structure =
 * client tier
 * middle tier -- Java EE 

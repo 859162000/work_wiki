@@ -54,5 +54,8 @@
     <iterm> <name>lenovo</name> <addr></addr> <count>lhuaye</count> <word>m12345678</word>  <info></info> </iterm>
     <iterm> <name>中科院</name> <addr>http://sep.ucas.ac.cn/</addr> <count>lianghuayue08@mails.ucas.ac.cn</count> <word></word>  <info></info> </iterm>
     <iterm> <name>ict</name> <addr>mail.cstnet.cn</addr> <count>lianghuayue@ict.ac.cn</count> <word>Lidn9378</word>  <info></info> </iterm>
-    <iterm> <name></name> <addr></addr> <count></count> <word></word>  <info></info> </iterm>
+    <iterm> <name>大众点评</name> <addr></addr> <count>qq帐号</count> <word></word>  <info></info> </iterm>
+    <iterm> <name>慧博</name> <addr>hibor.com.cn</addr> <count>xiaohao7</count> <word>x123456</word> <info></info> </iterm>
+    <iterm> <name>三星</name> <addr></addr> <count>lhuaye@163.com</count> <word>patty</word> <info>手机帐号</info> </iterm>
+    <iterm> <name></name> <addr></addr> <count></count> <word></word> <info></info> </iterm>
 </top>

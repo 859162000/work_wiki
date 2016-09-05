@@ -1,0 +1,77 @@
+SOAP 请求：
+POST /InStock HTTP/1.1
+Host: www.example.org
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: nnn
+
+<?xml version="1.0"?>
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2001/12/soap-envelope"
+soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
+
+  <soap:Body xmlns:m="http://www.example.org/stock">
+    <m:GetStockPrice>
+      <m:StockName>IBM</m:StockName>
+    </m:GetStockPrice>
+  </soap:Body>
+  
+</soap:Envelope>
+SOAP 响应：
+HTTP/1.1 200 OK
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: nnn
+
+<?xml version="1.0"?>
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2001/12/soap-envelope"
+soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
+
+  <soap:Body xmlns:m="http://www.example.org/stock">
+    <m:GetStockPriceResponse>
+      <m:Price>34.5</m:Price>
+    </m:GetStockPriceResponse>
+  </soap:Body>
+  
+</soap:Envelope>
+
+基于document类型的：：：：：
+Sample SOAP Request
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://globinch.com/ws/types">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <typ:name>Binu George</typ:name>
+   </soapenv:Body>
+</soapenv:Envelope>
+Sample SOAP Response
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+   <S:Body>
+      <ns3:GreetingResponse xmlns:ns2="http://globinch.com" xmlns:ns3="http://globinch.com/ws/types">
+         <message>Hello</message>
+         <name>Binu George</name>
+      </ns3:GreetingResponse>
+   </S:Body>
+</S:Envelope>
+
+基于rpc类型的：：：：：
+SOAP Request Message
+  
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:glob="http://globinch.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <glob:getGreetingRequest>
+         <name>Binu George</name>
+      </glob:getGreetingRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+SOAP Response Message
+ 
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+   <S:Body>
+      <ns2:getGreetingRequestResponse xmlns:ns2="http://globinch.com">
+         <GreetingResponse>
+            <message>Hello</message>
+            <name>Binu George</name>
+         </GreetingResponse>
+      </ns2:getGreetingRequestResponse>
+   </S:Body>
+</S:Envelope>

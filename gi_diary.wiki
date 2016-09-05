@@ -9,8 +9,10 @@
 2015/9/24 15:18:16 wd4 # qq move count to Weihai from Beijing, but today her sister get that from policement, she must go home to sign in herself.
 2015/9/11 15:32:28 wd5 # wife get her wage ￥861 for 4 days on work at 安投融（北京）网络科技有限公司。She started work there from 08/26.
 == life ==
+2016-7-21 15:15:47 wd4 # 自行车丢了，新买了一个。
 angry on asking her for writing an analys report of 供应链金融，and fire to me for “小看她”.
 = me =
+2016-7-21 15:09:04 wd4 # 顺利毕业，入职普天。参加eID项目：招人，学习JAVA。
 2016/3/1 20:27:13 wd2 # finish memory FPGA work in ApMemory from the first day of this year, and return all equipments to wangfeng.
 2016/2/23 15:13:23 wd2 # have been exercitation in Potevio for 3days last week.
 2015 summary: 毕业论文、结婚
@@ -110,16 +112,26 @@ angry on asking her for writing an analys report of 供应链金融，and fire t
 倩倩找工作的老陈实在不靠谱，还遇到许多更不靠谱的人。
 
 == 2015 ==
-* work
+* 工作
  # 将封装s参数和芯片ibis模型文件一起仿真，提取带封装的ibis文件。
  # 检查3B7封装与chip的连接性。１月
  # 外接一份工作，给APM做测试板，从2月开始。
  # 写毕业论文。有李老师帮助，小论文发表
 * 生活
-跟倩倩一直在一起，感情很好。
-与其他人的交往很少，也没有结识新的朋友
-在北京与倩倩父亲见面，还有李叔，他们有业务的事情，同时还为倩倩工作问题。
-王晶给介绍了几份工作，没想到她这么热情。
-2015年10月31日，领证。
-去夏天西安旅行，十一去新加坡、马来西亚旅行。
-12月去普天面试。准备入职相关手续。
+ # 跟倩倩一直在一起，感情很好。
+ # 与其他人的交往很少，也没有结识新的朋友
+ # 在北京与倩倩父亲见面，还有李叔，他们有业务的事情，同时还为倩倩工作问题。
+ # 王晶给介绍了几份工作，没想到她这么热情。
+ # 2015年10月31日，领证。农历九月十九。
+ # 去夏天西安旅行，十一去新加坡、马来西亚旅行。
+ # 12月去普天面试。准备入职相关手续。
+== 2016 ==
+* 工作
+ # 完成FPGA工程APmemory。
+ # 7月入职普天，参加eID项目。学习JAVA相关技术。招聘。
+* 生活
+ # 4月去成都旅行。
+ # 7月猫送我CHERRY g80-3000L 茶轴 709元的键盘
+* 学习
+ # 学习python web。
+ # 研究python verilog。

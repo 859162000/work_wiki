@@ -3,15 +3,6 @@ manage
 ""git submodule add https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-in Vundle
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'majutstushi/tagbar'
-Plugin 'vim-scripts/DrawIt'
-Plugin 'scrooloose/nerdtree'
-Plugin 'godlygeek/tabular'    mark-down
-Plugin 'plasticboy/vim-markdown'    mark-down
-
 PluginInstall
 
 xmledit : let g:html_* = 1
@@ -19,12 +10,10 @@ xmledit : let g:html_* = 1
 vimball
 vimwiki
 ctags58
-TagExplore
-automatic for Verilog
-taglist
 = vim useage =
 <F2> number
 寄存器 "* 剪切板，""缓存区
+:w ++ff=unix
 == indent ==
 插入模式
     Ctrl-T增加缩进，Ctrl-D减小缩进。 
@@ -85,10 +74,10 @@ set background=dark
 == digital circuit ==
 
     ┌┴┐     O    --+--   +--+--+  +---  
-    │  │    / \   \   /   | din |  |   \ 
-     ╲╱    /   \   \ /    |w    |  |    O
-    οΟ     --+--    O     | dou |  |   / 
-                            +--+--+  +---                
+    │ │    / \   \   /   | din |  |   \ 
+    \ /   /   \   \ /    |w    |  |    O
+    οΟ    --+--    O     | dou |  |   / 
+                         +--+--+  +---                
 
 let i=1|g/playOrder=""/exe "s//playOrder=\"".i."\"/"|let i=i+1
 let i=1|g/1/s//\=i/|let i=i+1
@@ -109,3 +98,22 @@ fileencoding (fenc)：文件實際的編碼
 %toc 文章目录
 == 编码 ==
 chinese 是个别名，在 Unix 里表示 gb2312，在 Windows 里表示cp936，也就是 GBK 的代码页
+= tips =
+viminfo文件权限会影响打开文件到上次编辑位置。
+set paste : 关闭粘贴时，自动注释功能。
+od -c *   : 显示文件字符
+noremap是用于insert模式的非递归映射，
+nnoremap是用于normal模式的非递归映射，
+vnoremap是用于visual模式的非递归映射.
+<Plug>	在脚本外部是可见的。它被用来定义那些用户可能定义映射的映射。<Plug> 是
+  	无法用键盘输入的特殊代码。
+  	使用结构：<Plug> 脚本名 映射名，可以使得其它插件使用同样次序的字符来定
+  	义映射的几率变得非常小。在我们上面的例子中，脚本名是 "Typecorr"，映射
+  	名是 "Add"。结果是 <Plug>TypecorrAdd。只有脚本名和映射名的第一个字
+  	符是大写的，所以我们可以清楚地看到映射名从什么地方开始。
+<SID>	是脚本的 ID，用来唯一的代表一个脚本。Vim 在内部将 <SID> 翻译为
+  	<SNR>123_，其中 "123" 可以是任何数字。这样一个函数 <SID>Add() 可能
+  	在一个脚本中被命名为 <SNR>11_Add()，而在另一个脚本中被命名为
+  	<SNR>22_Add()。如果你用 :function 命令来获得系统中的函数列表你就可
+  	以看到了。映射中对 <SID> 的翻译是完全一样的。这样你才有可能通过一个映
+  	射来调用某个脚本中的局部函数。

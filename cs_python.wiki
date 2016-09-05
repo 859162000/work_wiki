@@ -1,14 +1,20 @@
 语言：
 定义强制类型。在参数传递时，强制类型可以检查传递参数是否正确。
+= web =
+* flask
+* zeep
+* spyne : SOAP Server。tegather with app。
+== socketserver ==
+
 = pyQt =
 == Qt ==
-*  QtCore模块包含核心的非GUI功能。该模块用于时间、文件和目录、各种数据类型、流、网址、MIME类型、线程或进程。
-*  QtGui模块包含图形组件和相关的类，例如按钮、窗体、状态栏、工具栏、滚动条、位图、颜色、字体等。
-*  QtNetwork模块包含了网络编程的类，这些类允许编写TCP/IP和UDP的客户端和服务器，他们使网络编程更简单，更轻便。
-*  QtXml包含使用XML文件的类，这个模块提供了SAX和DOM API的实现。
-*  QtSvg模块提供显示的SVG文件的类。可缩放矢量图形（SVG）是一种用于描述二维图形和图形应用程序的XML语言。
-*  QtOpenGL模块使用OpenGL库渲染3D和2D图形，该模块能够无缝集成Qt的GUI库和OpenGL库。
-*  QtSql模块提供用于数据库的类
+* QtCore模块包含核心的非GUI功能。该模块用于时间、文件和目录、各种数据类型、流、网址、MIME类型、线程或进程。
+* QtGui模块包含图形组件和相关的类，例如按钮、窗体、状态栏、工具栏、滚动条、位图、颜色、字体等。
+* QtNetwork模块包含了网络编程的类，这些类允许编写TCP/IP和UDP的客户端和服务器，他们使网络编程更简单，更轻便。
+* QtXml包含使用XML文件的类，这个模块提供了SAX和DOM API的实现。
+* QtSvg模块提供显示的SVG文件的类。可缩放矢量图形（SVG）是一种用于描述二维图形和图形应用程序的XML语言。
+* QtOpenGL模块使用OpenGL库渲染3D和2D图形，该模块能够无缝集成Qt的GUI库和OpenGL库。
+* QtSql模块提供用于数据库的类
 = PyPI =
 pip install pyinstaller
 python -m pip install --upgrade pip
@@ -53,6 +59,13 @@ package(process_1.action_B.port_out, process_2.action_g.port_in, dir='single')
 [[cs_c_p_selenium]]
 
 = lib =
-math : log
+* math : log
+* docutils    : python docutmentation utilities
+    - python D:\Python34\Scripts\rst2html.py ../../../../lianghy/vimdata/temp/riv_quickstart.rst --stylesheet=../../../../lianghy/vimfiles/bundle/rhythm.css,syntax/molokai.css
+* pygments    : code analyse
 next:
 write python, add new parts
+
+= 编码 =
+test = bytes.fromhex("E7")
+bytes(b'\eE7').decode('utf-8) => a

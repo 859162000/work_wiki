@@ -1,0 +1,39 @@
+RPC:
+SOAP Request
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:glob="http://globinch.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <glob:getGreetingRequest>
+         <name>Binu George</name>
+      </glob:getGreetingRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+SOAP Response
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+   <S:Body>
+      <ns2:getGreetingRequestResponse xmlns:ns2="http://globinch.com">
+         <GreetingResponse>
+            <message>Hello</message>
+            <name>Binu George</name>
+         </GreetingResponse>
+      </ns2:getGreetingRequestResponse>
+   </S:Body>
+</S:Envelope>
+
+Documatation:
+SOAP Request
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:typ="http://globinch.com/ws/types">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <typ:name>Binu George</typ:name>
+   </soapenv:Body>
+</soapenv:Envelope>
+SOAP Response
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+   <S:Body>
+      <ns3:GreetingResponse xmlns:ns2="http://globinch.com" xmlns:ns3="http://globinch.com/ws/types">
+         <message>Hello</message>
+         <name>Binu George</name>
+      </ns3:GreetingResponse>
+   </S:Body>
+</S:Envelope>

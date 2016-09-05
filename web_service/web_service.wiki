@@ -9,6 +9,35 @@ xml + html + javascript + SVG
 用 RDF 来描述网络资源
 用 XPath 和 XQuery 来访问 XML 数据
 用 SMIL 来定义图形
+=== XML Schema ===
+xml/exam.xsd
+xml/exam.xml
+=== WSDL ===
+将服务分成三个特定的、独立的操作：
+* Types
+* Operations
+* Binding
+
+| 元素          | 定义                             |   |
+|---------------|----------------------------------|---|
+| definition    | root, name,namespace             |   |
+| types         | 定义消息数据类型，schema         |   |
+| message       | 数据的抽象，文档或参数           |   |
+| operation     | 消息的动作                       |   |
+| portType      | 操作的集合，用于绑定             |   |
+| binding       | 使用的通信协议                   |   |
+| ports         | 绑定和IP地址的组合               |   |
+| service       | 实现功能的终端，将终端与端口绑定 |   |
+| documentation | 文档                             |   |
+| import        | 引入其它wsdl or schemas          |   |
+
+
+wsdl/wsdl.xml
+wsdl/example.wsdl
+wsdl/ConvertSpeed.asmx.xml
+soap_RPC_doc.xml
+== SOAP ==
+soap_example.xml
 == html ==
 div 用来划分区域
 == css ==

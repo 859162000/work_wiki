@@ -1,24 +1,34 @@
+= centos =
+net ip config: /etc/sysconfig/network-scripts/ifcfg-*
+BOOTPROTO=static
+BROADCAST=
+IPADDR=
+NETMASK=
+NETWORK= "start ip"
+GATEWAY=
+DNS=
+ONBOOT=
 
 ------------------------------------------------------------
 = ubuntu =
 press Super key for a while, a fast key menu will appears.
+== server setup ==
 [[cs_ubuntu_config_files]]
 [[cs_ubuntu_server_setup_files]]
-== setup flow==
+=== setup flow===
 cs_ubuntu_server_setup.sh
-=== setup from net ===
+==== setup from net ====
 域名服务: 配置文件 /etc/dhcp/dhcpd.conf 服务 /etc/init.d/isc-dhcp-server
-
 TFTP: 软件：tftpd-hda 使用xinetd后台启动。 /etc/xinetd.d/tftp
 /etc/services 文件中，指出使用xinetd启动的服务
-=== setup from CD===
+==== setup from CD====
 从CD安装系统，没有配置网络或手动配置。
-=== network ===
+== network ==
 /etc/network/interfaces  ip地址、子网掩码、以及网关 
 /etc/resolv.conf
 sudo /etc/init.d/networking restart 使你之前修改的生效，然后重启就OK了。
-=== change source ===
-/etc/apt/source.list
+sudo dhclient -v -r eth0
+sudo dhclient -v eth0
 === openssh ===
 * /etc/ssh/sshd_config - OpenSSH 服务器配置文件
 * /etc/ssh/ssh_config - OpenSSH 客户端配置文件
@@ -29,18 +39,26 @@ sudo /etc/init.d/networking restart 使你之前修改的生效，然后重启�
 * SSH 默认端口 : TCP 22
 == close X window ==
 - sudo etc/init.d/lightdm stop
-------------------------------------------------------------
-= bash =
-``cmd`` :run a command in other command
-export : get the chars that var insteads
-'' : quote only chars. set a=abc, '$a' = \'doller'a
-"" : quote the envirments var and chars. "$a" = abc
-= tcsh =
-tcshrc project from sourceforge
-= ssh =
+== email ==
+sendemail : https://github.com/mogaal/sendemail
+sendEmail -f lianghuayue@potevio.com \
+    -t lizhongtian@potevio.com \
+    -s smtp.potevio.com \
+    -xu lianghuayue@gmail.com       \
+    -xp pt12345        \
+    -u "log file" \
+    -m "log file with xml format" \
+    -a /home/putian004/report.xml
 
+    #-cc jennifer@isp.net paul@isp.net jeremiah@isp.net \
+
+ssmtp
 ------------------------------------------------------------
-= sys cofigue =
+== system config ==
+=== change source ===
+/etc/apt/source.list
+=== path ===
+/etc/profile
 === command ===
 nm-tool,  NetworkManager Tool, reprot NetworkManager state and devices.
 NetworkManager, network management daemon,
@@ -48,6 +66,23 @@ gunzip zabbix-1.6.tar.gz && tar -xvf zabbix-1.6.tar
 
 ------------------------------------------------------------
 = software config =
+= bash =
+``cmd`` :run a command in other command
+export : get the chars that var insteads
+'' : quote only chars. set a=abc, '$a' means \'doller'a 纯字符
+"" : quote the envirments var and chars. "$a" means abc 使用变量指向的值。
+bk : alias bk='export bakpath=`pwd`; cd $OLDPWD; export OLDPWD=$bakpath'
+grep -r --include *.file : 回归查询文件
+od -c : 显示编码
+= tcsh =
+tcshrc project from sourceforge
+= ssh =
+nohup ./*.sh & : 启动后台程序，关闭ssh仍然运行。
+bg             : 将一个后台暂停的程序变为继续运行。
+fg             : 将一个后台命令调到前台运行。
+
+update-alternative : 更改软件默认使用的版本。
+
 == eclim ==
 eclimd
 eclim -command shutdowm
@@ -181,6 +216,7 @@ sudo lshw
  * NetworkManager	network management daemon
  * dpkg -i 		set up deb software
  * rpm -ivh 		set up redhat software
+ * sudo initctl list | grep "^xroad-" 
 ------------------------------------------------------------
 = modules =
 PAM : Pluggable authentication modules
