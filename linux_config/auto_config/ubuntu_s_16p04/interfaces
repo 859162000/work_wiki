@@ -1,0 +1,5 @@
+auto ens33
+iface ens33 inet static
+address 10.3.19.231
+netmask 255.255.255.0
+gateway 10.3.19.254

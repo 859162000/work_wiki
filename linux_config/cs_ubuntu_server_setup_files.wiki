@@ -1,0 +1,10 @@
+= /etc/network/interfaces = 
+auto eth0
+iface eth0 inet static
+address 
+netmastk 255.255.255.0
+gateway
+
+= /etc/resolv.conf =
+nameservice 10.3.1.20
+

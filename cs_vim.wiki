@@ -35,23 +35,18 @@ ctags58
 位置历史
     Ctrl-O 在历史记录中后台，Ctrl-I 则为前进。
 = vim set =
-"开启语法高亮
-syntax on
-"依文件类型设置自动缩进
-filetype indent plugin on
-"显示当前的行号列号：
-set ruler
-"在状态栏显示正在输入的命令
-set showcmd
-"关闭/打开配对括号高亮
+_vimrc : 如果其中出现了中文，编码方式要与系统一致。如，在windows中文系统中，要使用cp936。
+syntax on  "开启语法高亮
+filetype indent plugin on "依文件类型设置自动缩进
+set ruler "显示当前的行号列号：
+set showcmd "在状态栏显示正在输入的命令
+DoMatchParen "关闭/打开配对括号高亮
 "NoMatchParen
-DoMatchParen
-"显示行号：
-set number
+set number "显示行号：
 "为方便复制，用<F2>开启/关闭行号显示:
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 "为深色背景调整配色
-set background=dark
+set background=torte
 == :digraph ==
  special string input: ctrl-k 
   * vr ├

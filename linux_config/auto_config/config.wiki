@@ -1,0 +1,13 @@
+= linux config =
+This director contains config flow and files for linux systems configuration.
+
+Usually, the server has setup openssh. Manully command is:
+  apt-get install openssh-server openssh-sftp-server
+
+To config a system:
+1. copy the system dir to the system root user home dir.
+2. config the network 
+3. run *_config.sh
+
+Suported system:
+* ubuntu server 16.04 : ubuntu_s_16p04

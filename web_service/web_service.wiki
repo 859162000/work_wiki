@@ -1,6 +1,60 @@
 = 网络技术 =
-xml + html + javascript + SVG
- 
+xml + html + javascript + SVG + TLS
+
+== 安全 ==
+OpenSSL
+# 生成私有钥 openssl genrsa -aes128 -out fd.key 2048
+# 生成私有钥的公钥 openssl rsa -in fd.key -pubout -out fd-public.key
+# 准备生成证书签名请求：Certificate Signing Requests CRS
+  interactive: openssl req -new -key fd.key -out fd.csr
+  unattended:  openssl req -new -config fd.cnf -key fd.key -out fd.csr
+# 本地生成证书(自签名) openssl x509 -req -days 365 -in fd.csr -signkey fd.key -out fd.crt
+# 哈希 
+=== 私有认证中心 private certification authority(CA)===
+配置、目录、密钥、根密钥、根证书
+==== 认证中心相关名词 ====
+CRL Certificate Revocation List : 证书吊销列表
+==== Root CA Configuration ====
+man config, ca
+
+配置文件：
+* [default]     : CA 信息
+* ca_default    : CA 操作
+* reg           : reg命令，用于自签名的根证书，只用一次
+* sub_ca_ext    : 根CA的证书结构
+* ocsp_ext      : ocsp响应设置
+
+目录结构：
+* certs     : 存放证书
+* db        : 证书数据库
+* private   : 私钥，一个是根CA，其它的是OCSP响应
+
+==== 根CA ====
+openssl req -new -config root-ca.conf -out root-ca.csr -keyout private/root-ca.key
+==== 自签名证书 ====
+openssl ca -selfsign -config root-ca.conf -in root-ca.csr -out root-ca.crt -extensions ca_ext
+==== 证书吊销列表 ====
+openssl ca -gencrl -config root-ca.conf -out root-ca.crl
+==== 生成子证书 ====
+openssl ca -config root-ca.conf -in sub-ca.csr -out sub-ca.crt -extensions sub_ca_ext
+==== 吊销子证书 ====
+openssl ca -config root-ca.conf -revoke certs/1002.pem -crl_reason keyCompromise
+==== 在线证书状态查询 ====
+生成密钥和证书状态查询响应，应对所有非CA认证的请求。
+
+openssl req -new -newkey rsa:2048 -subj "/C=CH/O=PT/CN=OCSP Root Responder" -keyout private/root-ocsp.key -out root-ocsp.csr
+
+用根CA生成一个证书。用于OCSP签名。这个证书不能被吊销，所以有效期应该较短。
+
+openssl ca -config root-ca.conf -in root-ocsp.csr -out root-ocsp.crt -extensions ocsp_ext -days 30
+==== 启动OCSP服务 ====
+在应用中，OCSP证书与根CA应该分开存放
+
+openssl ocsp -port 9080 -index db/index -rsigner root-ocsp.crt -rkey private/root-ocsp.key -CA root-ca.crt -text
+
+openssl ocsp -port 9081 -index db/index -rsigner sub-ocsp.crt -rkey private/sub-ocsp.key -CA sub-ca.crt -text
+==== 验证OSCP服务器 ====
+openssl ocsp -issuer root-ca.crt -CAfile root-ca.crt -cert root-ocsp.crt -url http://127.0.0.1:9080
 == xml ==
 用 XML Schema 定义 XML 的结构和数据类型
 用 XSLT 来转换 XML 数据
@@ -20,7 +74,7 @@ xml/exam.xml
 
 | 元素          | 定义                             |   |
 |---------------|----------------------------------|---|
-| definition    | root, name,namespace             |   |
+| definition    | root,name,namespace              |   |
 | types         | 定义消息数据类型，schema         |   |
 | message       | 数据的抽象，文档或参数           |   |
 | operation     | 消息的动作                       |   |

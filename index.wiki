@@ -2,14 +2,15 @@
 * [ ] [[todolist]]
 
 = job record : jr =
-[[current_job]]
+* [[current_job]]
 = finished job record : fjr =
 * [[fjr_ApM_fpga_lpddr2]]
 = person job : pj =
-* [[pj_tuopan]]
+* [[pjHardwork/readme|hardwork]]
 * [[pj_maque|sparrow]]
 * [[pj_book]]
 * [[pj_input_methord]]
+* [[../my_vim/readme|my_vim]]
 = general info : gi =
 * [[diary/diary|diary]]
 * [[gi_diary]]
@@ -19,7 +20,7 @@
 * [[gi_music]]
 = computer software : cs =
 * [[cs_architecture]]
-* [[cs_linux_config]]
+* [[linux_config/linux_config|linux_config]]
 * [[cs_list]]
 * [[cs_vim]]
 * [[cs_python]]
@@ -29,5 +30,5 @@
 * [[cs_web]]
 * [[cs_qt]]
 = skill =
-* [[web_service]]
-[[temp]]
+* [[web_service/web_service|web_service]]
+* [[temp]]
