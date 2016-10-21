@@ -1,18 +1,29 @@
-= Diary =
-2016-4-25 11:14:48 wd1 # 
-- format thesis by the dom
-2016-4-13 13:16:33 wd3 # 
-visit director
-learn vimwiki
-reinstall ubuntu 12.04, 
-because failed updating to 14.04 
-
-2016-4-7 11:18:05 wd4 # 
-- update ubuntu source list
-- add english support
-- check thesis
-2016-4-6 10:28:16 wd3 # 
- thesis 10:00-11:00 13:30-14:00 15:00-15:20 16:00-16:18 16:30-16:50
-	1		0.5		0.4	0.4	0.4 ~ 3
- eID 11:00-11:30 13:00-13:30 14:00-14:50
-	0.5	0.5		5/6 > 1
+= 有损集 =
+[[Introduce|简介]]
+== 2008 ==
+[[some000001|2008-03-20:第一篇]]
+[[some000002|2008-03-23:网吧中的记录]]
+== 2013 ==
+[[some00000*|2013-11-07:三十的欲望]]
+[[some000003|]]
+[[some000004|]]
+[[some000005|]]
+[[some000006|]]
+[[some000007|]]
+[[some000008|]]
+[[some000009|]]
+[[some000010|]]
+[[some0000|]]
+[[some0000|]]
+[[some0000|]]
+[[some0000|]]
+[[some0000|]]
+[[some0000|]]
+[[some0000|]]
+[[some0000|]]
+[[some0000|]]
+[[some0000|]]
+[[some0000|]]
+[[some0000|]]
+[[some0000|]]
+[[some0000|]]
