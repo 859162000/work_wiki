@@ -1,6 +1,7 @@
 
 file list:
-python/dyVerilog.py
+dyVerilog.rst
+dyVerilog.py
 python/dyTool.py
 python/exam.py
 [[python/readme]]

@@ -1,77 +1,66 @@
-#! $PATH/python
+#! $PATH/python3
 
 # file name: dyVerilog.py
 # author: lianghy
 # time: 2016/7/4 21:08:27
 
-#import dyDebug
-#import dyTool
-
-def checkName(name):
-    # TODO: 增加名称检查。例外
-    if name:
-        print("创建模块 {}".format(name))
-        return(name)
-    else:
-        print("创建模块失败")
-        raise Exception("未命名")
-        return(None)
-
-def addMaster(master):
-    try:
-        if (master):
-            master = master._master+master._insName
-            return(master)
-        else:
-            return(None)
-    except Exception as exp:
-        raise(exp)
-
-def changeDataFormat(tar,data):
+def changeDataFormat(tar_width,data):
     """当外部（仿真时）输入十进制int型数据时，转换成二进制字符串
-    并检查位宽。"""
+    并检查位宽。
+    当位宽超过目标值时，取高位位宽"""
     if (isinstance(data,(int))):
         value = bin(data)
     elif (isinstance(data,(str)) and data[0:2]=='0b'):
         value = data
     else:
         raise(Exception('data type'))
-    tv_length = len(value)
+    tv_length = len(value)-2
     # int 和 bin类型数据长度都大于0
-    if (tv_length > tar):
-        raise(Exception('位长错误'))
-    elif (tv_length < tar):
+    if (tv_length > tar_width):
+        #raise(Exception('位长错误'))
+        tv = value[0:tar_width+2]
+    elif (tv_length < tar_width):
         # 补全位长，高位补0。有可能是负数(x)。
         tv = value[0:2]
-        for x in range(tar-tv_length):
+        for x in range(tar_width-tv_length):
             tv += '0'
         tv += value[2:]
-        return(tv)
     else:
-        return(value)
+        tv = value
+    return(tv)
 
 class module:
-    def __init__(self,master=None,name=None,*args,**kwargs):
-        try:
-            self._master = addMaster(master)
-            self._insName = checkName(name)
-        except:
-            raise Exception("Module {} initial ".format(name))
+    def __init__(self,*args,**kwargs):
+        self._define()
+        pass
+    def __call__(self,run_times=1):
+        """先逻辑计算，再调子模块，再传递值.
+        run_times: 运行时长。"""
+        print(self.__class__)
+        for x in range(run_times):
+            self._func()
+            self._module()
+            self._net()
+    def _define(self):
+        pass
+    def _func(self):
+        pass
+    def _module(self):
+        pass
+    def _net(self):
+        pass
 
-class port():
-    def __init__(self,master=None,name=None,width=1,direc='input',
-            *args,**kwargs):
-        print(master._master)
+class port:
+    def __init__(self,width=1,direc='input', *args,**kwargs):
+        """初始化为0"""
         try:
-            self._master = addMaster(master)
-            self._insName = checkName(name)
             self._direc = (lambda x,y : y[y.index(x)])(direc,['input','output'])
-            print("port {} initial succeed!".format(name))
+            print("port initial succeed!")
         except Exception as exp:
-            print("port {} initial failed!".format(name))
+            print("port initial failed!")
             raise(exp)
         self._width = width
-        self._value = '0b0'
+        self._value = '0b'+'0'*width
         pass
     def get_value(self):
         """返回port的值"""
@@ -89,19 +78,17 @@ class port():
 class net:             
     """ 
     loader is list such as: [port,]"""
-    def __init__(self,master=None,name=None,driver=None,loader=None,
+    def __init__(self,driver=None,loader=None,
             *args,**kwargs):
         self._loader = []
         try:
-            self._master = addMaster(master)
-            self._insName = checkName(name)
             self._driver = driver
             if loader:
                 self._loader += loader
             self._checkMatch()
-            print("net {} initial succeed!".format(name))
+            print("net initial succeed!")
         except Exception as exp:
-            print("Net {} initial failed!".format(name))
+            print("Net initial failed!")
             raise(exp)
     def _checkMatch(self):
         try:
@@ -153,27 +140,26 @@ class net:
         for x in self._loader:
             x._pass_value(self._driver.get_value())
                  
-class testbench():
-    def __init__(self):
-        self._master = "TOP"
-        self._insName = "testbench"
-        self._module = []
-        self._net = []
-    def run(self,ltime):
-        for x in range(ltime):
-            self.function()
-    def function(self):
-        for x in self._module:
-            x()
-        for x in self._net:
-            x()
-
-def test():
-    #dyDebug.basicConfig(filename="run.log",filemode='w',level=dyDebug.DEBUG)
-    print('newtest')
-    #testbench()
+class testbench:
+    def interactive(self):
+        tin = True
+        while (tin != 'exit'):
+            print('input command',end='>>')
+            tin = input()
+            t = 'self.x={}'.format(tin)
+            exec(t)
+            if (self.x is None):
+                continue
+            else:
+                print(self.x)
+            #exec('self.{}'.format(tin))
+    def get_value(self,point_path):
+        #print(exec(print('self.top.{}.get_value()'.format(point_path))))
+        pass
+    def set_value(self,point):
+        print(point.get_value())
+    def run(self):
+        print(point.get_value())
 
 if __name__=="__main__":
-    test()
-    print("pyVerilog")
-
+    print("dyVerilog")

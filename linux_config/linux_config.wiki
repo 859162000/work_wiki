@@ -219,6 +219,7 @@ sudo lshw
  * dpkg -i 		set up deb software
  * rpm -ivh 		set up redhat software
  * sudo initctl list | grep "^xroad-" 
+ * fc-list          查看本机字体
 ------------------------------------------------------------
 = modules =
 PAM : Pluggable authentication modules

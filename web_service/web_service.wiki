@@ -50,7 +50,7 @@ openssl ca -config root-ca.conf -in root-ocsp.csr -out root-ocsp.crt -extensions
 ==== 启动OCSP服务 ====
 在应用中，OCSP证书与根CA应该分开存放
 
-openssl ocsp -port 9080 -index db/index -rsigner root-ocsp.crt -rkey private/root-ocsp.key -CA root-ca.crt -text
+openssl ocsp -port 9080 -index db/index -rsigner root-ocsp.crt -rkey private/root-ocsp.key -CA root-ca.crt [[-text]]
 
 openssl ocsp -port 9081 -index db/index -rsigner sub-ocsp.crt -rkey private/sub-ocsp.key -CA sub-ca.crt -text
 ==== 验证OSCP服务器 ====
@@ -67,6 +67,10 @@ openssl ocsp -issuer root-ca.crt -CAfile root-ca.crt -cert root-ocsp.crt -url ht
 xml/exam.xsd
 xml/exam.xml
 === WSDL ===
+==== wsdl 1.0 ====
+每个wsdl文件可以有多个服务，用service进行包装。它指定服务的port, binding, 和IP地址。
+每个服务用portType定义。
+binding指定通信协议，type指定它绑定的portType对象。
 将服务分成三个特定的、独立的操作：
 * Types
 * Operations

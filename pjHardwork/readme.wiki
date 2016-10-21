@@ -1,5 +1,5 @@
 work dir
-[[pyverilog/readme]]
+[[dyVerilog/readme]]
 [[control_system/readme]]
 [[tuopan/readme]]
 

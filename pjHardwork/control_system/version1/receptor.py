@@ -39,5 +39,15 @@ class receptor(dv.module):
         print(self.digital_bus.port_out._value)
         pass
 
+class testbench(dv.testbench):
+    def __init__(self):
+        self.top = receptor()
+    pass
+
+def simu():
+    testbench().interactive()
+
+
 if __name__=="__main__":
+    simu()
     print("receptor.py")
