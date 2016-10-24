@@ -4,6 +4,12 @@
 # author: lianghy
 # time: 2016/7/4 21:08:27
 
+class functionModule:
+    pass
+
+class structureModule:
+    pass
+
 def changeDataFormat(tar_width,data):
     """当外部（仿真时）输入十进制int型数据时，转换成二进制字符串
     并检查位宽。
@@ -146,15 +152,23 @@ class testbench:
         while (tin != 'exit'):
             print('input command',end='>>')
             tin = input()
-            t = 'self.x={}'.format(tin)
-            exec(t)
-            if (self.x is None):
-                continue
-            else:
-                print(self.x)
+            命令,参数 = self.解析(tin)
+            print(命令,参数)
+            cmd = 'self.{0}("{1}")'.format(命令,参数)
+            exec(cmd)
+            #t = 'self.x={}'.format(tin)
+            #exec(t)
+            #if (self.x is None):
+            #    continue
+            #else:
+            #    print(self.x)
             #exec('self.{}'.format(tin))
+    def 解析(self, tin):
+        s = tin.split('(')
+        return(s[0],s[1][0:-1])
     def get_value(self,point_path):
-        #print(exec(print('self.top.{}.get_value()'.format(point_path))))
+        print('run here')
+        #print('self.top.{}.get_value()'.format(point_path))))
         pass
     def set_value(self,point):
         print(point.get_value())

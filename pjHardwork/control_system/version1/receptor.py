@@ -7,7 +7,7 @@
 import os
 import sys
 home = os.environ['HOME']
-sys.path.append(os.path.join(home,'work_wiki','pjHardwork','pyverilog','python'))
+sys.path.append(os.path.join(home,'work_wiki','pjHardwork','dyVerilog'))
 import dyVerilog as dv
 
 class digitalBus(dv.module):
