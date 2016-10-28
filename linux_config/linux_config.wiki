@@ -37,6 +37,17 @@ sudo dhclient -v eth0    获取IP
 * /etc/nologin - 如果该文件存在，则只允许 root 帐号登录
 * /etc/hosts.allow and /etc/hosts.deny : 访问控制定义
 * SSH 默认端口 : TCP 22
+* ssh免密码登陆：
+如果在A（192.168.62.152）机上实现登陆b（192.168.62.200）机免密码那么在A机上执行下边的指令
+ssh-keygen  -b 4096 -t rsa -P  ''
+那样在用户家目录下会有个.ssh/id_rsa .ssh/id_rsa.pub 把~/.ssh/id_rsa.pub传到b机上
+scp ~/.ssh/id_rsa.pub username@b192.168.62.200:/dir_name
+登陆到192.168.62.200
+cat $dir_name/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+结束后就可以在192.168.62.152上用ssh免密码登陆192.168.62.200
+Notice:如果不能成功登陆那么，就要检查下权限问题及selinux及iptables
+       尽量不要用复制粘贴的方式，直接用文件覆盖 
 == X window ==
 - sudo etc/init.d/lightdm stop : close window
 - libgl1-mesa-glx

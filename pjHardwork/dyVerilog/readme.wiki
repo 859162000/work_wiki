@@ -1,7 +1,5 @@
 
-file list:
-dyVerilog.rst
-dyVerilog.py
+work_dir: ~/my_work/dyVerilog
 
 = 设计准则 =
 - 当下一级无响应时，向下下级发出唤醒信息。

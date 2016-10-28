@@ -1,4 +1,3 @@
-work dir
 [[dyVerilog/readme]]
 [[control_system/readme]]
 [[tuopan/readme]]
