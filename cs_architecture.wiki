@@ -1,0 +1,145 @@
+= ref paper =
+# Roy Thomas Fielding. Architectural Styles and the Design of Network-based
+  Software Architectures.
+  http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
+# D. E. Perry and A. L. Wolf. Foundations for the study of software
+  architecture. ACM SIGSOFT Software Engineering Notes, 17(4), Oct. 1992, pp.
+  40-52.
+
+= UML =
+最常用的UML图包括：用例图、类图、序列图、状态图、活动图、组件图和部署图。
+
+= 软件设计原则 =
+* 单一职责原则：一个类应该只有一个发生变化的原因
+* 开放封闭原则：软件实体应该是可扩展，而不可修改的
+* 里氏替换原则：任何基类可以出现的地方，子类一定可以出现
+* 依赖倒置原则：程序要依赖于抽象接口，不要依赖于具体实现
+* 接口隔离原则：客户端不应该依赖它不需要的接口；一个类对另一个类的依赖应该建立在最小的接口上
+
+= Software Architecture =
+== Run-time Abstraction ==
+    A software architecture is an abstraction of the run-time elements of a software system during some phase of its operation.
+    A system may be composed of many levels of abstraction and many phases of operation, each with its own software architecture.
+Architecture and structure of software are clear distinction.
+== Elements ==
+    A software architecture is defined by a configuration of architectural elements--components, connectors, and data--constrained in their relationships in order to achieve a desired set of architectural properties.
+=== components ===
+    A component is an abstract unit of software instructions and internal state that provides a transformation of data via its interface.
+=== Connectors ===
+    A connector is an abstract mechanism that mediates communication, coordination, or cooperation among components.
+=== Data ===
+    A datum is an element of information that is transferred from a component, or received by a component, via a connector.
+== Configuration ==
+    A configuration is the structure of architectural relationships among components, connectors, and data during a period of system run-time.
+== Properties ==
+The set of architectural properties of a software architecture includes all properties that derive from the selection and arrangement of components, connectors, and data within the system. 
+== Styles ==
+    An architectural style is a coordinated set of architectural constraints that restricts the roles/features of architectural elements and the allowed relationships among those elements within any architecture that conforms to that style.
+== Pattens and Patten Languages ==
+A design pattern is defined as an important and recurring system construct.
+== Views ==
+
+= Network-based Application Architectures =
+== Scope ==
+=== Network-based vs. Distributed ===
+The primary distinction between network-based architectures and software architectures in general is that communication between components is restricted to message passing, or the equivalent of message passing if a more efficient mechanism can be selected at run-time based on the location of components.
+=== Application Software vs. Networking Software ===
+Focus on application level.
+== Evaluating the Design of Application Architectures ==
+In order to evaluate an architectural design, we need to examine the design rationale behind the constraints it places on a system, and compare the properties derived from those constraints to the target application's objectives.
+The first level of evaluation is set by the application's functional requirements.
+An architectural design can therefore be analyzed by breaking-down its set of constraints into a derivation tree and evaluating the cumulative effect of the constraints represented by that tree.
+== Architectural Properties of Key Interest ==
+=== Performance ===
+The performance of a network-based application is bound first by the application requirements, then by the chosen interaction style, followed by the realized architecture, and finally by the implementation of each component.
+==== Network Performance ====
+_Throughput_ is the rate at which information is transferred between components.
+_Overhead_ can be separated into initial setup overhead and per-interaction overhead, a distinction which is useful for identifying connectors that can share setup overhead across multiple interactions (amortization).
+_Bandwidth_ is a measure of the maximum available throughput over a given network link.
+_Usable bandwidth_ refers to that portion of bandwidth which is actually available to the application.
+==== User-perceived Performance ====
+_Latency_ is the time period between initial stimulus and the first indication of a response.
+1) the time needed for the application to recognize the event that initiated the action; 
+2) the time required to setup the interactions between components; 
+3) the time required to transmit each interaction to the components; 
+4) the time required to process each interaction on those components; 
+5) the time required to complete sufficient transfer and processing of the result of the interactions before the application is able to begin rendering a usable result. 
+6) Furthermore, multiple component interactions per user action are additive to
+   latency unless they take place in parallel.
+_Completion_ is the amount of time taken to complete an application action.
+==== Network Efficiency ====
+minimize use of the network
+=== Scalability ===
+=== Simplicity ===
+=== Modifiability ===
+==== Evolvability ====
+Evolvability represents the degree to which a component implementation can be changed without negatively impacting other components.
+==== Extensibility ====
+Extensibility is defined as the ability to add functionality to a system.
+==== Customizability ====
+Customizability refers to the ability to temporarily specialize the behavior of an architectural element, such that it can then perform an unusual service.
+==== Configurability ====
+Configurability is related to both extensibility and reusability in that it refers to post-deployment modification of components, or configurations of components, such that they are capable of using a new service or data element type. 
+==== Reusability ====
+Reusability is a property of an application architecture if its components, connectors, or data elements can be reused, without modification, in other applications.
+=== Visibility ===
+Styles can also influence the visibility of interactions within a network-based application by restricting interfaces via generality or providing access to monitoring.
+=== Portability ===
+Software is portable if it can run in different environments.
+=== Reliability ===
+Reliability, within the perspective of application architectures, can be viewed as the degree to which an architecture is susceptible to failure at the system level in the presence of partial failures within components, connectors, or data. 
+
+= Network-based Architectural Styles =
+== Data-flow Styles ==
+=== Pipe and Filter (PF) ===
+advanstage
+# one-way data flow network. the output begins before the input completely consumed.
+# zero coupling.
+# simple
+# reuse
+disadvanstage
+# propagation delay
+# batch sequential processing
+"Some one" arranges the configation of filters
+=== Uniform Pipe and Filter (UPF) ===
+All filters must have the same interface
+== Replication Styles ==
+=== Replicated Repository (RR) ===
+These decentralized servers interact to provide the illusion that there is just
+one, centrolized service.
+=== Cache ($) ===
+replication of the result.
+== Hierarchical Styles ==
+=== Client-Server (CS) ===
+network-based application
+=== Layered System (LS) and Layered-Client-Server (LCS) ===
+=== Remote Session ===
+=== Remote Data Access ===
+== Mobile Code Styles ==
+Mobile code styles use mobility in order to dynamically change the distance
+between the processing and source of data or destination of results.
+=== Virtual Machine (VM) ===
+=== Remote Evaluation ===
+将程序发送到远端进行运算，结果返回。
+=== Code on Demand (COD) ===
+程序在远端，下载到本地执行。
+=== Mobile Agent (MA) ===
+== Peer-to-Peer Style ==
+=== Event-based Integration (EBI) ===
+每个部件声音一些事件，其它部件在系统中注册对此事件感兴趣。
+当事件发生时，系统通知其它部件。
+=== C2 ===
+It combines event-based integration and layered-client-server.
+Asynchronous notification messages go down, and asynchronous request message
+go up.
+
+
+= 软件安全 =
+认证、授权、数据集成、数据封装、非重复操作、服务质量、审计。
+= 软件架构 =
+== 五行观点 ==
+生、克、循环
+== pipe and filter ==
+Unix like
+== code on-demand ==
+JavaScript

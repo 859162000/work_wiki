@@ -1,9 +1,16 @@
 #! /bin/bash
 
+echo "welcome to use linux config tools!"
+echo "please select a task:"
+echo "1, set static IP : target file -- interfaces"
+echo "2, change package source list : target file -- sources.list"
+echo "3, python web envirement"
+echo "4, self workspace"
+
+read 
+
 # config network
-echo "Do you want to set a static IP? yes or no";
-read
-if [ $REPLY == "yes" ]; then
+if [ $REPLY == "1" ]; then
     if [ ! -f "/etc/network/interfaces" ]; then
         touch "/etc/network/interfaces"
     fi
@@ -19,31 +26,28 @@ if [ $REPLY == "yes" ]; then
     dhclient -v $netname
 #= /etc/resolv.conf =
 #nameservice 10.3.1.20
-fi
 
-# check internet
-echo "Is the system connected to internet? yes or no"
-if [ $REPLY == "no" ]; then
-    exit
-fi
-
-# apt source
-if [ ! -f "/etc/apt/sources.list_bak" ]; then
-    echo "Do you want to change apt source file? yes or no"
+else if [ $REPLY == "2" ]; then
+    # apt source
+    mv /etc/apt/sources.list /etc/apt/sources.list_bak
+    cp ./sources.list /etc/apt/sources.list 
+    echo "You can change source now. /etc/apt/sources.list"
+    echo "Continue? yes"
     read
-    if [ $REPLY == "yes" ]; then
-        mv /etc/apt/sources.list /etc/apt/sources.list_bak
-        cp ./sources.list /etc/apt/sources.list 
-        echo "You can change source now. /etc/apt/sources.list"
+    while [ $REPLY != "yes" ]; do
         echo "Continue? yes"
         read
-        while [ $REPLY != "yes" ]; do
-            echo "Continue? yes"
-            read
-        done
-        apt-get update
-        # TODO: if update has error, reconfig.
-    fi
+    done
+    apt-get update
+    # TODO: if update has error, reconfig.
+
+else if [ $REPLY == "3" ]; then
+    # setup python envirement
+    apt-get install python3-pip
+    pip3 install sypne sphinx flask nose zeep
+else if [ $REPLY == "4" ]; then
+    # add firefox
+    apt-get install firefox fonts-arphic-ukai
 fi
 
 # add ssh server
@@ -55,9 +59,4 @@ fi
 #    fi
 #fi
 
-# add firefox
-echo "Do you want to setup firefox? yes or no"
-read
-if [ $REPLY == "yes" ]; then
-    apt-get install firefox fonts-arphic-ukai
-fi
+
