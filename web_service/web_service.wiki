@@ -50,11 +50,12 @@ openssl ca -config root-ca.conf -in root-ocsp.csr -out root-ocsp.crt -extensions
 ==== 启动OCSP服务 ====
 在应用中，OCSP证书与根CA应该分开存放
 
-openssl ocsp -port 9080 -index db/index -rsigner root-ocsp.crt -rkey private/root-ocsp.key -CA root-ca.crt [[-text]]
+openssl ocsp -port 9080 -index db/index -rsigner root-ocsp.crt -rkey private/root-ocsp.key -CA root-ca.crt -text
 
 openssl ocsp -port 9081 -index db/index -rsigner sub-ocsp.crt -rkey private/sub-ocsp.key -CA sub-ca.crt -text
 ==== 验证OSCP服务器 ====
 openssl ocsp -issuer root-ca.crt -CAfile root-ca.crt -cert root-ocsp.crt -url http://127.0.0.1:9080
+openssl ocsp -issuer sub_ca.crt -CAfile sub_ca.crt -cert sub_ocsp.crt -url http://127.0.0.1:9081
 == xml ==
 用 XML Schema 定义 XML 的结构和数据类型
 用 XSLT 来转换 XML 数据
@@ -124,6 +125,20 @@ float: 位置
 * SOAP *很简单并可扩展*
 * SOAP *允许您绕过防火墙*
 * SOAP 将作为 *W3C 标准* 来发展
+
+=== 简介 ===
+SOAP由三个主要部分构成：
+    * 信封envelope。概要描述消息是什么，谁来处理，是可选的还是必需的。
+    * 编码规则encoding rule。定义序列化机制，用来处理应用要传输的数据。
+    * 远程调用描述。描述远程进程的调用和响应。
+
+SOAP还定义了绑定机制，即如何使用http传输SOAP消息。
+
+命名空间：
+    * SOAP-ENV: http://schemas.xmlsoap.org/soap/envelope/
+    * SOAP-ENC: http://schemas.xmlsoap.org/soap/encoding/
+    * xsi:  http://www.w3.org/1999/XMLSchema-instance
+    * xsd:  http://www.w3.org/1999/XMLSchema
 == WSDL ==
 WSDL 是基于 XML 的用于描述 Web Services 以及如何访问 Web Services 的语言。
 * WSDL 指网络服务描述语言

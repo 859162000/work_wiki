@@ -7,6 +7,7 @@
 * [[fjr_ApM_fpga_lpddr2]]
 = person job : pj =
 * [[pjHardwork/readme|hardwork]]
+* [[../work/readme|program]]
 * [[pj_maque|sparrow]]
 * [[pj_book]]
 * [[pj_input_methord]]
@@ -33,4 +34,4 @@
 * [[web_service/web_service|web_service]]
 * [[temp]]
 
-work_dir ~/my_work
+work_dir ~/work

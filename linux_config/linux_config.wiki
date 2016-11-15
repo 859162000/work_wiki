@@ -29,6 +29,7 @@ sudo /etc/init.d/networking restart 使你之前修改的生效，然后重启�
 sudo ifdown eth0 && sudo ifup eth0
 sudo dhclient -v -r eth0 释放IP
 sudo dhclient -v eth0    获取IP
+
 === openssh ===
 * /etc/ssh/sshd_config - OpenSSH 服务器配置文件
 * /etc/ssh/ssh_config - OpenSSH 客户端配置文件
@@ -84,7 +85,7 @@ export : get the chars that var insteads
 '' : quote only chars. set a=abc, '$a' means \'doller'a 纯字符
 "" : quote the envirments var and chars. "$a" means abc 使用变量指向的值。
 bk : alias bk='export bakpath=`pwd`; cd $OLDPWD; export OLDPWD=$bakpath'
-grep -r --include *.file : 回归查询文件
+grep -r --include=*.file 'pattern' * : 回归查询文件
 find . -name "" -type f/d
 od -c : 显示编码
 = tcsh =

@@ -73,7 +73,7 @@ with urllib.request.urlopen(urr) as f:
     #print(f.geturl().decode('utf-8'))
     print("done")
     #print(f.read().decode('utf-8'))
-#params = urllib.parse.urlencode({'username':'lianghuayue','password':'pt12345',
+#params = urllib.parse.urlencode({'username':'lianghuayue','password':'',
 #    'putian':'study',  'secret':'true', 'savename':'' })
 #headers = {"Content-Type":"application/x-www-form-urlencode", "Accept":"text/plain"}
 #conn = http.client.HTTPConnection("10.3.254.233/webAuth")

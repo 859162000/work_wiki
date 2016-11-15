@@ -44,7 +44,7 @@ else if [ $REPLY == "2" ]; then
 else if [ $REPLY == "3" ]; then
     # setup python envirement
     apt-get install python3-pip
-    pip3 install sypne sphinx flask nose zeep
+    pip3 install sypne sphinx flask nose zeep lxml
 else if [ $REPLY == "4" ]; then
     # add firefox
     apt-get install firefox fonts-arphic-ukai
