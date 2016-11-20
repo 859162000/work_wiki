@@ -1,0 +1,9 @@
+= flask =
+
+== 练习教程 : flaskr==
+1. 创建目录：static, templates
+2. 数据库约束：schema.sql 描述数据库结构
+3. 应用预设：setup。 import * , app.config.from_object('__'name'__')
+有两种场景（context）：应用场景（application）和请求场景（request），分别有g和request对象与之对应。
+
+
