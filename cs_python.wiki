@@ -1,4 +1,24 @@
 
+= 多线程编程 =
+module threading, queue
+{{{python
+from threading import Thread
+from queue import Queue
+
+q = Queue()
+
+def work():
+    item = q.get()
+    do_work(item)
+    q.task_done()
+    
+q.put(item)
+t = Thread(target=work)
+t.start()
+t.join()
+q.join()
+}}}
+
 = pyQt =
 == Qt ==
 * QtCore模块包含核心的非GUI功能。该模块用于时间、文件和目录、各种数据类型、流、网址、MIME类型、线程或进程。

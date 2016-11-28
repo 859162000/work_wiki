@@ -12,7 +12,9 @@ ONBOOT=
 
 ------------------------------------------------------------
 = ubuntu =
-press Super key for a while, a fast key menu will appears.
+* apt-get下载安装包的位置 /var/cache/apt/archives
+== desktop ==
+* press Super key for a while, a fast key menu will appears.
 == server setup ==
 [[cs_ubuntu_config_files]]
 [[cs_ubuntu_server_setup_files]]
@@ -116,9 +118,6 @@ eclim -command shutdowm
 install deb file
  dpkg -i file.deb
 
-== git update: ==
- git clone https://github.com/git/git
-
 == sys_info: ==
  dmidecode | grep -A16 "Memory Device"
 
@@ -148,6 +147,7 @@ install deb file
  ibus-setup
  * set in language support and text entry
 
+* lrzsz : 不同系统间文件传输工具
 ------------------------------------------------------------
 = problems =
 ------------------------------------------------------------

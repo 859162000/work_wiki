@@ -34,3 +34,34 @@ git checkout master
 git push origin master/ git format-patch origin
 
 git submodule: get ref lib and update automaticly
+
+dictator:
+{{{
+git init
+git remote add $developer_name $url
+git merge -m $message_file $pull_request_file
+}}}
+
+developer:
+{{{
+初始化：
+git clone $dictator_dir
+git branch $developer_name
+git checkout $developer_name
+工作之前先本地更新：
+git checkout master
+git pull
+git checkout $developer_name
+git rebase master
+开始工作。。。
+结束工作：
+git add $files
+本地更新：
+git checkout master
+git pull
+git checkout $developer_name
+git rebase master
+git commit -m "$message" or git commit -F $message_file
+git request-pull -p $developer_name origin > $pull_request_file(格式$developer_name_$date)
+scp $developer_name+$date+pull $dictator_dir/pull
+}}}

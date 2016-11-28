@@ -1,8 +1,52 @@
-= 网络技术 =
-xml + html + javascript + SVG + TLS
+= Contents =
+    - [[#网络技术|网络技术]]
+        - [[#网络技术#技术列表|技术列表]]
+        - [[#网络技术#OpenSSL|OpenSSL]]
+            - [[#网络技术#OpenSSL#私有认证中心 private certification authority(CA)|私有认证中心 private certification authority(CA)]]
+            - [[#网络技术#OpenSSL#认证中心相关名词|认证中心相关名词]]
+            - [[#网络技术#OpenSSL#Root CA Configuration|Root CA Configuration]]
+            - [[#网络技术#OpenSSL#根CA|根CA]]
+            - [[#网络技术#OpenSSL#自签名证书|自签名证书]]
+            - [[#网络技术#OpenSSL#证书吊销列表|证书吊销列表]]
+            - [[#网络技术#OpenSSL#生成子证书|生成子证书]]
+            - [[#网络技术#OpenSSL#吊销子证书|吊销子证书]]
+            - [[#网络技术#OpenSSL#在线证书状态查询|在线证书状态查询]]
+            - [[#网络技术#OpenSSL#启动OCSP服务|启动OCSP服务]]
+            - [[#网络技术#OpenSSL#验证OSCP服务器|验证OSCP服务器]]
+            - [[#网络技术#OpenSSL#openssl x509部分命令|openssl x509部分命令]]
+        - [[#网络技术#xml|xml]]
+            - [[#网络技术#xml#XML Schema|XML Schema]]
+        - [[#网络技术#html|html]]
+        - [[#网络技术#css|css]]
+        - [[#网络技术#SVG|SVG]]
+        - [[#网络技术#SOAP|SOAP]]
+            - [[#网络技术#SOAP#简介|简介]]
+        - [[#网络技术#WSDL|WSDL]]
+            - [[#网络技术#WSDL#WSDL|WSDL]]
+                - [[#网络技术#WSDL#WSDL#wsdl 1.0|wsdl 1.0]]
+        - [[#网络技术#UDDI|UDDI]]
+        - [[#网络技术#AMQP|AMQP]]
 
-== 安全 ==
-OpenSSL
+= 网络技术 =
+网络技术学习文档。记录了一些相关技术。
+
+网络服务基本的 Web services 平台是 XML + HTTP。三大要素：SOAP、WSDL、UDDI
+
+== 技术列表 ==
+| 名称    | 说明             |
+|---------|------------------|
+| OpenSSL | 证书系统         |
+| TLS     | 传输层加密       |
+| xml     | 扩展标记语言     |
+| html    | 网页标记语言     |
+| css     |                  |
+| SVG     | 矢量图           |
+| WSDL    | 服务描述语言     |
+| SOAP    | 简单对象访问协议 |
+| AMQP    | 高级消息队列     |
+
+
+== OpenSSL ==
 # 生成私有钥 openssl genrsa -aes128 -out fd.key 2048
 # 生成私有钥的公钥 openssl rsa -in fd.key -pubout -out fd-public.key
 # 准备生成证书签名请求：Certificate Signing Requests CRS
@@ -12,9 +56,9 @@ OpenSSL
 # 哈希 
 === 私有认证中心 private certification authority(CA)===
 配置、目录、密钥、根密钥、根证书
-==== 认证中心相关名词 ====
+=== 认证中心相关名词 ===
 CRL Certificate Revocation List : 证书吊销列表
-==== Root CA Configuration ====
+=== Root CA Configuration ===
 man config, ca
 
 配置文件：
@@ -29,17 +73,17 @@ man config, ca
 * db        : 证书数据库
 * private   : 私钥，一个是根CA，其它的是OCSP响应
 
-==== 根CA ====
+=== 根CA ===
 openssl req -new -config root-ca.conf -out root-ca.csr -keyout private/root-ca.key
-==== 自签名证书 ====
+=== 自签名证书 ===
 openssl ca -selfsign -config root-ca.conf -in root-ca.csr -out root-ca.crt -extensions ca_ext
-==== 证书吊销列表 ====
+=== 证书吊销列表 ===
 openssl ca -gencrl -config root-ca.conf -out root-ca.crl
-==== 生成子证书 ====
+=== 生成子证书 ===
 openssl ca -config root-ca.conf -in sub-ca.csr -out sub-ca.crt -extensions sub_ca_ext
-==== 吊销子证书 ====
+=== 吊销子证书 ===
 openssl ca -config root-ca.conf -revoke certs/1002.pem -crl_reason keyCompromise
-==== 在线证书状态查询 ====
+=== 在线证书状态查询 ===
 生成密钥和证书状态查询响应，应对所有非CA认证的请求。
 
 openssl req -new -newkey rsa:2048 -subj "/C=CH/O=PT/CN=OCSP Root Responder" -keyout private/root-ocsp.key -out root-ocsp.csr
@@ -47,15 +91,40 @@ openssl req -new -newkey rsa:2048 -subj "/C=CH/O=PT/CN=OCSP Root Responder" -key
 用根CA生成一个证书。用于OCSP签名。这个证书不能被吊销，所以有效期应该较短。
 
 openssl ca -config root-ca.conf -in root-ocsp.csr -out root-ocsp.crt -extensions ocsp_ext -days 30
-==== 启动OCSP服务 ====
+=== 启动OCSP服务 ===
 在应用中，OCSP证书与根CA应该分开存放
 
 openssl ocsp -port 9080 -index db/index -rsigner root-ocsp.crt -rkey private/root-ocsp.key -CA root-ca.crt -text
 
 openssl ocsp -port 9081 -index db/index -rsigner sub-ocsp.crt -rkey private/sub-ocsp.key -CA sub-ca.crt -text
-==== 验证OSCP服务器 ====
+=== 验证OSCP服务器 ===
 openssl ocsp -issuer root-ca.crt -CAfile root-ca.crt -cert root-ocsp.crt -url http://127.0.0.1:9080
 openssl ocsp -issuer sub_ca.crt -CAfile sub_ca.crt -cert sub_ocsp.crt -url http://127.0.0.1:9081
+
+=== openssl x509部分命令 ===
+打印出证书的内容：
+openssl x509 -in cert.pem -noout -text
+打印出证书的系列号
+openssl x509 -in cert.pem -noout -serial
+打印出证书的拥有者名字
+openssl x509 -in cert.pem -noout -subject
+以RFC2253规定的格式打印出证书的拥有者名字
+openssl x509 -in cert.pem -noout -subject -nameopt RFC2253
+在支持UTF8的终端一行过打印出证书的拥有者名字
+openssl x509 -in cert.pem -noout -subject -nameopt oneline -nameopt -escmsb
+打印出证书的MD5特征参数
+openssl x509 -in cert.pem -noout -fingerprint
+打印出证书的SHA特征参数
+openssl x509 -sha1 -in cert.pem -noout -fingerprint
+把PEM格式的证书转化成DER格式
+openssl x509 -in cert.pem -inform PEM -out cert.der -outform DER
+把一个证书转化成CSR
+openssl x509 -x509toreq -in cert.pem -out req.pem -signkey key.pem
+给一个CSR进行处理，颁发字签名证书，增加CA扩展项
+openssl x509 -req -in careq.pem -extfile openssl.cnf -extensions v3_ca -signkey key.pem -out cacert.pem
+给一个CSR签名，增加用户证书扩展项
+openssl x509 -req -in req.pem -extfile openssl.cnf -extensions v3_usr -CA cacert.pem -CAkey key.pem -CAcreateserial
+
 == xml ==
 用 XML Schema 定义 XML 的结构和数据类型
 用 XSLT 来转换 XML 数据
@@ -67,36 +136,6 @@ openssl ocsp -issuer sub_ca.crt -CAfile sub_ca.crt -cert sub_ocsp.crt -url http:
 === XML Schema ===
 xml/exam.xsd
 xml/exam.xml
-=== WSDL ===
-==== wsdl 1.0 ====
-每个wsdl文件可以有多个服务，用service进行包装。它指定服务的port, binding, 和IP地址。
-每个服务用portType定义。
-binding指定通信协议，type指定它绑定的portType对象。
-将服务分成三个特定的、独立的操作：
-* Types
-* Operations
-* Binding
-
-| 元素          | 定义                             |   |
-|---------------|----------------------------------|---|
-| definition    | root,name,namespace              |   |
-| types         | 定义消息数据类型，schema         |   |
-| message       | 数据的抽象，文档或参数           |   |
-| operation     | 消息的动作                       |   |
-| portType      | 操作的集合，用于绑定             |   |
-| binding       | 使用的通信协议                   |   |
-| ports         | 绑定和IP地址的组合               |   |
-| service       | 实现功能的终端，将终端与端口绑定 |   |
-| documentation | 文档                             |   |
-| import        | 引入其它wsdl or schemas          |   |
-
-
-wsdl/wsdl.xml
-wsdl/example.wsdl
-wsdl/ConvertSpeed.asmx.xml
-soap_RPC_doc.xml
-== SOAP ==
-soap_example.xml
 == html ==
 div 用来划分区域
 == css ==
@@ -110,9 +149,6 @@ float: 位置
 * SVG 图像在放大或改变尺寸的情况下其图形质量不会有所损失
 * SVG 是万维网联盟的标准
 * SVG 与诸如 DOM 和 XSL 之类的 W3C 标准是一个整体
-= 网络服务 =
-基本的 Web services 平台是 XML + HTTP。
-三大要素：SOAP、WSDL、UDDI
 == SOAP ==
 * SOAP 指 *简易对象访问协议*
 * SOAP 是一种 *通信协议*
@@ -125,6 +161,7 @@ float: 位置
 * SOAP *很简单并可扩展*
 * SOAP *允许您绕过防火墙*
 * SOAP 将作为 *W3C 标准* 来发展
+* 示例： soap_example.xml soap_RPC_doc.xml
 
 === 简介 ===
 SOAP由三个主要部分构成：
@@ -147,6 +184,33 @@ WSDL 是基于 XML 的用于描述 Web Services 以及如何访问 Web Services 
 * WSDL 用于描述网络服务
 * WSDL 也可用于定位网络服务
 * WSDL 还不是 W3C 标准
+=== WSDL ===
+==== wsdl 1.0 ====
+每个wsdl文件可以有多个服务，用service进行包装。它指定服务的port, binding, 和IP地址。
+每个服务用portType定义。
+binding指定通信协议，type指定它绑定的portType对象。
+将服务分成三个特定的、独立的操作：
+* Types
+* Operations
+* Binding
+
+| 元素          | 定义                             |   |
+|---------------|----------------------------------|---|
+| definition    | root,name,namespace              |   |
+| types         | 定义消息数据类型，schema         |   |
+| message       | 数据的抽象，文档或参数           |   |
+| portType      | operation操作的描述，端口数据    |   |
+| binding       | operation使用的通信协议          |   |
+| service       | 实现功能的终端，将终端与端口绑定 |   |
+| operation     | 消息的动作                       |   |
+| ports         | 绑定和IP地址的组合               |   |
+| documentation | 文档                             |   |
+| import        | 引入其它wsdl or schemas          |   |
+
+
+wsdl/wsdl.xml
+wsdl/example.wsdl
+wsdl/ConvertSpeed.asmx.xml
 == UDDI ==
 UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services。
 * UDDI 指通用的描述、发现以及整合（Universal Description, Discovery and Integration）。
@@ -155,3 +219,5 @@ UDDI 是一种目录服务，通过它，企业可注册并搜索 Web services�
 * UDDI 经由 SOAP 进行通迅。
 * UDDI 被构建于 Microsoft .NET 平台之中。
 * 
+
+== AMQP ==
