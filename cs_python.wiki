@@ -53,7 +53,7 @@ requirement <--> test <--> design
 
 = package =
 * docutils  : python docutmentation utilities
-* flask : web框架
+* [[python/flask|flask]] : web框架
 * math  : log
 * nose  : 代码测试框架
 * pygments  : code analyse
