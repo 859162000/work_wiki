@@ -17,6 +17,7 @@
 * [[gi_diary]]
 * [[gi_travel]]
 * [[gi_my_life]]
+* [[recipe]]
 * [[gi_info]]
 * [[gi_music]]
 = computer software : cs =

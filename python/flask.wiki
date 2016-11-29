@@ -3,7 +3,34 @@
 == 练习教程 : flaskr==
 1. 创建目录：static, templates
 2. 数据库约束：schema.sql 描述数据库结构
-3. 应用预设：setup。 import * , app.config.from_object('__'name'__')
-有两种场景（context）：应用场景（application）和请求场景（request），分别有g和request对象与之对应。
+3. 应用预设：setup。 
+{{{
+    import * , 
+    app.config.from_object(`__name__`)
+    app.config.update(dict(DATABASE=os.path.join(app.root_path,'flaskr.db'),
+        SECRET_KEY = 'development key',
+        USERNAME='username',
+        PSSSWORD='password'))
+    app.config.from_envvar('FLASKR_SETTING',silent=True)
+}}}
+    * FLASKR_SETTING指向配置文件
+    * app.root_path指向应用所在的目录，而不是当前目录
+    * SECRET_KEY用来保证客户端会话安全
+4. 连接数据库<br/>
+   读取数据时，不必每次都连接数据库。因为数据库连接封装事务，我们要保证每次只有一个请求访问数据库。
+   Flask提供应用场景来解决这个问题。
+   Flask有两种场景（context）：应用场景（application）和请求场景（request），分别有g和request对象与之对应。
+   g对象用来安全保存信息。g.sqlite_db = connect_db()。<br />
+   在应用场景结束时，使用teardown_appcontext自动关闭数据库。
+   {{{
+    @app.teardown_appcontext
+    def close_db(error):
+    """Closes the database again at the end of the request."""
+        if hasattr(g, 'sqlite_db'):
+        g.sqlite_db.close()
+   }}}
+   在请求来之前，创建应用场景，在请求结束或意外退出时，结束应用场景。
+5. 
+6. 
 
 
