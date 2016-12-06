@@ -1,22 +1,23 @@
 
 = 多线程编程 =
 module threading, queue
-{{{python
-from threading import Thread
-from queue import Queue
 
-q = Queue()
-
-def work():
-    item = q.get()
-    do_work(item)
-    q.task_done()
+{{{ python
+    from threading import Thread
+    from queue import Queue
     
-q.put(item)
-t = Thread(target=work)
-t.start()
-t.join()
-q.join()
+    q = Queue()
+    
+    def work():
+        item = q.get()
+        do_work(item)
+        q.task_done()
+        
+    q.put(item)
+    t = Thread(target=work)
+    t.start()
+    t.join()
+    q.join()
 }}}
 
 = pyQt =
@@ -60,6 +61,8 @@ requirement <--> test <--> design
 * Sphinx    : 文档，使用rst格式
 * zeep  : SOAP client
 * spyne : SOAP Server。tegather with app。
+* Gunicorn  : WSGI server
+* [[python/zato|zato]]  : ESB
 
 = 编码 =
 test = bytes.fromhex("E7")

@@ -33,6 +33,8 @@ Mozilla
 Vim
 Emacs
 python
+= 数据库 =
+* Redis 开源、支持网络、基于内存、键值对存储数据库。
 
 = linux =
 apache2 : php webserver

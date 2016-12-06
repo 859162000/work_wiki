@@ -27,7 +27,6 @@
 * [[cs_vim]]
 * [[cs_python]]
 * [[cs_git]]
-* [[cs_language]]
 * [[cs_EDA]]
 * [[cs_web]]
 * [[cs_qt]]

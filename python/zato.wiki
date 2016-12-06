@@ -1,0 +1,44 @@
+= Zato =
+Zato是Python编写的ESB。Zato适合作为应用和服务之间的中间层。它的整个框架是由多个簇群构成。
+框架：
+{{{
+                  External application
+                          ^
+                          |
+                          |
+ -------------------------|------------    
+ 1                     Server         1
+ 1Scheduler --------  Server          1<---------Web admin
+ 1                        ^           1    
+ 1                        |           1--------->SQL ODB
+ 1                        |           1    
+ 1                HA load-balancer    1--------->Redis
+ 1                        ^           1    
+ 1------------------------|------------    
+                          |                
+                          |                
+                  External application
+}}}
+Zato运行在Gunicorn上，以异步gevent模式。
+
+通道的功能是，保证程序与协议无关。
+
+Redis用来存储动态配置并提供快速接口Zato统计。
+
+SimpleIO用来提供多种数据接口。
+
+Statistics统计：Zato Server 和 load-balancer.
+== 问题 ==
+1. 多集群管理？
+2. 
+
+== setup ==
+sudo apt-get install apt-transport-https
+sudo apt-get install python-software-properties
+sudo apt-get install software-properties-common
+curl -s https://zato.io/repo/zato-0CBD7F72.pgp.asc | sudo apt-key add -
+sudo apt-add-repository https://zato.io/repo/stable/2.0/ubuntu
+sudo apt-get update
+sudo apt-get install zato
+sudo su - zato
+zato --version
