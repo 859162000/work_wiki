@@ -63,6 +63,7 @@ requirement <--> test <--> design
 * spyne : SOAP Server。tegather with app。
 * Gunicorn  : WSGI server
 * [[python/zato|zato]]  : ESB
+* selenium : web driver api or auto test?
 
 = 编码 =
 test = bytes.fromhex("E7")
