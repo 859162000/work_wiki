@@ -20,17 +20,19 @@
 * [[recipe]]
 * [[gi_info]]
 * [[gi_music]]
-= computer software : cs =
-* [[cs_architecture]]
+= basic =
 * [[linux_config/linux_config|linux_config]]
-* [[cs_list]]
 * [[cs_vim]]
 * [[cs_python]]
 * [[cs_git]]
+* [[cs_list]]
+* [[basic/xmind|xmind]]
+= software =
+* [[cs_architecture]]
+= hardware =
 * [[cs_EDA]]
 * [[cs_web]]
 * [[cs_qt]]
-= skill =
 * [[web_service/web_service|web_service]]
 * [[temp]]
 

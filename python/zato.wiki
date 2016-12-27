@@ -29,7 +29,7 @@ SimpleIO用来提供多种数据接口。
 
 Statistics统计：Zato Server 和 load-balancer.
 == 问题 ==
-1. 多集群管理？
+1. 多集群管理? : 是不是同一ODB(kvdb)内记录的cluster都在同一个web manager下？
 2. 
 
 == setup ==
@@ -42,3 +42,11 @@ sudo apt-get update
 sudo apt-get install zato
 sudo su - zato
 zato --version
+== quickstart ==
+zato quickstart create ~/env/qs-1 sqlite localhost 6379 \
+  --kvdb_password '' --verbose
+
+zato quickstart create $path $db $kvdb_host $kvdb_port
+
+
+  

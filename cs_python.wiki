@@ -56,7 +56,7 @@ requirement <--> test <--> design
 * docutils  : python docutmentation utilities
 * [[python/flask|flask]] : web框架
 * math  : log
-* nose  : 代码测试框架
+* [[python/nose|nose]]  : 代码测试框架
 * pygments  : code analyse
 * Sphinx    : 文档，使用rst格式
 * zeep  : SOAP client

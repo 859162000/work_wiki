@@ -1,4 +1,4 @@
-[[dyVerilog/readme]]
+../../work/dyVerilog/dyVerilog.rst
 [[control_system/readme]]
 [[tuopan/readme]]
 
