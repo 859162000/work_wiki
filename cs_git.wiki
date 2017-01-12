@@ -38,16 +38,28 @@ git submodule: get ref lib and update automaticly
 dictator:
 {{{
 git init
-git remote add $developer_name $url
-git merge -m $message_file $pull_request_file
+git merge $developer_name
+#git remote add $developer_name $url
+#git merge -m $pull_request_file $developer_name
 }}}
 
 developer:
 {{{
 初始化：
 git clone $dictator_dir
+工作之前先本地更新：
+git pull
+开始工作。。。
+结束工作：
+git add $files
+本地更新：
+git pull
+git commit -m "$message" or git commit -F $message_file
+git pull origin $developer_name
+
+//
 git branch $developer_name
-git checkout $developer_name
+git checkout -b $developer_name
 工作之前先本地更新：
 git checkout master
 git pull
@@ -60,8 +72,8 @@ git add $files
 git checkout master
 git pull
 git checkout $developer_name
-git rebase master
 git commit -m "$message" or git commit -F $message_file
+git pull origin $developer_name
 git request-pull -p $developer_name origin > $pull_request_file(格式$developer_name_$date)
 scp $developer_name+$date+pull $dictator_dir/pull
 }}}
