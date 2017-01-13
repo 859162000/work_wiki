@@ -6,62 +6,6 @@
   architecture. ACM SIGSOFT Software Engineering Notes, 17(4), Oct. 1992, pp.
   40-52.
 
-= UML =
-1. Structural Modeling Diagrams 结构建模图<br />
-   用于描述模型静态结构。包括类、对象、接口、物理部件。
-   也描述它们之间的关系。
-   * Package Diagram 包图<br />
-     反映软件包的组织关系。包有三种关系：merge--源从目标扩展元素；
-     import--源从目标引入包；connector--源完全包含在目标中。
-   * Component Diagram 部件图<br />
-     展示系统结构。图有部件、端口、连接关系。
-   * Class Diagram 类图<br />
-     展示面向对象系统的构件。部件有：类、接口、表、关联、继承、聚合、
-     关联--一个类作为另一个类的实例变量，+表示类的实例变量名。
-     聚合--描述部件由其它部件构成，分强弱。（子类，表示所属关系）
-   * 
-2. 
-最常用的UML图包括：用例图、类图、序列图、状态图、活动图、组件图和部署图。
-== 用例图 ==
-描述系统功能。基于角色的，展示系统用例。
-{{{
-                唱片系统
-
-               ----------
-      +-------/ 查看唱片 \
-      |       \   销量   /
-      |        ----------
-  乐队经理          
-      |        ------------
-      +-------/ 查看唱片   \
-      |       \   排行榜   /
-      |        ------------
-  唱片经理
-      |        ------------
-      +-------/ 查看唱片   \
-              \ 销量排行榜 /
-               ------------
-
-}}}
-
-== 类图 ==
-描述不同实体的关系，展示系统静态结构。
-* 继承：实线+完全三角形，指向父类
-* 关联：双方互知--实线；只有一方知道--实线+开箭头，指向未知方。
-* 
-== 序列图 ==
-== 状态图 ==
-== 活动图 ==
-== 组件图 ==
-== 部署图 ==
-
-= 软件设计原则 =
-* 单一职责原则：一个类应该只有一个发生变化的原因
-* 开放封闭原则：软件实体应该是可扩展，而不可修改的
-* 里氏替换原则：任何基类可以出现的地方，子类一定可以出现
-* 依赖倒置原则：程序要依赖于抽象接口，不要依赖于具体实现
-* 接口隔离原则：客户端不应该依赖它不需要的接口；一个类对另一个类的依赖应该建立在最小的接口上
-
 = Software Architecture =
 == Run-time Abstraction ==
     A software architecture is an abstraction of the run-time elements of a software system during some phase of its operation.
@@ -98,12 +42,12 @@ An architectural design can therefore be analyzed by breaking-down its set of co
 == Architectural Properties of Key Interest ==
 === Performance ===
 The performance of a network-based application is bound first by the application requirements, then by the chosen interaction style, followed by the realized architecture, and finally by the implementation of each component.
-==== Network Performance ====
+* Network Performance
 _Throughput_ is the rate at which information is transferred between components.
 _Overhead_ can be separated into initial setup overhead and per-interaction overhead, a distinction which is useful for identifying connectors that can share setup overhead across multiple interactions (amortization).
 _Bandwidth_ is a measure of the maximum available throughput over a given network link.
 _Usable bandwidth_ refers to that portion of bandwidth which is actually available to the application.
-==== User-perceived Performance ====
+* User-perceived Performance
 _Latency_ is the time period between initial stimulus and the first indication of a response.
 1) the time needed for the application to recognize the event that initiated the action; 
 2) the time required to setup the interactions between components; 
@@ -113,20 +57,20 @@ _Latency_ is the time period between initial stimulus and the first indication o
 6) Furthermore, multiple component interactions per user action are additive to
    latency unless they take place in parallel.
 _Completion_ is the amount of time taken to complete an application action.
-==== Network Efficiency ====
+* Network Efficiency
 minimize use of the network
 === Scalability ===
 === Simplicity ===
 === Modifiability ===
-==== Evolvability ====
+* Evolvability
 Evolvability represents the degree to which a component implementation can be changed without negatively impacting other components.
-==== Extensibility ====
+* Extensibility
 Extensibility is defined as the ability to add functionality to a system.
-==== Customizability ====
+* Customizability
 Customizability refers to the ability to temporarily specialize the behavior of an architectural element, such that it can then perform an unusual service.
-==== Configurability ====
+* Configurability
 Configurability is related to both extensibility and reusability in that it refers to post-deployment modification of components, or configurations of components, such that they are capable of using a new service or data element type. 
-==== Reusability ====
+* Reusability
 Reusability is a property of an application architecture if its components, connectors, or data elements can be reused, without modification, in other applications.
 === Visibility ===
 Styles can also influence the visibility of interactions within a network-based application by restricting interfaces via generality or providing access to monitoring.
@@ -189,3 +133,83 @@ go up.
 Unix like
 == code on-demand ==
 JavaScript
+
+= UML =
+1. Structural Modeling Diagrams 结构建模图<br />
+   用于描述模型静态结构。包括类、对象、接口、物理部件。
+   也描述它们之间的关系。
+   * Package Diagram 包图<br />
+     反映软件包的组织关系。包有三种关系：merge--源从目标扩展元素；
+     import--源从目标引入包；connector--源完全包含在目标中。
+   * Component Diagram 部件图<br />
+     展示系统结构。图有部件、端口、连接关系。
+   * Class Diagram 类图<br />
+     展示面向对象系统的构件。部件有：类、接口、表、关联、继承、聚合、
+     关联--一个类作为另一个类的实例变量，+表示类的实例变量名。
+     聚合--描述部件由其它部件构成，分强弱。（子类，表示所属关系）
+   * 
+2. 
+最常用的UML图包括：用例图、类图、序列图、状态图、活动图、组件图和部署图。
+== 用例图 ==
+描述系统功能。基于角色的，展示系统用例。
+{{{
+                唱片系统
+
+               ----------
+      +-------/ 查看唱片 \
+      |       \   销量   /
+      |        ----------
+  乐队经理          
+      |        ------------
+      +-------/ 查看唱片   \
+      |       \   排行榜   /
+      |        ------------
+  唱片经理
+      |        ------------
+      +-------/ 查看唱片   \
+              \ 销量排行榜 /
+               ------------
+
+}}}
+
+== 类图 ==
+描述不同实体的关系，展示系统静态结构。
+* 继承：实线+完全三角形，指向父类
+* 关联：双方互知--实线；只有一方知道--实线+开箭头，指向未知方。
+* 
+== 序列图 ==
+== 状态图 ==
+== 活动图 ==
+== 组件图 ==
+== 部署图 ==
+
+= 软件设计原则 =
+* 单一职责原则：一个类应该只有一个发生变化的原因
+* 开放封闭原则：软件实体应该是可扩展，而不可修改的
+* 里氏替换原则：任何基类可以出现的地方，子类一定可以出现
+* 依赖倒置原则：程序要依赖于抽象接口，不要依赖于具体实现
+* 接口隔离原则：客户端不应该依赖它不需要的接口；一个类对另一个类的依赖应该建立在最小的接口上
+
+== 软件设计方法 ==
+=== 名词解释 ===
+* OO Object-Orientedd : 面向对象的编程
+* OOA Object-Oriented Analysis : 面向对象的分析
+* OOD Object-Oriented design ：面向对象的设计
+* OOP Object-Oriented program：面向对你的编程
+
+=== 设计流程 ===
+* OOA
+OOA的侧重点是业务领域分析，与软件所要应用的行业领域相关，而与软件技术关系不大，需要由领域专家进行。一般称为“需求分析”。
+OOA的成果是建立业务领域模型：
+  * 业务领域用例图
+  * 活动图
+  * 协作图
+  * 业务文档资料
+* OOD
+OOD是用面向对象的方法为真实世界建立一个计算机中的虚拟模型。一般称为“系统架构设计师”。
+OOD的任务是：
+  * 确定系统总体框架
+  * 确定软件体系结构——系统概要设计
+  * 安排开发任务流程——系统详细设计
+* OOP
+OOP是用一种面向对象的语言来实现系统设计。

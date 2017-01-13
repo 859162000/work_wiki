@@ -13,11 +13,7 @@ ONBOOT=
 ------------------------------------------------------------
 = ubuntu =
 * apt-get下载安装包的位置 /var/cache/apt/archives
-== desktop ==
-* press Super key for a while, a fast key menu will appears.
 == server setup ==
-[[cs_ubuntu_config_files]]
-[[cs_ubuntu_server_setup_files]]
 ==== setup from net ====
 域名服务: 配置文件 /etc/dhcp/dhcpd.conf 服务 /etc/init.d/isc-dhcp-server
 TFTP: 软件：tftpd-hda 使用xinetd后台启动。 /etc/xinetd.d/tftp
@@ -26,12 +22,17 @@ TFTP: 软件：tftpd-hda 使用xinetd后台启动。 /etc/xinetd.d/tftp
 从CD安装系统，没有配置网络或手动配置。
 == network ==
 /etc/network/interfaces  ip地址、子网掩码、以及网关 
+	auto eth0
+	iface eth0 inet static
+	address 
+	netmastk 255.255.255.0
+	gateway
 /etc/resolv.conf         域名服务器
+	nameservice 10.3.1.20
 sudo /etc/init.d/networking restart 使你之前修改的生效，然后重启就OK了。
 sudo ifdown eth0 && sudo ifup eth0
 sudo dhclient -v -r eth0 释放IP
 sudo dhclient -v eth0    获取IP
-
 === openssh ===
 * /etc/ssh/sshd_config - OpenSSH 服务器配置文件
 * /etc/ssh/ssh_config - OpenSSH 客户端配置文件
@@ -51,6 +52,8 @@ chmod 600 ~/.ssh/authorized_keys
 结束后就可以在192.168.62.152上用ssh免密码登陆192.168.62.200
 Notice:如果不能成功登陆那么，就要检查下权限问题及selinux及iptables
        尽量不要用复制粘贴的方式，直接用文件覆盖 
+== desktop ==
+* press Super key for a while, a fast key menu will appears.
 == X window ==
 - sudo etc/init.d/lightdm stop : close window
 - libgl1-mesa-glx
@@ -70,6 +73,7 @@ sendEmail -f lianghuayue@potevio.com \
 ssmtp
 ------------------------------------------------------------
 == system config ==
+sudo passwd root : 为root设置密码
 === change source ===
 /etc/apt/source.list
 === path ===
@@ -80,7 +84,6 @@ NetworkManager, network management daemon,
 gunzip zabbix-1.6.tar.gz && tar -xvf zabbix-1.6.tar
 
 ------------------------------------------------------------
-= software config =
 = bash =
 ``cmd`` :run a command in other command
 export : get the chars that var insteads
@@ -92,62 +95,6 @@ find . -name "" -type f/d
 od -c : 显示编码
 = tcsh =
 tcshrc project from sourceforge
-= ssh =
-nohup ./*.sh & : 启动后台程序，关闭ssh仍然运行。
-bg             : 将一个后台暂停的程序变为继续运行。
-fg             : 将一个后台命令调到前台运行。
-
-update-alternative : 更改软件默认使用的版本。
-
-== eclim ==
-eclimd
-eclim -command shutdowm
-:ShutdownEclim ; in  VIM
-== 32bit support lib ==
- sudo apt-get install libgtk2.0-0:i386
- sudo apt-get install libx32stdc++6
- sudo apt-get install lib64stdc++6
- sudo apt-get install ttf-mscorefonts-installer
-32bit:
- sudo apt-get install libc6-i386
- sudo apt-get install ia32-libs
- apt-get autoremove
-
-== install rpm file ==
- rpm -Uvh <rpm_package_file>
-install deb file
- dpkg -i file.deb
-
-== sys_info: ==
- dmidecode | grep -A16 "Memory Device"
-
-== libreoffice: ==
- front: Simsun--宋体/ 仿宋_GB2312;仿宋
- fn <F3>: input formula and number
-
-== untar: ==
- tar -xjvf *.tar.bz2
- unrar e *.rar
- iconv -f gbk -t utf8 source_file > target_file 
- gunzip zabbix-1.6.tar.gz && tar -xvf zabbix-1.6.tar
-
-== unzip: ==
- LANG=C 7z x zip_file
- #convmv -f gbk -t utf8 -r --notest *
-
-== stardict: ==
- http://abloz.com/huzheng/stardict-dic/zh_CN/
- mv *.file /usr/share/stardict/dic/
-
-== change mp3 tip format: ==
- sudo apt-get install python-mutagen
- mid3iconv -e GBK *.mp3
-
-== ibus: ==
- ibus-setup
- * set in language support and text entry
-
-* lrzsz : 不同系统间文件传输工具
 ------------------------------------------------------------
 = problems =
 ------------------------------------------------------------

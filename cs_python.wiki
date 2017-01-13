@@ -64,6 +64,7 @@ requirement <--> test <--> design
 * Gunicorn  : WSGI server
 * [[python/zato|zato]]  : ESB
 * selenium : web driver api or auto test?
+* Whoosh : pure-Python full text indexing, search, and spell checking library.
 
 = 编码 =
 test = bytes.fromhex("E7")

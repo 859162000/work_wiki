@@ -25,10 +25,11 @@
 * [[cs_vim]]
 * [[cs_python]]
 * [[cs_git]]
-* [[cs_list]]
 * [[basic/xmind|xmind]]
 = software =
 * [[cs_architecture]]
+* [[software_list]]
+* [[program_language]]
 = hardware =
 * [[cs_EDA]]
 * [[cs_web]]
