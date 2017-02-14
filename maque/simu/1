@@ -1,0 +1,22 @@
+
+vlog "../rtl/basic/define.h" -work work
+vlog "../rtl/basic/tuopan.v" -work work
+vlog "./testbench/tuopan_bench.v" -work work
+set ELAB_OPTIONS ""
+set TOP_LEVEL_NAME "testbench"
+eval vsim -t 1ps -L work -l test_simu.log $TOP_LEVEL_NAME
+view wave
+#add wave -noupdate -divider {Global Signals}
+#add wave -noupdate -format logic /testbench/clk
+#add wave -noupdate -format logic /testbench/rstart
+add wave -noupdate -divider {module Signals}
+add wave -format literal -radix hexadecimal /testbench/counter_1/command
+add wave -format literal -radix hexadecimal /testbench/counter_1/rcommand
+add wave -format logic /testbench/counter_1/clear_command
+add wave -format literal -radix hexadecimal /testbench/counter_1/ck_count
+add wave -format literal -radix hexadecimal /testbench/counter_1/tray_station
+add wave -format literal -radix hexadecimal /testbench/counter_1/ps_command
+add wave -noupdate -divider {result}
+add wave -format literal -radix hexadecimal /testbench/counter_1/rf_start
+add wave -format literal -radix hexadecimal /testbench/counter_1/rf_min_keep_move
+run 1ns

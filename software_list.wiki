@@ -1,0 +1,113 @@
+= windows tools =
+== office ==
+* wps, libreoffice, 福昕阅读器，CNK E-Study
+* office2007: key: KGFVY-7733B-8WCK9-KTG64-BC7D8
+* JabRef : bibliograth
+* xmind
+== eda ==
+* quarter II, 
+* Candance SPB166 + Segrity
+* NetEditionLite :芯片解剖看图软件
+* CAM350 : gerber reader
+* AutoCAD 2014
+== picture ==
+* ps CS6 [[csl_ps]]
+* CoreDraw X4 : DR14UB9C5BBM6U5ZNYTVUWEUQJVU
+* GIMP 2
+== video & audio ==
+* Audacity
+* 看看影音
+== game ==
+* wor3
+* Hero3
+* underground2
+== daily tools ==
+* 365日历
+* 同花顺
+* Mozilla
+* 迅雷
+* 搜狗输入法
+== programme ==
+* Vim
+* python
+= 数据库 =
+* Redis 开源、支持网络、基于内存、键值对存储数据库。
+
+= linux =
+* apache2 : php webserver
+* audacity : deal with audio
+* Calligra Flow : flowchart & diagram editing
+* diagram editor : dia is an editor for diagrams, graphs, charts etc.
+* Freeplane : a free tool to structure and organise your information with mind mapping
+* gimp : image editor
+* git : 
+* gramps : genealogy systom
+* gtkwave : lxt wave viewer
+* iverilog : Icarus verilog compiler
+* inkscape : Inkscape Vector Graphics Editor
+* pdfsam : split and merge pdf documents
+* testdisk-> photorec : recover file
+* texmaker : latex document editor
+* totem : totem movie player
+* [[application/GnuPG]] : encrytion tools
+* lrzsz : 不同系统间文件传输工具
+* ibus-setup : input methord
+* python-mutagen : mid3iconv -e GBK *.mp3 ; change mp3 tip format
+* stardict http://abloz.com/huzheng/stardict-dic/zh_CN/
+
+== windows 登录 ubuntu 桌面 ==
+* xrdp vnc4server xfce4 : 
+* xrdp : An open source remote desktop protocol(rdp) server.
+* vnc : In computing, Virtual Network Computing (VNC) is a graphical desktop sharing system that uses the Remote Frame Buffer protocol (RFB) to remotely control another computer.
+* xfce4 :桌面 sudo apt-get install xubuntu-desktop echo “xfce4-session” <~/.xsession sudo service xrdp restart
+
+
+== ssh ==
+nohup ./*.sh & : 启动后台程序，关闭ssh仍然运行。
+bg             : 将一个后台暂停的程序变为继续运行。
+fg             : 将一个后台命令调到前台运行。
+
+update-alternative : 更改软件默认使用的版本。
+
+== eclim ==
+eclimd
+eclim -command shutdowm
+:ShutdownEclim ; in  VIM
+== install rpm file ==
+ rpm -Uvh <rpm_package_file>
+install deb file
+ dpkg -i file.deb
+
+== sys_info: ==
+ dmidecode | grep -A16 "Memory Device"
+
+== libreoffice: ==
+ front: Simsun--宋体/ 仿宋_GB2312;仿宋
+ fn <F3>: input formula and number
+
+== untar: ==
+ tar -xjvf *.tar.bz2
+ unrar e *.rar
+ iconv -f gbk -t utf8 source_file > target_file 
+ gunzip zabbix-1.6.tar.gz && tar -xvf zabbix-1.6.tar
+
+== unzip: ==
+ LANG=C 7z x zip_file
+ #convmv -f gbk -t utf8 -r --notest *
+== ubuntu ==
+* cron : ubuntu auto command. edit the file with 'crontab -e'
+
+== gpg4win ==
+window加密工具
+使用方法：
+
+1. 安装后，启动Kleopatra
+2. 点击 Lookup Certificates on Server
+3. 输入 0x0C420A05 , 点search
+4. 找到后，点击Import。此时完成公钥导入。
+5. File -> Sign/Encrypt File... 选择文件
+6. next
+7. 在选择公钥的窗口，选择公钥，点add，然后点Encrypt。
+8. 完成文件加密，加密后的文件以gpg结尾。
+
+

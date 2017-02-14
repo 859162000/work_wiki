@@ -9,6 +9,7 @@
 | vim       | common         |             | vim.org           |               |
 | ireader   | i172950921     |             |                   |               |
 | firefox   | common         | +78         |                   |               |
+| aoyou     | feiying        | Li          |                   | 遨游          |
 | avast     | feiying        | M           |                   |               |
 | zabbix    | lip            | Li          |                   |               |
 | csdn      | qianyue3       |             | bbs.csdn.net      | lhuaye        |
@@ -16,6 +17,7 @@
 | 美橙互联  | common         | l           |                   |               |
 | 凡科建站  | common         | Li          | www.faisco.com    |               |
 | zhujiwu   | common         | M           | www.zhujiwu.com   |               |
+| wordpress | common         | Lsi89C2(s   |                   |               |
 |-----------|----------------|-------------|-------------------|---------------|
 | hardware  |                |             |                   |               |
 |-----------|----------------|-------------|-------------------|---------------|

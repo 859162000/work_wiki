@@ -1,0 +1,31 @@
+= GnuPG =
+
+== 简介 ==
+加密工具
+
+来源：
+http://www.dewinter.com/gnupg_howto/english/GPGMiniHowto.html
+
+== 功能 ==
+=== 管理密钥 ===
+生成密钥 gpg --gen-key
+导出公钥 gpg --export [UID] -o -a(ascii)
+导入它人的公钥 gpg --import
+销毁私钥 gpg --gen-revoke
+密钥管理 gpg --list-keys fingerprint edit-key [UID]
+公钥签名 edit-key , sign
+=== 加密与解密 ===
+切换用户 -u --local-user 
+加密	-e (--encrypt) Recipient [data]
+解密	-d (--decrypt) [data] [-o output_file]
+=== 签名与验证签名 ===
+签名 gpg -s (--sign) / --clear-sign / -b (--detach-sign)
+独立签名文件 --armor
+完整命令 gpg [-u Sender] [-r Recipient] [--armor] --sign --encrypt [data]
+验证签名 gpg [--verify] [data]
+== 使用方法 ==
+
+
+
+
+

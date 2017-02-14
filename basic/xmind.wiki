@@ -1,0 +1,10 @@
+= xmind =
+* Projects Dashboard : All projects at a glance
+* Mind Map : manage a project
+  - enter an assignee who is responsible for a task;
+  - select a proper priority level for a task;
+  - quickly set the start and end date for a task by mouse click;
+  - easily change the task progress by moving the progress slide;
+  - set check point to determine whether the project is proceeding as planned and to take corrective action as needed;
+  - add a predecessor to the selected task.
+* 

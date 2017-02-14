@@ -123,7 +123,7 @@ angry on asking her for writing an analys report of 供应链金融，and fire t
  # 在北京与倩倩父亲见面，还有李叔，他们有业务的事情，同时还为倩倩工作问题。
  # 王晶给介绍了几份工作，没想到她这么热情。
  # 2015年10月31日，领证。农历九月十九。
- # 去夏天西安旅行，十一去新加坡、马来西亚旅行。
+ # 夏天去西安旅行，十一去新加坡、马来西亚旅行。
  # 12月去普天面试。准备入职相关手续。
 == 2016 ==
 * 工作
@@ -135,3 +135,9 @@ angry on asking her for writing an analys report of 供应链金融，and fire t
 * 学习
  # 学习python web。
  # 研究python verilog。
+== 2017 ==
+- 工作
+ # 分析交换平台整体需求，研究技术方案。
+- 学习
+ # 无时钟逻辑
+ # 定义功能计算器件

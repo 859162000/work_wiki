@@ -1,11 +1,19 @@
 = english =
 far away from home
 I surrender - Celine Dion
+Trouble is a friend
 = chinese =
 == 格式 ==
-歌曲名 - 歌手【， 原，国度，类型（电影：主题曲-原出版物名），原歌曲名，原歌手】
+歌曲名 - 歌手 [原：国度，类型（电影：主题曲-原出版物名），原歌曲名，原歌手]
+
+突然想起你 - 萧亚轩
+刀剑如梦 - 周华健
+[[songe/whatIsYourTrouble|你在烦恼什么]] - 苏打绿
+问 - 梁静茹
+狐狸精 - 罗志祥、胡玮琪
+名信片
 笨小孩
 潇洒走一回
 [[songe/sandglassOfMemory.lrc|回忆的沙漏]] - 邓紫棋
-灰色空间 ，原：韩，电影：主题曲-假如爱有天意，越爱越，韩成民)
+灰色空间 - 原：韩，电影：主题曲-假如爱有天意，越爱越，韩成民)
 

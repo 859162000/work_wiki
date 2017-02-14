@@ -6,6 +6,8 @@ git config --global credential.helper cache
 # Set git to use the credential memory cache
 git config --global credential.helper 'cache --timeout=3600'
 # Set the cache to timeout after 1 hour (setting is in seconds), default is 15 minute.
+git config --global core.autocrlf ture/input/false
+# Set the file crlf for windows/linux/linux
 
 # first fork in the GitHub.com
 git clone https://github.com/username/Spoon-Knife.git
@@ -55,9 +57,11 @@ git add $files
 本地更新：
 git pull
 git commit -m "$message" or git commit -F $message_file
-git pull origin $developer_name
+git push origin $developer_name
 
 //
+初始化：
+git clone $dictator_dir
 git branch $developer_name
 git checkout -b $developer_name
 工作之前先本地更新：
@@ -68,12 +72,13 @@ git rebase master
 开始工作。。。
 结束工作：
 git add $files
+git commit -m "$message" or git commit -F $message_file
 本地更新：
 git checkout master
 git pull
 git checkout $developer_name
-git commit -m "$message" or git commit -F $message_file
-git pull origin $developer_name
+git rebase master
+git push origin $developer_name
 git request-pull -p $developer_name origin > $pull_request_file(格式$developer_name_$date)
-scp $developer_name+$date+pull $dictator_dir/pull
+scp $pull_request_file $dictator_dir/upload
 }}}

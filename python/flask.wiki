@@ -34,3 +34,123 @@
 6. 
 
 
+== 网页模板：Templates ==
+flask默认使用Jinja2作为网页模板，也支持使用任何一种其它模板。
+=== Jinja2安装 ===
+Flask对Jinja2进行了基本配置：
+* 使用render_template()时，支持自动转换所有的网页类型文件。
+* 使用render_template_string()时，支持自动转换所有字符串。
+* 使用{% autoescape %}能够切换是否起用自动转换模式。
+* 在Jinja2 Context（域）中，flask增加多种全局功能和帮助。
+
+=== 标准域 standard context ===
+Jinja2模板中默认的全局变量：
+* config：flask.config，当前的配置对象
+* request：flask.request，当前请求对象。如果提交模板时没有激活的请求域，此变量不可用。
+* session：同上
+* g：同上
+* url_for()：flask.url_for()
+* get_flashed_message()：flask.get_flashed_message()
+
+=== 标准过滤器 ===
+* tojson()
+  
+  将对象转换成JSON表达式。在动态生成javascript时非常有用。
+  safe : 不用进行自动转换autoescaping
+  {{{javascript
+  <script type=text/javascript>
+	doSomethingWith({{ user.username|tojson|safe }});
+  </script>
+  }}}
+
+=== 控制自动转换 ===
+自动转换是因为HTML中，一些字符有特殊的意义。在确定要输入HTML格式时，需要关闭自动转换。
+有两种方式：
+{{{javascript
+{% autoescape false %}
+  <p>autoescaping is disabled here
+  <p>{{ will_not_be_escaped }}
+{% endautoescape %}
+
+{{ my_variable|safe}}
+}}}
+
+=== 注册过滤器 ===
+有两种方法添加自己的过滤器：
+* 手动添加到应用的jinja_env中
+* 使用template_filter()修饰器
+
+下面两种方法效果是一致的：
+{{{python
+@app.template_filter('reverse')
+def reverse_filter(s):
+    return s[::-1]
+    
+def reverse_filter(s):
+    return s[::-1]
+app.jinja_env.filters['reverse'] = reverse_filter
+}}}
+模板中的使用方法：
+{{{javascript
+{% for x in mylist | reverse %}
+{% endfor %}
+}}}
+
+=== 域处理器 ===
+Flask的域处理器（context processor）能自动向模板域添加变量。
+它在提取模板之前运行，并添加向其添加变量。
+它返回的是字典，字典的键和值与应用所有的模板域。
+{{{python
+@app.context_processor
+def inject_user():
+    return dict(user=g.user)
+}}}
+域处理器也可以添加函数
+{{{python
+@app.context_processor
+def utility_processor():
+    def format_price(amount, currency=u''):
+        return u'{0:.2f}{1}'.format(amount, currency)
+    return dict(format_price=format_price)
+}}}
+在模板中：
+{{{javascript
+{{ format_price(0.33) }}
+}}}
+
+== 测试Flask应用 ==
+Flask提供测试端（Client）用于测试。
+SQLite3是基于文件的数据库，可以用tempfile生成临时文件。
+{{{python
+import os
+import flaskr
+import unittest
+import tempfile
+
+def login(self, username, password):
+    return self.app.post('/login', data=dict(
+        username=username,
+        password=password
+        ), follow_redirects=True)
+def logout(self):
+    return self.app.get('/logout', follow_redirects=True)
+    
+class FlaskrTestCase(unittest.TestCase):
+    def setUp(self):
+        self.db_fd, flaskr.app.config['DATABASE'] = tempfile.mkstemp()
+        flaskr.app.config['TESTING'] = True
+        self.app = flaskr.app.test_client()
+        with flaskr.app.app_context():
+            flaskr.init_db()
+    def tearDown(self):
+        os.close(self.db_fd)
+        os.unlink(flaskr.app.config['DATABASE'])
+    def test_empty_db(self):
+        rv = self.app.get('/')
+       	assert b'No entries here so far' in rv.data
+    def test_login_logout(self):
+        rv = self.login('admin', 'default')
+        assert 'You were logged in' in rv.data
+if __name__ == '__main__':
+    unittest.main()
+}}}

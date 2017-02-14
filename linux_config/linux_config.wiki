@@ -57,6 +57,7 @@ Notice:如果不能成功登陆那么，就要检查下权限问题及selinux及
 == X window ==
 - sudo etc/init.d/lightdm stop : close window
 - libgl1-mesa-glx
+- DISPLAY 变量影响到本地Xwindow的指向，localhost:11.0，不要乱设定此值。
 == email ==
 sendemail : https://github.com/mogaal/sendemail
 sendEmail -f lianghuayue@potevio.com \

@@ -1,0 +1,48 @@
+= nose =
+python 测试框架
+
+== 运行模式 ==
+nose会自动寻找以[.,-,_]test开头的文件和函数，并执行这些函数。
+nose可以指定函数：nosetests package.class.funciton
+== 支持迭代：generator ==
+{{{python
+def test_evens():
+    for i in range(0, 5):
+        yield check_even, i, i*3
+
+def check_even(n, nn):
+    assert n % 2 == 0 or nn % 2 == 0
+}}}
+此时会产生5个测试。格式必须是：yield 函数 参数。
+
+== setup ==
+对每个函数进行setup设置
+{{{python
+@with_setup(setup_func, teardown_func)
+def test_generator():
+    yield ***
+}}}
+
+上面这种写法，多个测试实例共用一个setup。下面的写法setup将被执行多次。
+{{{python
+def test_evens():
+    for i in range(0, 5):
+        yield check_even, i, i*3
+
+@with_setup(setup_func, teardown_func)
+def check_even(n, nn):
+    assert n % 2 == 0 or nn % 2 == 0
+}}}
+
+== tools ==
+nose提供多种快捷的工具：nose.tools.*
+* ok_(expr,msg=None)
+* eq_(a,b,msg=None)
+* make_decorator(func)
+* raise(*exception)     test must raise an exception to pass.
+* set_trace()   call pdb.set_trace
+* timed(limit)
+* with_setup(setup=None,teardown=None)
+* istest(func)
+* nottest(func)
+

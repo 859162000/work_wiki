@@ -1,0 +1,7 @@
+* nose
+* numpy
+* vim help docs
+* Lisp schema
+* ipython nootbook
+* [ ] GnuPG
+* [X] xmind

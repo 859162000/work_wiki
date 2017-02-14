@@ -13,7 +13,6 @@
 * [[pj_input_methord]]
 * [[../my_vim/readme|my_vim]]
 = general info : gi =
-* [[diary/diary|diary]]
 * [[gi_diary]]
 * [[gi_travel]]
 * [[gi_my_life]]
@@ -37,4 +36,3 @@
 * [[web_service/web_service|web_service]]
 * [[temp]]
 
-work_dir ~/work
