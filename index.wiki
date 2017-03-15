@@ -5,13 +5,13 @@
 * [[current_job]]
 = finished job record : fjr =
 * [[fjr_ApM_fpga_lpddr2]]
+* [[finished/eID]]
 = person job : pj =
 * [[pjHardwork/readme|hardwork]]
 * [[../work/readme|program]]
 * [[pj_maque|sparrow]]
 * [[pj_book]]
 * [[pj_input_methord]]
-* [[../my_vim/readme|my_vim]]
 = general info : gi =
 * [[gi_diary]]
 * [[gi_travel]]
@@ -21,18 +21,13 @@
 * [[gi_music]]
 = basic =
 * [[linux_config/linux_config|linux_config]]
-* [[cs_vim]]
-* [[cs_python]]
-* [[cs_git]]
-* [[basic/xmind|xmind]]
 = software =
 * [[cs_architecture]]
-* [[software_list]]
-* [[program_language]]
+* [[application]]
+* [[developement]]
+* [[cs_web]]
+* [[web_service/web_service|web_service]]
 = hardware =
 * [[cs_EDA]]
-* [[cs_web]]
-* [[cs_qt]]
-* [[web_service/web_service|web_service]]
 * [[temp]]
 

@@ -1,4 +1,74 @@
 
+= 安全 =
+== 授权机制 ==
+=== OAuth 2.0 ===
+这是第三方网络授权机制。
+通过这个机制，资源所有者能够向第三方应用授权，
+允许应用使用资源所有者的部分资源。
+* 名词列表
+  - client : 第三方应用，需要用户授权的应用
+  - Resource Server : API server， 用户资源接口
+  - Authorization Server : 提供用户允许或禁止授权的接口
+  - Resource Owner : 用户，资源所有者
+* 应用流程
+  - 注册应用：向授权服务器注册应用，并且注册重定向链接。
+    重定向链接必须是使用TSL加密的。注册完成后，会获得应用ID和应用密码。
+    ID是公开的，而密码必须保存好
+  - 授权：OAuth先要用户授权，授权认证类型有：授权码（app）、密码（登录）、
+    用户凭证（client credentials，应用权限）
+* 网络服务
+
+== 认证机制 ==
+=== OpenID ===
+这是身份认证机制。它通过url认证当前用户身份，为第三方应用提供认证服务。
+它是基于OAuth 2.0。
+它也允许应用从服务器上获取用户基本信息。
+
+The OpenID Connect protocol, in abstract, follows the following steps.
+
+    1. The RP (Client) sends a request to the OpenID Provider (OP).
+    2. The OP authenticates the End-User and obtains authorization.
+    3. The OP responds with an ID Token and usually an Access Token.
+    4. The RP can send a request with the Access Token to the UserInfo Endpoint.
+    5. The UserInfo Endpoint returns Claims about the End-User.
+
+These steps are illustrated in the following diagram:
+
+{{{
++--------+                                   +--------+
+|        |                                   |        |
+|        |---------(1) AuthN Request-------->|        |
+|        |                                   |        |
+|        |  +--------+                       |        |
+|        |  |        |                       |        |
+|        |  |  End-  |<--(2) AuthN & AuthZ-->|        |
+|        |  |  User  |                       |        |
+|   RP   |  |        |                       |   OP   |
+|        |  +--------+                       |        |
+|        |                                   |        |
+|        |<--------(3) AuthN Response--------|        |
+|        |                                   |        |
+|        |---------(4) UserInfo Request----->|        |
+|        |                                   |        |
+|        |<--------(5) UserInfo Response-----|        |
+|        |                                   |        |
++--------+                                   +--------+
+}}}
+
+= dojo =
+Javascript框架。
+引用方法：
+<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+            data-dojo-config="async: true"></script>
+	   
+它使用AMD格式，Asynchronous Module Definition。
+
+导入dojo时，就只有导入AMD加载器，它定义了两个全局变量：require和define。
+require加载模块，define定义自定义模块。
+
+HTML DOM操作模块是dojo/dom和dojo/dom-construct。
+
+
 
 = Rails =
 一种高效Web开发框架，基于Ruby。
@@ -102,17 +172,4 @@ libmyslclient-dev
  SET PASSWORD FOR 'root'@'localhost' = PASSWORD('<yourpassword>');
  Query OK, 0 rows affected (0.00 sec)
 
-=== apache2 ===
-/usr/local/apache2/bin/apachectl start apaceh启动
-/usr/local/apache2/bin/apachectl stop   停止
-/usr/local/apache2/bin/apachectl restart 重启
-
- cp /etc/apache2/sites-avialable/*.conf mysit.conf
- sudo a2dissite default && sudo a2ensite mysite
- sudo /etc/init.d/apache2 reload
-要在重启 Apache 服务器时不中断当前的连接，则应运行：
-/usr/local/sbin/apachectl graceful
-如果apache安装成为linux的服务的话，可以用以下命令操作：
-service httpd start 启动
-service httpd restart 重新启动
 

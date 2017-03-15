@@ -186,3 +186,12 @@ PAM : Pluggable authentication modules
 ------------------------------------------------------------
 = file system =
 /etc/services : 网络服务。端口与协议。
+update-alternative : 更改软件默认使用的版本。
+== install rpm file ==
+ rpm -Uvh <rpm_package_file>
+install deb file
+ dpkg -i file.deb
+
+== sys_info: ==
+ dmidecode | grep -A16 "Memory Device"
+

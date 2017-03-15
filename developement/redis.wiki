@@ -1,0 +1,6 @@
+= Redis =
+Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。
+
+redis-server 启动
+
+redis-cli 连接客户端：127.0.0.1:6379

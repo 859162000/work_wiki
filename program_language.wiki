@@ -1,2 +1,0 @@
-= program languages =
-[[program_language/Lisp|Lisp]]

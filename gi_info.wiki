@@ -2,6 +2,7 @@
 [[gi_info_idea]]
 [[gi_info_person]]
 [[gi_info_birthday]]
+[[info/business_card]]
 gi_info_connector.html
 gi_info_business_card.html
 [[info/mima|mima]]

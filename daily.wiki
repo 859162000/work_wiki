@@ -13,7 +13,7 @@
 | 13:35 | 14:00 | main job          |                 | 2h30m      |
 | 14:05 | 14:30 | V                 |                 |            |
 | 14:35 | 15:00 | V                 |                 |            |
-| 15:05 | 15:30 | reading           | lunyu           |            |
+| 15:05 | 15:30 | reading           | lunyu maozedong |            |
 | 15:35 | 16:00 | main job          |                 |            |
 | 16:35 | 17:00 | V                 |                 |            |
 | 17:00 |       | structure         | computing       |            |

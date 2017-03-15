@@ -1,0 +1,15 @@
+= developement =
+This field includes software languages and developement tools
+
+== Languagues ==
+* [[developement/lisp]]
+* [[developement/python]]
+
+== Tools ==
+* [[developement/apache2]] : php webserver
+* iverilog : Icarus verilog compiler
+* [[developement/git]] : programme version control
+* [[developement/ssh]] : remote control
+* [[developement/eclimd]]
+== 数据库 ==
+* [[developement/redis]] 开源、支持网络、基于内存、键值对存储数据库。
