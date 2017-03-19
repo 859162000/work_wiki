@@ -1,4 +1,5 @@
 ../../work/dyVerilog/dyVerilog.rst
+[[small_processor/index]]
 [[controller/readme|controller]]
 [[control_system/readme]]
 [[tuopan/readme]]

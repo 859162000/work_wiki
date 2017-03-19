@@ -1,0 +1,14 @@
+E:/work_wiki/pjHardwork/small_processor/simu/define.v {1 {vlog -work work -vopt E:/work_wiki/pjHardwork/small_processor/simu/define.v
+Model Technology ModelSim SE vlog 10.2c Compiler 2013.07 Jul 18 2013
+
+} {} {}} E:/work_wiki/pjHardwork/small_processor/rtl/define.v {1 {vlog -work work -vopt E:/work_wiki/pjHardwork/small_processor/rtl/define.v
+Model Technology ModelSim SE vlog 10.2c Compiler 2013.07 Jul 18 2013
+
+} {} {}} E:/work_wiki/pjHardwork/small_processor/simu/adder.v {1 {vlog -work work -vopt E:/work_wiki/pjHardwork/small_processor/simu/adder.v
+Model Technology ModelSim SE vlog 10.2c Compiler 2013.07 Jul 18 2013
+-- Compiling module adder
+
+Top level modules:
+	adder
+
+} {} {}} E:/work_wiki/pjHardwork/small_processor/rtl/adder.v {0 vlog\ -work\ work\ -vopt\ \{E:\\work_wiki\\pjHardwork\\small_processor\\rtl\\adder.v\}\nModel\ Technology\ ModelSim\ SE\ vlog\ 10.2c\ Compiler\ 2013.07\ Jul\ 18\ 2013\n**\ Error:\ E:\\work_wiki\\pjHardwork\\small_processor\\rtl\\adder.v(6):\ Cannot\ find\ `include\ file\ \"define.v\"\ in\ directories:\n\ \ \ \ D:/modeltech_10.2c/ovm-2.1.2/../verilog_src/ovm-2.1.2/src,\ D:/modeltech_10.2c/uvm-1.1d/../verilog_src/uvm-1.1d/src\n--\ Compiling\ module\ adder\n**\ Error:\ E:\\work_wiki\\pjHardwork\\small_processor\\rtl\\adder.v(18):\ (vlog-2163)\ Macro\ `DATA_WIDTH\ is\ undefined.\n\n**\ Warning:\ E:\\work_wiki\\pjHardwork\\small_processor\\rtl\\adder.v(22):\ (vlog-2638)\ Bad\ name\ or\ identifier\ in\ Verilog\ compiler\ directive.\ \ The\ following\ text\ was\ found\ where\ a\ compiler\ directive\ name\ or\ macro\ name\ was\ expected.:\ \{.\n\n**\ Error:\ E:\\work_wiki\\pjHardwork\\small_processor\\rtl\\adder.v(22):\ (vlog-2730)\ Undefined\ variable:\ 'DATA_WIDTH'.\n\n**\ Error:\ E:\\work_wiki\\pjHardwork\\small_processor\\rtl\\adder.v(22):\ near\ \"\}\":\ syntax\ error,\ unexpected\ '\}',\ expecting\ '\;'\n**\ Warning:\ E:\\work_wiki\\pjHardwork\\small_processor\\rtl\\adder.v(23):\ (vlog-2638)\ Bad\ name\ or\ identifier\ in\ Verilog\ compiler\ directive.\ \ The\ following\ text\ was\ found\ where\ a\ compiler\ directive\ name\ or\ macro\ name\ was\ expected.:\ \{.\n\n**\ Error:\ E:\\work_wiki\\pjHardwork\\small_processor\\rtl\\adder.v(23):\ near\ \"\}\":\ syntax\ error,\ unexpected\ '\}',\ expecting\ '\;'\n**\ Warning:\ E:\\work_wiki\\pjHardwork\\small_processor\\rtl\\adder.v(30):\ (vlog-2638)\ Bad\ name\ or\ identifier\ in\ Verilog\ compiler\ directive.\ \ The\ following\ text\ was\ found\ where\ a\ compiler\ directive\ name\ or\ macro\ name\ was\ expected.:\ \{.\n\n**\ Error:\ E:\\work_wiki\\pjHardwork\\small_processor\\rtl\\adder.v(30):\ near\ \"\}\":\ syntax\ error,\ unexpected\ '\}',\ expecting\ '\;'\ or\ ','\n\n {3.0 4.0 6.0 7.0 10.0 11.0 12.0 13.0 15.0 16.0 18.0 19.0} {}}

@@ -1,0 +1,75 @@
+
+= 多线程编程 =
+module threading, queue
+
+{{{ python
+    from threading import Thread
+    from queue import Queue
+    
+    q = Queue()
+    
+    def work():
+        item = q.get()
+        do_work(item)
+        q.task_done()
+        
+    q.put(item)
+    t = Thread(target=work)
+    t.start()
+    t.join()
+    q.join()
+}}}
+
+= pyQt =
+== Qt ==
+* QtCore模块包含核心的非GUI功能。该模块用于时间、文件和目录、各种数据类型、流、网址、MIME类型、线程或进程。
+* QtGui模块包含图形组件和相关的类，例如按钮、窗体、状态栏、工具栏、滚动条、位图、颜色、字体等。
+* QtNetwork模块包含了网络编程的类，这些类允许编写TCP/IP和UDP的客户端和服务器，他们使网络编程更简单，更轻便。
+* QtXml包含使用XML文件的类，这个模块提供了SAX和DOM API的实现。
+* QtSvg模块提供显示的SVG文件的类。可缩放矢量图形（SVG）是一种用于描述二维图形和图形应用程序的XML语言。
+* QtOpenGL模块使用OpenGL库渲染3D和2D图形，该模块能够无缝集成Qt的GUI库和OpenGL库。
+* QtSql模块提供用于数据库的类
+= PyPI =
+pip install pyinstaller
+python -m pip install --upgrade pip
+webbrowser splinter pamie selenium
+= related dir =
+~/python/
+qq_web.py webbrowser 
+open_a_cvf.py open a .cvf file of phone connector
+= coding =
+defination: variables use noun, functions use verb.
+- C*	: class
+- verb	: fuction
+- noun  : variable
+- g*	: globel variable
+- p*	: ports variable
+- l*	: class variable
+- t*	: fuction variable
+- d*	: parameter
+- _*	: self used
+- __*	: dont touch or changed by direct
+
+requirement <--> test <--> design
+
+= package =
+* docutils  : python docutmentation utilities
+* [[python/flask|flask]] : web框架
+* math  : log
+* [[python/nose|nose]]  : 代码测试框架
+* pygments  : code analyse
+* Sphinx    : 文档，使用rst格式
+* zeep  : SOAP client
+* spyne : SOAP Server。tegather with app。
+* Gunicorn  : WSGI server
+* [[python/zato|zato]]  : ESB
+* selenium : web driver api or auto test?
+* Whoosh : pure-Python full text indexing, search, and spell checking library.
+* [[python/nmap]]
+
+= 编码 =
+test = bytes.fromhex("E7")
+bytes(b'\xE7').decode('utf-8') => a
+
+= 文件目录 =
+os.path.realpath(__file__)

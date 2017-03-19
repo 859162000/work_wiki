@@ -19,6 +19,7 @@ Zato是Python编写的ESB。Zato适合作为应用和服务之间的中间层。
                           |                
                   External application
 }}}
+
 Zato运行在Gunicorn上，以异步gevent模式。
 
 通道的功能是，保证程序与协议无关。
@@ -42,6 +43,8 @@ sudo apt-get update
 sudo apt-get install zato
 sudo su - zato
 zato --version
+
+zato 要使用Redis，需要先启动redis-server
 == quickstart ==
 zato quickstart create ~/env/qs-1 sqlite localhost 6379 \
   --kvdb_password '' --verbose

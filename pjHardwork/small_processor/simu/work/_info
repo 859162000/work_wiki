@@ -1,0 +1,30 @@
+m255
+K4
+z2
+13
+cModel Technology
+Z0 dd:/modeltech_10.2c/examples
+!s112 0.1
+!i10d 8192
+!i10e 25
+!i10f 100
+vadder
+!s110 1489383706
+!i10b 1
+!s100 PfUL77Ln2@zDbbT;WJjNR3
+IbmVZ^g?@PQ6]f0cZ]MgzY1
+V`JN@9S9cnhjKRR_L]QIcM3
+dE:/work_wiki/pjHardwork/small_processor/simu
+w1489383702
+8E:/work_wiki/pjHardwork/small_processor/simu/adder.v
+FE:/work_wiki/pjHardwork/small_processor/simu/adder.v
+L0 8
+Z1 OE;L;10.2c;57
+r1
+!s85 0
+31
+!s108 1489383706.897000
+!s107 define.v|E:/work_wiki/pjHardwork/small_processor/simu/adder.v|
+!s90 -reportprogress|300|-work|work|-vopt|E:/work_wiki/pjHardwork/small_processor/simu/adder.v|
+!i111 0
+o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF

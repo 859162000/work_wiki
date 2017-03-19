@@ -1,0 +1,4 @@
+eclimd
+eclim -command shutdowm
+:ShutdownEclim ; in  VIM
+
