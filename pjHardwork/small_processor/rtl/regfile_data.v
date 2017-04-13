@@ -34,7 +34,7 @@ always @(posedge clk) begin
         reg_input_data    <= `DATA_WIDTH'b0    ;
         //reg_output_data   <= `DATA_WIDTH'b0   ;
     end else begin
-        mode <= state_control;
+        mode <= mode;
         reg_address       <= address      ;
         reg_input_data    <= input_data    ;
         //reg_output_data   <= readed_data_or   ;

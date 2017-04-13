@@ -34,9 +34,10 @@ pip install pyinstaller
 python -m pip install --upgrade pip
 webbrowser splinter pamie selenium
 = related dir =
-~/python/
+script/python/
 qq_web.py webbrowser 
 open_a_cvf.py open a .cvf file of phone connector
+show_html.py
 = coding =
 defination: variables use noun, functions use verb.
 - C*	: class

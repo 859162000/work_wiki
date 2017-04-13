@@ -1,14 +1,14 @@
 = todo =
 * [ ] [[todolist]]
 
-= job record : jr =
+= work =
 * [[current_job]]
 = finished job record : fjr =
-* [[fjr_ApM_fpga_lpddr2]]
+* [[finished/fjr_ApM_fpga_lpddr2]]
 * [[finished/eID]]
 = person job : pj =
 * [[pjHardwork/readme|hardwork]]
-* [[../work/readme|program]]
+* [[../common/readme|program]]
 * [[pj_maque|sparrow]]
 * [[pj_book]]
 * [[pj_input_methord]]
