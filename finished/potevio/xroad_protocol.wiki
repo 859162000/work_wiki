@@ -1,0 +1,235 @@
+= MIME =
+= MIME In X-road=
+X-road使用了MIME的分页特性（MIME Multipart）。
+分布特性是指服务器将网页数据分成连续的多个响应发送到客户端。
+
+在安全服务器下载配置文件时，由于配置文件不是连续的，
+所以中心服务器将配置文件分成多个文件片断进行传输。
+MIME Multipart规定了这种传输方式的格式和标识。
+= MIME 定义=
+Multipurpose Internet Mail Extensions多用途互联网邮件扩展
+
+它包括类型和对应的编码方式。
+MIME编码的目的是将非ASCII码信息编码为类ASCII形式。
+常见的编码方法：Base64与QP(Quote-Printable)。
+
+HTTP协议中，使用MIME类型，用来标识数据类型，以便于浏览器调用相关程序进行处理。
+== 相关标准 ==
+RFC822 		Standard for ARPA Internet Text Messages邮件格式规定
+RFC1341		MIME定义
+
+= TLS protocol =
+Transport Layer Security
+== 简介 == 
+  由两层构成：记录协议和握手协议。
+  记录协议是底层协议，基于可靠的传输层协议。
+  记录协议提供的安全连接有两个基本属性：
+  - 连接是私有的。数据对称加密。此密钥每次连接是一次性的，来自基于握手协议（也可以是其它协议）的保密通讯建立过程。记录协议也可以不加密使用。
+  - 连接是可靠的。传输的消息包括消息完整性验证，使用有密钥的MAC（Message Authentication Code，消息认证码，带密钥的Hash函数，）。也可以无MAC。
+  记录协议用来封装更高层协议。TLS握手协议就是一种高层协议，它让服务器和客户端之间在传输应用数据之前建立加密算法和密钥。
+  握手协议提供的连接安全保证有三个特征：
+  - 连接双方的身份可以通过非对称的或公钥的加密算法进行验证。身份验证是可选的。
+  - 建立连接的共享密钥是安全的。建立连接的密钥是不会被窃取的，也不能被第三方获得。
+  - 建立连接是可靠的。连接双方能够知道连接过程是否被篡改。
+  TLS是独立于应用层。TLS不主动指定如何使用TLS，而是由设计者和使用者来决定。
+
+== 目的 ==
+TLS协议的目的是：
+# 安全加密：在通信双方之间建立安全连接
+# 互通性：独立程序员可以开发一个应用，利用TLS与另一个应用交换加密参数，而不必关注另一个应用的代码。
+# 扩展性：TLS尝试提供一种通用的架构，能够容纳新的密钥、更广泛的加密方法。这样也避免创建新的协议、建立新的安全库。
+# 相对高效：加密操作严重占用CPU资源，尤其是公钥处理。For this reason,
+ the TLS protocol has incorporated an optional session caching scheme to
+ reduce the number of connections that need to be established from scratch.
+ Additionally, care has been taken to reduce network activity.
+
+== 基本工作过程 ==
+=== 握手过程 ===
+# 客户端发送加密通讯的请求。
+ - 支持的协议版本，比如TLS 1.0版。
+ - 一个客户端生成的随机数，稍后用于生成"对话密钥"。
+ - 支持的加密方法，比如RSA公钥加密。
+ - 支持的压缩方法。
+ - 如有必要，客户端可以发送它所请求的域名。这种情况适用于服务器有多个主机，有多个证书的特殊状况
+# 服务器回应客户端
+ - 确认使用的加密通信协议版本，比如TLS 1.0版本。如果浏览器与服务器支持的版本不一致，服务器关闭加密通信。
+ - 一个服务器生成的随机数，稍后用于生成"对话密钥"。
+ - 确认使用的加密方法，比如RSA公钥加密。
+ - 服务器证书。
+ - 要求客户端提供"客户端证书"。
+# 客户端回应
+
+客户端首先验证服务器证书。如果证书有问题，会向访问者发出一个警告，由其选择是否还要继续。</br>
+如果没有问题，客户端会从证书中提出公钥。向服务发送下面信息：
+ -  一个随机数。该随机数用服务器公钥加密，防止被窃听。
+ -  编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送。
+ -  客户端证书。用服务器公钥加密。
+ -  客户端数据签名。用客户端私钥加密。
+ -  客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供服务器校验。
+# 服务器回应
+
+服务器验证客户端证书可靠后，提取公钥，计算客户端数字签名的正确性。验证客户端正确后，发送下面内容：
+ - 编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送。
+ - 服务器握手结束通知，表示服务器的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供客户端校验。
+
+
+= 实现 =
+JSSE（Java 安全套接字扩展，Java Secure Socket Extension）是SSL和TLS的纯Java实现
+== Java实现相关类 ==
+# 通信核心类——SSLSocket和SSLServerSocket。对于使用过socket进行通信开发的朋友比较好理解，它们对应的就是Socket与ServerSocket，只是表示实现了SSL协议的Socket和ServerSocket，同时它们也是Socket与ServerSocket的子类。SSLSocket负责的事情包括设置加密套件、管理SSL会话、处理握手结束时间、设置客户端模式或服务器模式。
+# 客户端与服务器端Socket工厂——SSLSocketFactory和SSLServerSocketFactory。在设计模式中工厂模式是专门用于生产出需要的实例，这里也是把SSLSocket、SSLServerSocket对象创建的工作交给这两个工厂类。
+# SSL会话——SSLSession。安全通信握手过程需要一个会话，为了提高通信的效率，SSL协议允许多个SSLSocket共享同一个SSL会话，在同一个会话中，只有第一个打开的SSLSocket需要进行SSL握手，负责生成密钥及交换密钥，其余SSLSocket都共享密钥信息。
+# SSL上下文——SSLContext。它是对整个SSL/TLS协议的封装，表示了安全套接字协议的实现。主要负责设置安全通信过程中的各种信息，例如跟证书相关的信息。并且负责构建SSLSocketFactory、SSLServerSocketFactory和SSLEngine等工厂类。
+# SSL非阻塞引擎——SSLEngine。假如你要进行NIO通信，那么将使用这个类，它让通过过程支持非阻塞的安全通信。
+# 密钥管理器——KeyManager。此接口负责选择用于证实自己身份的安全证书，发给通信另一方。KeyManager对象由KeyManagerFactory工厂类生成。
+# 信任管理器——TrustManager。此接口负责判断决定是否信任对方的安全证书，TrustManager对象由TrustManagerFactory工厂类生成。
+== 实现过程 ==
+# 必要条件
+
+服务器和客户端都要具备密钥和证书管理工具，管理自己的和他人的公钥、私钥和证书。
+通过JAVA Keytool工具将证书导入keyStore和trustStore中。
+Java可以生成证书，生成证书和导入证书的过程是：
+ # 进入本地的 java 安装位置的 bin 目录中 cd /java/bin
+ # 创建一个客户端 keystore 文件 
+   - `keytool -genkey -alias sslclient -keystore sslclientkeys`
+ # 将客户端 keystore 文件导出成证书格式 
+   - `keytool -export -alias sslclient -keystore sslclientkeys -file sslclient.cer`
+ # 创建一个服务器端 keystore 文件
+   - `keytool -genkey -alias sslserver -keystore sslserverkeys`
+ # 将服务器端 keystore 文件导出成证书格式
+   - `keytool -export -alias sslserver -keystore sslserverkeys -file sslserver.cer`
+ # 将客户端证书导入到服务器端受信任的 keystore 中
+   - `keytool -import -alias sslclient -keystore sslservertrust -file sslclient.cer`
+ # 将服务器端证书导入到客户端受信任的 keystore 中
+   - `keytool -import -alias sslserver -keystore sslclienttrust -file sslserver.cer`
+   
+ 以上所有步骤都完成后，还可以通过命令来查看 keystore 文件基本信息
+   - `keytool -list -keystore sslclienttrust`
+
+# 客户端程序
+{{{class="brush: java"
+package example.ssl.codes; 
+
+ import java.io.*; 
+ import javax.net.ssl.SSLSocket; 
+ import javax.net.ssl.SSLSocketFactory; 
+
+ class SSLClient { 
+
+ private SSLSocket socket = null; 
+
+ public SSLClient() throws IOException { 
+     // 通过套接字工厂，获取一个客户端套接字
+     SSLSocketFactory socketFactory = (SSLSocketFactory) 
+ SSLSocketFactory.getDefault(); 
+     socket = (SSLSocket) socketFactory.createSocket("localhost", 7070); 
+ } 
+
+ public void connect() { 
+	 try { 
+		 // 获取客户端套接字输出流
+		 PrintWriter output = new PrintWriter( 
+		       new OutputStreamWriter(socket.getOutputStream())); 
+	 // 将用户名和密码通过输出流发送到服务器端
+		 String userName = "principal"; 
+		 output.println(userName); 
+		 String password = "credential"; 
+		 output.println(password); 
+		 output.flush(); 
+		
+		 // 获取客户端套接字输入流
+		 BufferedReader input = new BufferedReader( 
+		        new InputStreamReader(socket.getInputStream())); 
+	 // 从输入流中读取服务器端传送的数据内容，并打印出来
+		 String response = input.readLine(); 
+		 response += "\n " + input.readLine(); 
+		 System.out.println(response); 
+	
+	 // 关闭流资源和套接字资源
+		 output.close(); 
+		 input.close(); 
+		 socket.close(); 
+	 } catch (IOException ioException) { 
+		 ioException.printStackTrace(); 
+	 } finally { 
+		 System.exit(0); 
+	 } 
+ } 
+
+ public static void main(String args[]) throws IOException { 
+	 new SSLClient().connect(); 
+ } 
+ }
+}}}
+
+# 服务器程序
+{{{class="brush: java"
+package example.ssl.codes; 
+
+ import java.io.*; 
+ import javax.net.ssl.SSLServerSocket; 
+ import javax.net.ssl.SSLServerSocketFactory; 
+ import javax.net.ssl.SSLSocket; 
+
+ class SSLServer { 
+
+ // 服务器端授权的用户名和密码
+ private static final String USER_NAME = "principal"; 
+ private static final String PASSWORD = "credential"; 
+ // 服务器端保密内容
+ private static final String SECRET_CONTENT = 
+"This is confidential content from server X, for your eye!"; 
+
+ private SSLServerSocket serverSocket = null; 
+
+ public SSLServer() throws Exception { 
+	 // 通过套接字工厂，获取一个服务器端套接字
+	 SSLServerSocketFactory socketFactory = (SSLServerSocketFactory) 
+ SSLServerSocketFactory.getDefault(); 
+	 serverSocket = (SSLServerSocket)socketFactory.createServerSocket(7070); 
+ } 
+
+ private void runServer() { 
+	 while (true) { 
+		 try { 
+			 System.out.println("Waiting for connection..."); 
+			 // 服务器端套接字进入阻塞状态，等待来自客户端的连接请求
+			 SSLSocket socket = (SSLSocket) serverSocket.accept(); 
+			
+			 // 获取服务器端套接字输入流
+			 BufferedReader input = new BufferedReader( 
+			        new InputStreamReader(socket.getInputStream())); 
+		 // 从输入流中读取客户端用户名和密码
+			 String userName = input.readLine(); 
+			 String password = input.readLine(); 
+			
+			 // 获取服务器端套接字输出流
+			 PrintWriter output = new PrintWriter( 
+			        new OutputStreamWriter(socket.getOutputStream())); 
+
+		 // 对请求进行认证，如果通过则将保密内容发送给客户端
+			 if (userName.equals(USER_NAME) && password.equals(PASSWORD)) { 
+				 output.println("Welcome, " + userName); 
+				 output.println(SECRET_CONTENT); 
+			 } else { 
+				 output.println("Authentication failed, you have no 
+ access to server X..."); 
+			 } 
+		
+		 // 关闭流资源和套接字资源
+			 output.close(); 
+			 input.close(); 
+			 socket.close(); 
+
+		 } catch (IOException ioException) { 
+			 ioException.printStackTrace(); 
+		 } 
+	 } 
+ } 
+
+ public static void main(String args[]) throws Exception { 
+	 SSLServer server = new SSLServer(); 
+	 server.runServer(); 
+ } 
+ }
+}}}

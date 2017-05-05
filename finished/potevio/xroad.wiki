@@ -1,0 +1,88 @@
+== 数据交换平台 ==
+* 2016-10-31 15:19:52 wd1 # 开始时间
+* 2016-11-17 11:31:22 wd4 # 全部使用开源代码
+* 2017-1-5 10:00:12 wd4 # 认证中心管理工具
+=== 试验 ===
+* 2016-11-21 10:48:51 wd1 # 查看开源ESB：openESB和serviceMix。
+  openESB的邮箱验证无法通过。
+  serviceMix使用的是Apache V2 Licences.
+* 2016-11-30 14:19:06 wd3 #  换用zato。
+* 2016-11-30 14:20:15 wd3 # 换为信息公路
+* 2017-02-13 zato详细设计
+
+| 项目         | 内容                     | 起         | 止         |   |
+|--------------|--------------------------|------------|------------|---|
+| 数据交换平台 | data clean               | 2017-01-04 |            |   |
+|              | 思考平行架构数据交换平台 | 2017-01-11 | 2017-01-12 |   |
+|              | 配置工作环境             | 2017-01-12 | 2017-01-13 |   |
+|              | 将加工平台并入应用中     | 2017-02-06 |            |   |
+|              | 退出项目组               | 2017-03-01 |            |   |
+|              |                          |            |            |   |
+
+= todo & history=
+* task
+* 
+* add trigger ， 分离log
+* 2016-5-20 9:52:38 wd5 # 在本地server上增加log监牢。
+* 本地客户端、服务器、前端都运行。由于版本问题，部分网页显示不正常。
+
+
+* [[xroad_server]]
+* [[xroad_design]]
+* [[xroad_Monitor]]
+* [[xroad_Zabbix]]
+* [[xroad_protocol]]
+
+ESB：
+增加对接入服务的管理（托管）
+
+时间戳：一个文件的时间戳是一个数字签名，签名内容是文件的内容摘要加签名时的时间信息。
+
+生成时间戳的过程：
+# 文件生成摘要（Hash算法），将摘要发送到认证中心
+# 认证中心向摘要添加时间信息，然后进行数字签名<br />
+签名后的文件就是时间戳
+
+RFC 3161	TSP Internet X.509 Public Key Infrastructure time-stamp protocol
+RFC 5246	TLS1.2 The Transport Layer Security (TLS) Protocol
+RFC822 		MIME 类型 Multipurpose Internet Mail Extensions
+
+enterprise learning net
+JAVA高级开发技术实战培训	资深讲师	5800 4	August 26-29北京
+需求分析与管理最佳实践培训	资深讲师	5800 5  September 22-26北京
+中际赛威
+Linux内核、驱动深度剖析与编程（送书送开发板） 	2016.04.13-16 北京宋宝华￥4,800
+中科锦祥
+混合型app测试最佳实践new	2016年4月22-23日	北京	5000元/人
+深入自动化测试new		2016年6月24-25日	北京	5000元/人
+深入性能测试new			2016年4月29-30日	北京	5000元/人
+麦思博
+5月28-29日	Jason	linux系统管理培训	5800元/人	北京
+person requirement:
+. experience in server management
+. program skill in internet program, familier with TCP/IP
+. program language in Java or python
+. program language in PHY, Javascript, HTML, xml. familier with http
+
+监控软件
+1、IT相关专业本科以上学历，三年以上JAVA软件开发经验，熟练掌握Zabbix,Nagios等开源监控软件之一；
+2、精通JAVA编程，WEB客户前端技术；
+3、熟悉UML，OOA/OOD和设计模式；
+4、熟悉加密通讯过程；
+5、熟练掌握Oracle及主流数据库；
+6、精通Html、Javascript、sql语言，熟悉XML、web service技术并具备相关开发经验；
+7、熟练使用MyEclipse、DreamWeaver等开发工具，熟悉流行的Java IDE；
+8、具备较强的人际沟通、团队管理与组织协调能力；
+9、丰富良好的英文读、写能力。
+
+网络通讯
+1、IT相关专业本科以上学历，两年以上JAVA软件开发经验，有web服务器开发经验者优先，有分布式服务器监控维护经验者优先；
+2、熟悉TCP/IP协议，熟悉加密通讯过程；
+3、精通JAVA编程，WEB客户前端技术及J2EE后端技术体系，有B/S开发经验；
+4、熟悉UML，OOA/OOD和设计模式；
+5、熟练掌握Oracle及主流数据库；
+6、精通Html、Javascript、sql语言，熟悉XML、web service技术并具备相关开发经验；
+7、熟练使用MyEclipse、DreamWeaver等开发工具，熟悉流行的Java IDE；
+8、具备较强的人际沟通、团队管理与组织协调能力；
+9、丰富良好的英文读、写能力。
+

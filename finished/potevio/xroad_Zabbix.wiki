@@ -1,0 +1,88 @@
+= 简介 =
+* Zabbix is free, is written and distrubted under GPL2 General Public License.
+* 
+== 构件 ==
+Server 		存储所有的信息，agent向其报告信息
+Database Storage	配置和统计信息都存储在数据库中
+Web interface	最好与Server在同一物理机器上
+Proxy	Server的数据收集代理。用于分担单一Server的负担
+Agent	Agent是部署在host的部件，实时监视本地资源和软件，并且向Server提交报告
+== 数据流 ==
+host <--------< trigger
+action <--------^
+
+= 相关概念 =
+== Zabbix definitions ==
+host		a networked device that you want to monitor, with IP/DNS
+host group 	hosts and templates. access rights management for users.
+item  		a metric of data 
+trigger 	a logical expression that defines a problem threshold
+event 		a single occurrence something that deserves attention
+action	 	a predefined means of reacting to event
+escalation	a custom scenario for excuting operations within an action
+media		a means of delivering notification; delivery channel
+notification
+remote command	a pre-defined command that is automatically executed
+template	a set of entities ready to be applied to hosts
+application	a grouping of items in a logical group
+web scenario	one or several HTTP requests to check the availabity of a web sit
+frontend	the web interface provided by Zabbix
+Zabbix API	it allows you to use JSON RPC protocol to create, update and fetch Zabbix objects or perform any other custom tasks
+Zabbix Server	a central process of Zabbix software; a central repository of data
+Zabbix Agent	a process deployed on monitoring targets to actively monitor local resources and applications
+Zabbix Proxy	a process that may collect data on behalf of Zabbix Server, taking some processing load off of the server
+== Server ==
+== Java gateway ==
+monitoring JMX application 
+sender/get command
+requires significant CPU resources.
+
+= Zabbix简介 =
+Zabbix是开源商用分布式监视软件。它能够监控大量网络参数和服务器状态，可以提供多种提醒手段，能够提供图形化的报告。
+它的所有配置都是基于Web终端的。Zabbix主程序是使用C语言编写，前端使用PHP.
+== 基本配置需求： ==
+操作系统：	Linux
+数据库：	MySQL Oracle
+== 500台服务的硬件需求： ==
+64位操作系统
+AMD Athlon 3200+
+2G内存
+MySQL InnoDB
+== 软件需求： ==
+Apache 1.3.12
+PHP:php-gd, php-bcmath, 其中php-gd要支持PNG image
+MySQL
+== Zabbix 1.6.9 ==
+# In mysql, change type=InnoDB to engine=InnoDB.
+# 安装develop package 包：libmysqlclient-dev
+# 可选。使用Japper作为即时通讯工具 包：jabberd2 
+# curl: 基于url语法的在命令行下传输文件的工具。 包：libcrul4-openssl-dev
+# net-snmp 包：snmp,snmpd,libsnmp-dev
+# php5-gd
+# /etc/php5/apache2/php.ini
+ - max execution time : 30 -> 300
+ - timezone :Asia/Hong_Kong
+ - 增加 extension php5
+=== server ===
+log文件增加读写权限
+`ipcrm -S xxx`
+/etc/zabbix/zabbix_sever.conf中，增加数据库密码
+=== agent ===
+Hostname=zabbix server #必须与zabbix创建的host监控项目中的name标签相同
+=== web front end ===
+{{{
+cp -rp frontend/php /var/www/zabbix
+/etc/apache2/httpd.conf
+group zabbix
+user zabbix
+}}}
+user_count Admin
+password zabbix
+
+zabbix server 能够监控log，并且获得log文件内容。
+在中央监控器的server上，可以设置log监控。
+为log file增加trigger。
+每天的log保存为当天的文件，新的log file名称固定。
+在server中，增加triiger，每月的log file打包压缩保存（或检查）。
+
+

@@ -1,10 +1,10 @@
+[[info/company]]
 [[gi_info_web]]
 [[gi_info_idea]]
 [[gi_info_person]]
 [[gi_info_birthday]]
-[[info/business_card]]
+info/business_card.xml
 gi_info_connector.html
-gi_info_business_card.html
 [[info/mima|mima]]
 骆冬儿 623000196104133306
 母亲姓氏：姓洛

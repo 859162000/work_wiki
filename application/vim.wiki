@@ -1,4 +1,6 @@
 = vim plugin =
+[[vim/snippets]]
+[[vim/config/verilog]]
 manage
 ""git submodule add https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -12,11 +14,13 @@ Plugin 'godlygeek/tabular'
 Plugin 'mathjax/MathJax'
 Plugin 'othree/xml.vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdcommenter' : 代码注释 \cc
-Plugin 'garbas/vim-snipmate'      : 代码块自动扩展
+Plugin 'scrooloose/nerdcommenter'   : 代码注释 \cc
+Plugin 'garbas/vim-snipmate'        : 代码块自动扩展
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
+Plugin 'vim-scripts/VisIncr'        : 自动生成列递增数字
+
 
 xmledit : let g:html_* = 1
 
@@ -24,7 +28,6 @@ vimball
 vimwiki
 ctags58
 
-[[vim/snippets]]
 = vim useage =
 <F2> number
 寄存器 "* 剪切板，""缓存区

@@ -1,0 +1,131 @@
+= xroad security initial =
+# an configue anchor:
+  * usr -> signed configuration
+  * cerr -> public key to verify the signed configuration
+= xroad code reading =
+说明：<br />
+<-      ：指示引用位置<br />
+_斜体_    ：源包<br />
+*黑体*    ：其它工程包<br />
+.       ：本工程包<br />
+无      ：本包函数<br />
+<=      : 函数返回值
+func()  : 函数
+f(para) : 参数
+= e Estonia =
+== Information System Authority : 信息系统局 ==
+=== State Information System : 国家信息系统 ===
+==== Administration System for the State Information System (RIHA) ====
+国家信息系统管理系统（无）
+==== DATA Exchange Layer (X-Road) ====
+数据交换层（数据交换平台）
+==== Public Key Infrastructure (PKI) ====
+公钥基础设施（eID）
+==== Document Exchange Centre (DEC) ====
+文档交换中心（公文交换系统）
+==== Data Communication in Public Administration (ASO) ====
+公共管理数据通信（无）
+==== IT Infrastructure ====
+网络基础设施（有）
+==== State Portal (eesti.ee) ====
+国家门户（无）
+==== Raising Public Awareness about the information Society (EU SF) ====
+提升信息社会公共意识（无）
+
+=== Cyber Security : 网络安全===
+==== Critical Information Infrastructure Protection (CIIP) ====
+关键信息基础设施保护（有）
+==== CERT-EE ====
+网络安全部门（有）
+==== IT Baseline Security System (ISKE) ====
+网络基本安全系统（部分有）
+==== Supervision ====
+监督部门（部分有）
+
+= X-Road 系统描述 =
+== 目标 ==
+信息交换系统，让应用能够以最小的代价访问国家注册机构的数据，而不会泄露数据的安全性，并且对现有的系统几乎没有影响。
+== 背景和需求 ==
+# 注册机构众多
+# 用户众多，并且网络安全技术有限
+# 安全需求高：注册机构拥有敏感信息和即时信息
+=== 安全需求： ===
+# 凭证，授权，完整（integrity）
+# 可用（时效性）
+# 保密
+== 安全机制 ==
+=== 凭证 ===
+所有传出数据都经过签名。所有传入的消息都保留日志。日志文件加密，周期性加时间戳。
+=== 可用性 ===
+中央服务机构提供最少的服务。认证是离线的，对可用性影响不大。中央服务器主要提供时间戳和目录服务。
+时间戳是非时效的。目录服务是建立在安全域名上的。签名域保证数据不会被篡改。
+所有的X-Road服务器有本地域名缓存服务器，保证即使网络中断，目录信息仍然可用。
+
+服务器能够阻止DoS攻击。
+服务器关键资源是客户平均共享的，每个客户有有限资源槽。当某个客户消耗过多资源时，其消息优先级被降低。
+=== 保密 ===
+SSL加密所有传输的数据。
+两级权限管理机制：组织内和组织间。X-ROAD只服负责组织内访问权限。组织内部再次确认访问者权限。
+数据的使用范围，由组织之间协商确定。
+== 技术方案 ==
+web服务作为平台解决方案。
+XMLRPC，SOAP双向转换，异步操作。
+X-ROAD提供服务发现和查询功能，提供基于WSDL的接口描述文件。
+== 中央服务机构 ==
+* X-ROAD状态控制。
+* X-ROAD扩展与开发
+* 认证授权
+* 目录
+* 时间戳
+* 监视
+* 网页接口 - 接入X-ROAD
+== 系统部署 ==
+服务器都是基于GNU/Debian Linux。
+提供最小配置的Linux和服务器安装盘。
+所有证书都可以在线在工作状态时进行更新。
+
+= X-ROAD部署 =
+== 政府 ==
+X-ROAD需要一个中央服务机构。
+= 服务提供者 =
+要有安全机制。要安装X-ROAD服务器。开发符合X-Road规范的SOAP或XMLRPC服务。
+与服务使用者达成协议后，要将使用权限授予客户。
+= 服务使用者 =
+使用者要有一定的安全机制。
+有两种使用X-Road服务的方式：
+# 集成到自己的系统中
+# 使用Web接口
+
+= X-ROAD configuration protocol =
+configuration : provider, source, anchor, client, proxy
+private parameter, shared parameter, goverment authority
+== download ==
+=== general ===
+配置客户用HTTP Get下载配置文件。
+配置源  签名文件。
+配置客户得到配置锚。
+配置文件由签名目录构成。
+签名有到期日期。
+配置客户用目录中的哈希值下载只发生变化的部分。
+
+
+== 中央服务器 ==
+# 认证
+# 时间戳
+# 目录
+  
+= 认证中心(SK, Certification Centre) = 
+用户数据保护原则
+ * offering certification and time-stamping service;
+ * developing technology and applications for digital signing;
+ * offering validation services.
+ * 提供认证和时间戳服务
+ * 研发数字签名技术和应用
+ * 提供有效性服务
+提供的服务：
+ * validity confirmation services
+ * digital stamp
+ * SSL service cetificates
+ * crypto cerificate
+ * customized certificate
+ * cards for testing

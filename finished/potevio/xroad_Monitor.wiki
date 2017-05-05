@@ -1,0 +1,103 @@
+监视功能：
+* 安全服务器数据传输记录比较。比较两个服务器的记录是否匹配。
+* 远程关闭、重启；remote shutdown, restart a service
+
+= 管理系统 =
+== SNMP ==
+Simple Network Management Protocol
+May monitor the fire-wall and edge mounter.
+SNMP是基于TCP/IP协议族的网络管理标准，是一种在IP网络中管理网络节点（如服务器、工作站、路由器、交换机等）的标准协议。SNMP能够使网络管理员提高网络管理效能，及时发现并解决网络问题以及规划网络的增长。网络管理员还可以通过SNMP接收网络节点的通知消息以及告警事件报告等来获知网络出现的问题。
+== ICMP ==
+Internet Control Message Protocol
+它是TCP/IP协议族的一个子协议，用于在IP主机、路由器之间传递控制消息。控制消息是指网络通不通、主机是否可达、路由是否可用等网络本身的消息。
+
+Zabbix中默认监控网络设备的有一个模板SNMP Devices，其实是由：
+
+SNMP Interfaces：首先获取If的数量，然后自动发现所有的Interface。
+SNMP General：我只保留了2个项目，一个是名称，另一个是运行时间。
+两个模板构成的。
+
+其实网络设备首先应该考虑它是个TCP/IP设备，然后才是个网络设备。
+
+所以，首先，它是一个硬件设备：
+
+ICMP：可达、响应时间、丢包率；
+SNMP/IPMI：温度、电源、风扇情况；
+其次，它是一个计算设备：
+
+SNMP：CPU、内存
+最后，它才是个网络设备：
+
+SNMP：端口流量
+其实，只是缺少了硬件设备所对应的内容。补充上就好。
+= 可选 =
+# Monit=》关闭、重启
+# Cacti==》画图
+# 商用开源监视软件
+= 商用开源监视软件 =
+# Nagios
+# Zabbix
+# Zenoss
+= 10个牛X的免费服务器&互联网监控工具: =
+ # Monit 
+ # Ganglia => 伯克力
+ # Munin => perl framwork
+ # Cacti
+ # Nagios
+ # Zabbix
+ # Observer
+ # Zenoss
+ # Collectd
+ # Argus
+
+= Monit =
+== Proactive ==
+管理应用程序。当应用出于异常时，可以关闭、重启应用，并发送异常消息。
+监视资源
+== Processes ==
+可以监视守护进程
+== File,Dir and Filesystems ==
+监视文件、目录、文件系统。可以监视它们时间戳、检验码或大小的改变。
+可以授权改变这些参数。
+== Cloud and Hosts ==
+监视网络连接。支持TCP、UDP、Unix Domain Socket。
+在协议层测试网络连接。
+内建主要网络协议测试，如HTTP、SMTP
+可以自建网络协议测试。
+== Programs and Scripts ==
+可以定时启动测试程序，可以检测程序退出值，并做出响应。
+== System ==
+检测本地系统资源。
+== script online ==
+Monit不仅可以监视你的服务器，还能通过一些预定的方法来应付特定情况下的问题。比如说你的数据服务器当掉了，Monit可以自动重启服务器，如果这是你所希望它做的话（提示：这往往是你希望的）。
+当你需要监控多个服务器的时候，你可以使用M/Monit - Monit的一个扩展版本，它提供了一个简单的途径来管理多台服务器。
+M/Monit同时提供了iPhone app（iPhone接口）来帮助你方便地管理你的网站，你再不需要拖着一台笔记本到处转了。
+= Ganglia =
+服务群组
+使用XML。RRDtool 数据存储和虚拟化。
+负载小。
+== script online ==
+当你拥有一个服务器群组时，很难一下子看出你整个服务器组的工作概况。Ganglia却可以让你纵览整个组。在应付一大群服务器时，这是一个很好的工具。但从这个意义上来说，对付单服务器架构用这个工具就显得大材小用了。
+= Cacti =
+Cacti是一套基于PHP,MySQL,SNMP及RRDTool开发的网络流量监测图形分析工具。
+== script online ==
+Cacti is 和Munin有很多相似的地方。不过它有一点和Munin相比表现突出的地方，那就是它允许你在一个较模糊的界限里调整你的数据显示的范围大小。Munin只有固定的日、周、月、年性能图表（除非你自己写一个扩展），而Cacti却可以让你以你希望的方式查看你的数据：最近2小时，近四天，近六个月，不定期。你甚至可以在可视界面上拉近拉远你的图表。
+= Nagios =
+== script online ==
+Nagios 是“IT网站监控的工业标准”。不过这只是他们网站自己这么说的。Nagios的安装以及配置非常繁琐，但是它所拥有的丰富特性是市场上的任何工具都不可比拟的，适用于有经验的IT网络管理员。Nagios支持监控多台服务器并且可以通过email，或者以纸质（只要你还在用这种古老的技术）发送警告或SMS/text消息。像Monit一样，Nagios也可以通过一定的配置来自动对故障作出反应。
+= Zabbix =
+== script online ==
+Zabbix 是一种功能丰富的监控工具。它有强大的可视支持：用户自定义界面、拉近拉远和绘制方式。它可以通过email、SMS或即时消息来发送警告。同时它还可以发出声音警告，当你人在监控机器旁边的时候会很有用。
+= Observer =
+== script online ==
+Observer 适用于linux、BSD、Cisco的服务架构。它支持自行寻找你的网站基础架构，发现你最希望去监测的那个网络。这就像是无线技术自动寻找范围内的信号以便让你连接上。Observer有详细的图形显示，并且可以和Nagios的警告发送功能一齐使用。
+= Zenoss =
+== script online ==
+Zenoss 是商业服务器监控工具Zenoss Enterprise的一个开源版本，全部由Python语言编写。它支持Nagios plugin format（Nagios插件格式），所以许多Nagios的插件也可以用于Zenoss。Zenoss的一个突出的地方是它强大而又容易使用的用户接口。
+= Collectd =
+== script online ==
+Collectd 和Munin以及Cacti一样是注重图形式的系统指标显示方式。与众不同的是，它是专门为性能和可移植性而设计的。这意味着它适用于那些粗糙的、低端的和嵌入式的系统。高性能低资源占有率的设计使得Collectd可以在不干扰你的服务进程的条件下，每10秒钟收集一次数据，提供高清晰的结果。你可以用C、Perl或是Java给它写扩展程序。
+= Argus =
+监控网络服务
+== script online ==
+Argus 专注于监控网络服务，支持4版和6版的IP协议。它有个很爽的警告升级功能：当一个警告生成了而且问题在一定的时间之内没有解决的话（因为系统管理员正在家呼呼大睡），它会发送第二个警告给另一个人。

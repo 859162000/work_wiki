@@ -1,0 +1,12 @@
+$HOME
+
+- learn : 参考文档
+- my_site : 个人文件
+- scripts : 一些脚本
+	* my_vim : vim 配置文件
+- temp : 临时文件
+- test : 测试文件
+- tools : 工具包
+- vimfiles/.vim : vim user config
+- wiki : 文档
+- work : 工作

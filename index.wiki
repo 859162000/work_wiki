@@ -1,11 +1,16 @@
 = todo =
 * [ ] [[todolist]]
 
+[[directory|目录]]
 = work =
-* [[current_job]]
+* [[current_work/record|record]]
+* [[current_work/config|工作环境配置]]
+* [[current_work/SOC]]
+* [[current_work/eID]]
 = finished job record : fjr =
-* [[finished/fjr_ApM_fpga_lpddr2]]
-* [[finished/eID]]
+* [[finished/fjr_ApM_fpga_lpddr2|lpddr2]]
+* [[finished/potevio/xroad|xroad]]
+* [[finished/potevio/zhongjianjian|中间件]]
 = person job : pj =
 * [[pjHardwork/readme|hardwork]]
 * [[../common/readme|program]]
